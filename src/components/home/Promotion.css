@@ -1,0 +1,37 @@
+.Promotion {
+    background: linear-gradient(90deg, #bfeefe 0%, #fef2e6 99.01%);
+    display: block;
+    max-width: 100%;
+    margin-top: 24px;
+}
+
+.Promotion .main-text {
+    font-family: Candara;
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-top: 16px;
+    background: linear-gradient(
+        90deg,
+        #00cf91 0%,
+        #7edfd4 33.14%,
+        #ffcd1e 60.81%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.Promotion .sub-text {
+    color: #000;
+    font-family: Candara;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding: 8px 0 20px 0;
+}
+.sub-text > span {
+    font-weight: 700;
+}

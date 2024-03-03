@@ -1,0 +1,55 @@
+* {
+    color: #000;
+    font-family: "Source Sans Pro", sans-serif;
+    font-style: normal;
+}
+
+.BestSellerItem {
+    max-width: 18%;
+    text-align: left;
+    border: 1px solid #ccc;
+    height: 395px;
+    position: relative;
+}
+
+.BestSellerItem:hover {
+    cursor: pointer;
+    box-shadow: 4px 4px 12px 4px #ccc;
+}
+
+.product-image {
+}
+
+.product-image img {
+    width: 100%;
+}
+
+.product-name {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 4px;
+}
+
+.product-description {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 4px;
+}
+
+.product-vote {
+    position: absolute;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 4px;
+    left: 0;
+    bottom: 24px;
+}
+
+.product-price {
+    position: absolute;
+    font-size: 20px;
+    font-weight: 400;
+    margin: 4px;
+    left: 0;
+    bottom: 0;
+}

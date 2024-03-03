@@ -1,0 +1,54 @@
+.FeatureBrand {
+}
+
+.feature-title {
+    text-transform: uppercase;
+    margin: 72px 0 96px 0;
+    color: #000;
+    text-align: center;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.feature-items {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.feature1,
+.feature2,
+.feature3 {
+    max-width: 30%;
+    text-align: center;
+}
+
+.feature1 img,
+.feature2 img,
+.feature3 img {
+    width: 100%;
+}
+
+.feature-items .item-title {
+    text-transform: uppercase;
+    color: #000;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin: 8px;
+}
+
+.feature-items .item-description {
+    color: #000;
+    text-align: center;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 12px;
+}

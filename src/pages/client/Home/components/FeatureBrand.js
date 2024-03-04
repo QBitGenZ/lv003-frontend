@@ -1,5 +1,3 @@
-import "./FeatureBrand.css";
-
 export default function () {
     return (
         <div className='FeatureBrand'>

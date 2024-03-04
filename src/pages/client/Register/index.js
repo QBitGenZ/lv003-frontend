@@ -1,14 +1,14 @@
 import { useState } from "react";
-import "./Register.css";
 import Select from "react-select";
-import Header from "../../components/fixed/Header";
+import Header from "./components/Header";
+import "./register.css";
 
 const options = [
     { value: "male", label: "Nam" },
     { value: "female", label: "Nữ" },
 ];
 
-export default function () {
+const Register = () => {
     const [selectedOption, setSelectedOption] = useState(null);
 
     return (
@@ -45,4 +45,6 @@ export default function () {
             </div>
         </>
     );
-}
+};
+
+export default Register;

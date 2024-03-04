@@ -1,5 +1,3 @@
-import "./Promotion.css";
-
 export default function () {
     return (
         <div className='Promotion'>

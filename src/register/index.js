@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Select from "react-select";
-import Header from "./components/Header";
+import Header from "../common/Header";
 import "./register.css";
 
 const options = [

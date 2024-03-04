@@ -1,4 +1,4 @@
-import Header from "./components/Header";
+import Header from "../common/Header";
 import "./user.css";
 
 export default function () {

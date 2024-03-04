@@ -1,4 +1,3 @@
-import "./BestSeller.css";
 import BestSellerItem from "./BestSellerItem";
 
 export default function () {

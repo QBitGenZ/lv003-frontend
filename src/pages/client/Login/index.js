@@ -1,8 +1,8 @@
+import "./login.css";
 import { Link } from "react-router-dom";
-import Header from "../../components/fixed/Header";
-import "./Login.css";
+import Header from "./components/Header";
 
-export default function () {
+const Login = () => {
     return (
         <>
             <Header></Header>
@@ -41,4 +41,6 @@ export default function () {
             </div>
         </>
     );
-}
+};
+
+export default Login;

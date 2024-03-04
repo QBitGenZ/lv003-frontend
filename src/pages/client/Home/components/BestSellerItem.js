@@ -1,5 +1,4 @@
-import "./BestSellerItem.css";
-import { ProductData } from "../../json/ProductData";
+import { ProductData } from "../json/ProductData";
 
 const BestSellerItem = ({ ProductNo }) => {
     const product = ProductData.find((item) => item.ProductNo === ProductNo);

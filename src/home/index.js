@@ -1,17 +1,17 @@
 import Header from "../common/Header";
-import Banner from "./components/Banner";
 import Promotion from "./components/Promotion";
 import BestSeller from "./components/BestSeller";
 import FeatureBrand from "./components/FeatureBrand";
 import Footer from "../common/Footer";
 import { ImageData } from "./json/BannerData";
-import "./home.css";
+import "./Home.css";
+import Swiper from "./components/Swiper";
 
 const Home = (props) => {
     return (
         <>
             <Header />
-            <Banner ImageData={ImageData} SlideIntervalTime={3000} />
+            <Swiper />
             <Promotion />
             <BestSeller />
             <FeatureBrand />

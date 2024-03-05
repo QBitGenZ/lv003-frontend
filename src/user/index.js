@@ -1,5 +1,5 @@
 import Header from "../common/Header";
-import "./user.css";
+import "./User.css";
 
 export default function () {
     return (

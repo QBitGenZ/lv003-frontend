@@ -4,9 +4,9 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Route, RouterProvider, Routes } from "react-router-dom";
-import Login from "./pages/client/Login";
-import Register from "./pages/client/Register";
-import User from "./pages/client/User";
+import Login from "./login/index.js";
+import Register from "./register/index.js";
+import User from "./user/index.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

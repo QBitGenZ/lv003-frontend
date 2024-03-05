@@ -2,27 +2,23 @@ import { Link, Outlet } from "react-router-dom";
 
 export default function Header() {
     return (
-        <div className='Header'>
+        <>
             <div className='header-container'>
                 <div className='header-main'>
-                    <div className='pseudo-container'></div>
-
-                    <div className='main-logo-container'>
+                    <Link to={"/"} className='main-logo-container'>
                         <div className='main-logo-text'>
                             <img
                                 src={
-                                    process.env.PUBLIC_URL +
-                                    "/images/client/logo.png"
+                                    process.env.PUBLIC_URL + "/images/logo.png"
                                 }></img>
                         </div>
                         <div className='main-logo-lotus'>
                             <img
                                 src={
-                                    process.env.PUBLIC_URL +
-                                    "/images/client/lotus.png"
+                                    process.env.PUBLIC_URL + "/images/lotus.png"
                                 }></img>
                         </div>
-                    </div>
+                    </Link>
 
                     <div className='main-tools-container'>
                         <i class='fa-solid fa-magnifying-glass tools-icon'></i>
@@ -32,6 +28,7 @@ export default function Header() {
                         </Link>
                     </div>
                 </div>
+
                 <div className='header-nav'>
                     <a href='#'>Danh mục sản phẩm</a>
                     <a href='#'>Hot Deals</a>
@@ -42,6 +39,6 @@ export default function Header() {
                 </div>
             </div>
             <Outlet></Outlet>
-        </div>
+        </>
     );
 }

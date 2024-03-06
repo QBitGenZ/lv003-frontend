@@ -1,11 +1,15 @@
-import { Link, Outlet } from "react-router-dom";
+import "./Search.css";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
-export default function Header() {
+export default function () {
+    const [isShow, setIsShow] = useState(true);
+
     return (
         <>
             <div className='header-container'>
                 <div className='header-main'>
-                    <Link to={"/"} className='main-logo-container'>
+                    <Link to={"/"} className=' search-page main-logo-container'>
                         <div className='main-logo-text'>
                             <img
                                 src={
@@ -19,16 +23,6 @@ export default function Header() {
                                 }></img>
                         </div>
                     </Link>
-
-                    <div className='main-tools-container'>
-                        <Link to={"/search"}>
-                            <i class='fa-solid fa-magnifying-glass tools-icon'></i>
-                        </Link>
-                        <i class='fa-solid fa-cart-shopping tools-icon'></i>
-                        <Link to={"/login"}>
-                            <i class='fa-solid fa-user tools-icon'></i>
-                        </Link>
-                    </div>
                 </div>
 
                 <div className='header-nav'>
@@ -40,7 +34,20 @@ export default function Header() {
                     <a href='#'>Hỗ trợ</a>
                 </div>
             </div>
-            <Outlet></Outlet>
+
+            {isShow ? (
+                <div className='SearchBody'>
+                    <Link className='close-btn' to={"/"}>
+                        <i class='fa-solid fa-xmark fa-2x'></i>
+                    </Link>
+                    <div className='search-container'>
+                        <i class='fa-solid fa-magnifying-glass tools-icon'></i>
+                        <input type='text' placeholder='Bạn cần gì...'></input>
+                    </div>
+                </div>
+            ) : (
+                <></>
+            )}
         </>
     );
 }

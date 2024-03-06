@@ -6,6 +6,10 @@ import "../Home.css";
 
 import { Autoplay } from "swiper/modules";
 
+// const Swiper = (ProductNo) => {
+
+// }
+
 export default function () {
     return (
         <div className='swiper-container'>

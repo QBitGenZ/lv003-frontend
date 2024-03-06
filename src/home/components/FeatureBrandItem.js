@@ -1,4 +1,4 @@
-import { BrandData } from "../json/BrandData";
+import { BrandData } from "../../common/json/BrandData";
 
 const FeatureBrandItem = ({ BrandNo }) => {
     const brand = BrandData.find((item) => item.BrandNo === BrandNo);

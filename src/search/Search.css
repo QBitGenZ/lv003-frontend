@@ -1,0 +1,41 @@
+.SearchBody {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(220, 219, 251, 0.52);
+}
+
+.SearchBody .search-container {
+    margin-top: 180px;
+    margin-left: 28%;
+}
+
+.SearchBody .close-btn {
+    float: right;
+    margin-top: 20px;
+    margin-right: 30px;
+}
+
+.SearchBody .close-btn:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.search-container i {
+    background-color: #fff;
+    padding: 16px 24px;
+}
+
+.search-container input {
+    width: 65%;
+    border: 0;
+    padding: 15px 0 13px;
+    outline: none;
+}
+
+.search-page.main-logo-container {
+    margin-right: 35%;
+}

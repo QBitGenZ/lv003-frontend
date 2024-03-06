@@ -1,4 +1,4 @@
-import { ProductData } from "../json/ProductData";
+import { ProductData } from "../../common/json/ProductData";
 
 const BestSellerItem = ({ ProductNo }) => {
     const product = ProductData.find((item) => item.ProductNo === ProductNo);
@@ -11,7 +11,7 @@ const BestSellerItem = ({ ProductNo }) => {
         <div className='BestSellerItem'>
             <div className='product-top'>
                 <div className='product-image'>
-                    <img src={product.ProductImage}></img>
+                    <img src={product.ProductImage[0]}></img>
                 </div>
                 <div className='product-name'>{product.ProductName}</div>
                 <div className='product-description'>

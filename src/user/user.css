@@ -1,0 +1,121 @@
+.UserBody {
+    position: relative;
+    margin: auto;
+    background-color: #edecfd;
+    max-width: 60%;
+    padding: 60px;
+    height: 320px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+h2,
+p {
+    margin: 0;
+}
+
+.seperate-line {
+    width: 3px;
+    background-color: #aaa;
+    box-shadow: 2px 2px 8px #ddd;
+    height: 137%;
+}
+
+.user-body-active {
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.user-left-side {
+    width: 35%;
+    margin-top: -48px;
+}
+
+.user-left-side > div,
+.user-left-side > Link {
+    margin: 48px 0;
+}
+
+.user-left-side > div:hover {
+    cursor: pointer;
+}
+
+.user-left-side .logout {
+    text-decoration: none;
+}
+
+.user-left-side .logout:hover {
+    opacity: 0.8;
+}
+
+.user-right-side {
+    width: 65%;
+    margin-top: -20px;
+}
+
+.infor-page div h2 {
+    margin: 26px 0 8px 0;
+    font-weight: 500;
+    font-size: 20px;
+    color: #535353;
+}
+
+.infor-page div p {
+    font-size: 22px;
+}
+
+.change-profile-btn {
+    color: #fff;
+    background-color: #000;
+    text-align: center;
+    width: 50%;
+    padding: 12px;
+    margin: 12px auto;
+}
+
+.change-profile-btn:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.passwd-page .chgpasswd-title {
+    text-align: center;
+    color: #636363;
+    font-size: 32px;
+    margin: 20px 0;
+}
+
+.passwd-page .chgpasswd-form input {
+    width: 100%;
+    margin: 8px 0;
+    padding: 12px 0;
+    padding-left: 10px;
+}
+
+.button-container {
+    width: 103%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-container .button {
+    text-align: center;
+    width: 50%;
+    padding: 10px 0;
+}
+
+.button-container button.confirm-btn {
+    border: 0;
+    color: #fff;
+    margin-right: 8px;
+    background-color: #000;
+}
+
+.button-container .discard-btn {
+    color: #000;
+    margin-left: 8px;
+    background-color: #fff;
+}

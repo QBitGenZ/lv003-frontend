@@ -1,12 +1,12 @@
+import "./Product.css";
 import Header from "../common/Header";
-import "./User.css";
-import UserBody from "./UserBody";
+import ProductBody from "./ProductBody";
 
 export default function () {
     return (
         <>
             <Header></Header>
-            <UserBody></UserBody>
+            <ProductBody ProductNo={"001"}></ProductBody>
         </>
     );
 }

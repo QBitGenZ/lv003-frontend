@@ -3,7 +3,6 @@ import Promotion from "./components/Promotion";
 import BestSeller from "./components/BestSeller";
 import FeatureBrand from "./components/FeatureBrand";
 import Footer from "../common/Footer";
-import { ImageData } from "./json/BannerData";
 import "./Home.css";
 import Swiper from "./components/Swiper";
 

@@ -4,13 +4,13 @@ import BestSeller from "./components/BestSeller";
 import FeatureBrand from "./components/FeatureBrand";
 import Footer from "../common/Footer";
 import "./Home.css";
-import Swiper from "./components/Swiper";
+import Banner from "./components/Banner";
 
 const Home = (props) => {
     return (
         <>
             <Header />
-            <Swiper />
+            <Banner />
             <Promotion />
             <BestSeller />
             <FeatureBrand />

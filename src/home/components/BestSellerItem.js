@@ -1,12 +1,4 @@
-import { ProductData } from "../../common/json/ProductData";
-
-const BestSellerItem = ({ ProductNo }) => {
-    const product = ProductData.find((item) => item.ProductNo === ProductNo);
-
-    if (!product) {
-        return <div>Sản phẩm không tồn tại</div>;
-    }
-
+const BestSellerItem = ({ product }) => {
     return (
         <div className='BestSellerItem'>
             <div className='product-top'>

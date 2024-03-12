@@ -24,7 +24,9 @@ export default function Header() {
                         <Link to={"/search"}>
                             <i class='fa-solid fa-magnifying-glass tools-icon'></i>
                         </Link>
-                        <i class='fa-solid fa-cart-shopping tools-icon'></i>
+                        <Link to={"/cart"}>
+                            <i class='fa-solid fa-cart-shopping tools-icon'></i>
+                        </Link>
                         <Link to={"/login"}>
                             <i class='fa-solid fa-user tools-icon'></i>
                         </Link>

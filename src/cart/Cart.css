@@ -1,0 +1,111 @@
+#CartBody {
+    text-align: center;
+    padding: 36px;
+    margin: 3% 12% 4%;
+}
+
+#CartBody .cart-title {
+    font-size: 48px;
+    margin-bottom: 48px;
+}
+
+#CartBody .body-container {
+    padding: 24px;
+    margin: 36px 0 12px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0px 0px 50px 0px rgba(43, 128, 255, 0.25);
+}
+
+#CartDetail {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1px #989898 solid;
+    border-radius: 6px;
+    padding: 8px;
+    margin: 24px 0;
+}
+
+#CartDetail .left-side-detail {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.left-side-detail .cart-detail-choice input {
+    width: 24px;
+    height: 24px;
+}
+
+.left-side-detail .cart-detail-img {
+    width: 40%;
+}
+
+.left-side-detail .cart-detail-img img {
+    width: 100%;
+}
+
+.left-side-detail .cart-detail-body {
+    text-align: left;
+}
+
+.cart-detail-body .cart-detail-prod-name {
+    font-size: 36px;
+    margin: 6px 0;
+}
+
+.cart-detail-body .cart-detail-prod-brand {
+    font-size: 24px;
+    color: #595959;
+    margin: 4px;
+}
+
+#CartDetail .right-side-detail {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+}
+
+.right-side-detail .cart-detail-price > * {
+    margin: 12px 0;
+}
+
+.cart-detail-price .origin-price {
+    font-size: 20px;
+    text-decoration: line-through;
+    color: #333;
+}
+
+#CartDetail .right-side-detail .remove-btn {
+    margin: 0 16px;
+    padding: 0 8px;
+}
+
+#CartDetail .right-side-detail .remove-btn:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+#CartBody .button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 36px 0;
+}
+
+.button-container .button {
+    max-width: 25%;
+    padding: 18px 0;
+}
+
+.button-container .remove-all-btn {
+    background-color: #ff5d5d;
+}
+
+.button-container .choose-all-btn {
+    background-color: #00f94c;
+}

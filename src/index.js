@@ -10,6 +10,7 @@ import User from "./user/index.js";
 import Search from "./search/index.js";
 import Product from "./product/index.js";
 import Checkout from "./checkout/index.js";
+import Cart from "./cart/index.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -21,6 +22,7 @@ root.render(
             <Route path='user' element={<User />}></Route>
             <Route path='search' element={<Search />}></Route>
             <Route path='product' element={<Product />}></Route>
+            <Route path='cart' element={<Cart />}></Route>
             <Route path='checkout' element={<Checkout />}></Route>
         </Routes>
     </BrowserRouter>

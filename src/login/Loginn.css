@@ -38,9 +38,6 @@
     width: 50%;
 }
 
-.login-side {
-}
-
 .login-side .login-form {
     display: flex;
     flex-direction: column;
@@ -110,3 +107,5 @@ a.privacy:hover {
     cursor: pointer;
     opacity: 0.9;
 }
+
+/*bla bla*/

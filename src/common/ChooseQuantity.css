@@ -1,0 +1,17 @@
+#ChooseQuantity input[type="number"] {
+    width: 50px;
+    text-align: center;
+}
+
+#ChooseQuantity .minus,
+#ChooseQuantity .plus {
+    margin: 0 10px;
+    padding: 2px;
+    font-size: 30px;
+}
+
+#ChooseQuantity .minus:hover,
+#ChooseQuantity .plus:hover {
+    cursor: pointer;
+    opacity: 0.9;
+}

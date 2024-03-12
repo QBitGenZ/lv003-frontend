@@ -47,26 +47,8 @@ input::-webkit-inner-spin-button {
     font-size: 28px;
 }
 
-.product-detail-content .product-content-quantity input[type="number"] {
-    width: 50px;
-    text-align: center;
-}
-
-.product-detail-content .product-content-quantity .minus,
-.product-detail-content .product-content-quantity .plus {
-    margin: 0 10px;
-    padding: 2px;
-    font-size: 30px;
-}
-
-.product-detail-content .product-content-quantity .minus:hover,
-.product-detail-content .product-content-quantity .plus:hover {
-    cursor: pointer;
-    opacity: 0.9;
-}
-
-.product-detail-content .product-content-add-btn,
-.product-detail-content .product-content-buy-btn {
+.product-content-add-btn,
+.product-content-buy-btn {
     color: #fff;
     background-color: #000;
     padding: 16px;

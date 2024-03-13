@@ -9,12 +9,14 @@ const ChooseQuantity = ({ originQuantity }) => {
     };
 
     const handleDecrease = () => {
-        setQuantity((prevQuantity) => prevQuantity - 1);
+        if (quantity > 1) {
+            setQuantity((prevQuantity) => prevQuantity - 1);
+        }
     };
 
     const handleChange = (event) => {
         const newQuantity = parseInt(event.target.value);
-        if (!isNaN(newQuantity) && newQuantity >= originQuantity) {
+        if (!isNaN(newQuantity)) {
             setQuantity(newQuantity);
         }
     };
@@ -25,13 +27,11 @@ const ChooseQuantity = ({ originQuantity }) => {
 
     useEffect(() => {
         const savedQuantity = localStorage.getItem("productQuantity");
-        if (savedQuantity) {
-            setQuantity(parseInt(savedQuantity));
-        }
+        setQuantity(parseInt(savedQuantity));
     }, []);
 
     return (
-        <div id='ChooseQuantity'>
+        <div id='ChooseQuantity' className='.prevent-select'>
             <span>Số lượng:</span>
             <span className='minus' onClick={handleDecrease}>
                 -

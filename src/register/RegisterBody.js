@@ -10,7 +10,7 @@ const RegisterBody = () => {
     const [selectedOption, setSelectedOption] = useState(null);
 
     return (
-        <div className='RegisterBody'>
+        <div id='RegisterBody'>
             <div className='register-title'>Đăng ký tài khoản</div>
             <form className='register-form'>
                 <div className='left-side'>
@@ -21,7 +21,8 @@ const RegisterBody = () => {
                         className='gender'
                         defaultValue={selectedOption}
                         onChange={setSelectedOption}
-                        options={options}></Select>
+                        options={options}
+                        placeholder='Giới tính'></Select>
                 </div>
 
                 <div className='seperate-line'></div>
@@ -36,7 +37,8 @@ const RegisterBody = () => {
                         <input type='checkbox' id='confirm'></input>
                         <label htmlFor='confirm'>
                             Bằng cách gửi biểu mẫu này. Tôi xác nhận rằng đã đọc
-                            và chấp nhận chính sách bảo mật của CLAIRE
+                            và chấp nhận <span>Chính sách bảo mật</span> của
+                            CLAIRE
                         </label>
                     </div>
                 </div>

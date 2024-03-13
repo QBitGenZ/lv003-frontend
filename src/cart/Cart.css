@@ -97,6 +97,10 @@
     margin: 36px 0;
 }
 
+#CartBody .button-container .checkout-btn {
+    text-decoration: none;
+}
+
 .button-container .button {
     max-width: 25%;
     padding: 18px 0;
@@ -108,4 +112,15 @@
 
 .button-container .choose-all-btn {
     background-color: #00f94c;
+}
+
+#CartDetail.not-in-cart {
+    border: 0;
+    background-color: #fbfbfb;
+    border-radius: 16px;
+}
+
+#CartDetail.not-in-cart .quantity {
+    font-size: 18px;
+    margin-left: 2px;
 }

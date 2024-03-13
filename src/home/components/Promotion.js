@@ -4,7 +4,7 @@ export default function () {
             <div className='main-text'>Khách hàng mới của CLAIRE?</div>
             <div className='sub-text'>
                 Nhận ngay voucher <span>100.000vnd</span> chỉ với một cú{" "}
-                <span className='click-me'>click!</span>
+                <span className='click-me'>Click!</span>
             </div>
         </div>
     );

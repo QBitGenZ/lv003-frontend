@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const LoginBody = () => {
     return (
-        <div className='LoginBody'>
+        <div id='LoginBody'>
             <div className='login-side'>
                 <div className='login-title'>Truy cập tài khoản</div>
                 <form className='login-form'>
@@ -19,7 +19,9 @@ const LoginBody = () => {
                             <input id='remember' type='checkbox'></input>
                             <label htmlFor='remember'>Ghi nhớ</label>
                         </div>
-                        <div className='change-passwd'>Quên mật khẩu?</div>
+                        <Link className='change-passwd' to={"/forgotpassword"}>
+                            Quên mật khẩu?
+                        </Link>
                     </div>
                     <button className='button login-btn'>Đăng nhập</button>
                 </form>

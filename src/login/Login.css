@@ -1,4 +1,4 @@
-.LoginBody {
+#LoginBody {
     display: block;
     margin: auto;
     background-color: #edecfd;
@@ -74,7 +74,13 @@
     opacity: 0.8;
 }
 
-.seperate-line {
+.login-form .remember input#remember {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+}
+
+#LoginBody .seperate-line {
     display: block;
     width: 1px;
     height: 105%;
@@ -87,6 +93,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.register-side .register-title {
+    font-size: 20px;
 }
 
 .button.register-btn {
@@ -107,5 +117,3 @@ a.privacy:hover {
     cursor: pointer;
     opacity: 0.9;
 }
-
-/*bla bla*/

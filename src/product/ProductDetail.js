@@ -1,37 +1,8 @@
+import ChooseQuantity from "../common/ChooseQuantity";
 import { ProductData } from "../common/json/ProductData";
-import { useState, useEffect } from "react";
 
 const ProductDetail = ({ ProductNo }) => {
     const product = ProductData.find((item) => item.ProductNo === ProductNo);
-    const [quantity, setQuantity] = useState(1);
-
-    const handleIncrease = () => {
-        setQuantity((prevQuantity) => prevQuantity + 1);
-    };
-
-    const handleDecrease = () => {
-        if (quantity > 1) {
-            setQuantity((prevQuantity) => prevQuantity - 1);
-        }
-    };
-
-    const handleChange = (event) => {
-        const newQuantity = parseInt(event.target.value);
-        if (!isNaN(newQuantity) && newQuantity >= 1) {
-            setQuantity(newQuantity);
-        }
-    };
-
-    useEffect(() => {
-        localStorage.setItem("productQuantity", quantity.toString());
-    }, [quantity]);
-
-    useEffect(() => {
-        const savedQuantity = localStorage.getItem("productQuantity");
-        if (savedQuantity) {
-            setQuantity(parseInt(savedQuantity));
-        }
-    }, []);
 
     if (!product) {
         return (
@@ -40,7 +11,7 @@ const ProductDetail = ({ ProductNo }) => {
     }
 
     return (
-        <div className='ProductDetail'>
+        <div id='ProductDetail'>
             <div className='product-detail-img'>
                 <img src={product.ProductImage[1]}></img>
             </div>
@@ -67,17 +38,7 @@ const ProductDetail = ({ ProductNo }) => {
                     {product.ProductPrice}
                 </div>
                 <div className='product-content-quantity'>
-                    <span className='minus' onClick={handleDecrease}>
-                        -
-                    </span>
-                    <input
-                        type='number'
-                        value={quantity}
-                        onChange={handleChange}
-                        min='1'></input>
-                    <span className='plus' onClick={handleIncrease}>
-                        +
-                    </span>
+                    <ChooseQuantity originQuantity={1} />
                 </div>
                 <div className='button product-content-add-btn'>
                     Thêm vào giỏ hàng

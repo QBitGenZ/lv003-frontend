@@ -1,0 +1,129 @@
+#OrderStatusUnit {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#OrderStatusUnit > * {
+    margin: 8px 0;
+}
+
+#OrderStatusUnit .order-status-unit-icon {
+    margin-bottom: 16px;
+}
+
+#OrderStatusUnit .order-status-unit-content {
+    font-weight: 600;
+}
+
+#OrderStatusUnit .order-status-unit-date {
+    color: #777;
+    font-size: 20px;
+}
+
+#OrderStatus {
+    width: 85%;
+    margin: 48px auto 72px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#OrderStatus .link-line {
+    width: 200px;
+    background-color: #747474;
+    display: inline-block;
+    height: 1px;
+}
+
+#OrderBody {
+    width: 100vw;
+}
+
+#OrderBody .order-title {
+    font-size: 48px;
+    font-weight: 600;
+    text-align: center;
+    margin: 48px 0;
+}
+
+#OrderDetail .order-detail-body-container {
+    border: 1px #969696 solid;
+    border-radius: 20px;
+    margin: 24px auto;
+    padding: 36px;
+    width: 60%;
+}
+
+.order-detail-body-container .order-address {
+    width: 60%;
+    margin: 0 auto;
+    border: 1px #727272 solid;
+    border-radius: 12px;
+    padding: 16px;
+    background-color: #fbfbfb;
+}
+
+.order-detail-body-container .order-address * {
+    margin: 8px 0;
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-detail-body-container .order-address * > span {
+    width: 70%;
+    text-align: left;
+    color: #727272;
+}
+
+.order-detail-body-container .order-address .address-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    display: block;
+}
+
+#OrderDetail .order-detail-body .ordered-price > * {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#OrderDetail .order-detail-body .ordered-price > * {
+    margin: 24px 0;
+}
+
+#OrderDetail .order-detail-payment-method {
+    text-align: center;
+    margin: 48px 0;
+}
+
+#OrderDetail .order-detail-payment-method .payment-method-title {
+    font-size: 32px;
+    font-weight: 600;
+    margin: 48px 0 12px;
+}
+
+#OrderDetail .order-detail-button-container {
+    width: 50%;
+    margin: 24px auto 48px;
+    display: flex;
+    justify-content: space-around;
+}
+
+#OrderDetail .order-detail-button-container .button {
+    width: 30%;
+    text-align: center;
+    display: inline-block;
+    padding: 12px 36px;
+}
+
+#OrderDetail .order-detail-button-container .paid-btn {
+    opacity: 0.6;
+    cursor: default;
+}

@@ -217,9 +217,14 @@
     background: linear-gradient(90deg, #bfeefe 0%, #fef2e6 99.01%);
 }
 
+.Footer a {
+    transition: color 0.3s ease-in-out;
+}
+
 .Footer a:hover {
     cursor: pointer;
     opacity: 0.8;
+    font-weight: 550;
 }
 
 .Footer .footer-contact {

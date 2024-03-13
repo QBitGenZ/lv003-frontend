@@ -1,4 +1,4 @@
-.RegisterBody {
+#RegisterBody {
     display: block;
     margin: auto;
     background-color: #edecfd;
@@ -7,7 +7,7 @@
     height: 350px;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -22,8 +22,13 @@
     height: 100%;
 }
 
-.register-form .seperate-line {
+#RegisterBody .register-form .gender {
+    margin: 8px 0;
+}
+
+#RegisterBody .register-form .seperate-line {
     height: 100%;
+    margin: 0 24px;
 }
 
 .register-form .left-side {
@@ -41,14 +46,33 @@
 }
 
 .register-form input[type="checkbox"] {
-    width: auto;
+    width: 25px;
+    height: 25px;
     margin: 0;
     padding: 0;
     margin-right: 8px;
+    display: inline-block;
 }
 
 .confirm-container label {
-    font-size: 20px;
+    color: #333;
+}
+
+.confirm-container label,
+.confirm-container label span {
+    font-size: 16px;
+    display: inline-block;
+    width: 90%;
+}
+
+.confirm-container label > span {
+    display: inline;
+    text-decoration: underline;
+}
+
+.confirm-container label > span:hover {
+    cursor: pointer;
+    opacity: 0.8;
 }
 
 button.register-btn {

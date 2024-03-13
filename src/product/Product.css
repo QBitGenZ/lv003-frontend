@@ -4,7 +4,7 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
-.ProductDetail {
+#ProductDetail {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -12,19 +12,19 @@ input::-webkit-inner-spin-button {
     margin-top: 50px;
 }
 
-.ProductDetail .product-detail-img {
+#ProductDetail .product-detail-img {
     max-width: 40%;
 }
 
-.ProductDetail .product-detail-img img {
+#ProductDetail .product-detail-img img {
     width: 100%;
 }
 
-.ProductDetail .product-detail-content {
+#ProductDetail .product-detail-content {
     max-width: 50%;
 }
 
-.ProductDetail .product-detail-content > * {
+#ProductDetail .product-detail-content > * {
     margin: 12px 0;
 }
 

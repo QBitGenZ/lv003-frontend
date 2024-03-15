@@ -26,7 +26,9 @@ root.render(
             <Route path='product' element={<Product />}></Route>
             <Route path='cart' element={<Cart />}></Route>
             <Route path='order' element={<Order />}></Route>
-            <Route path='checkout' element={<Checkout />}></Route>
+            <Route
+                path='checkout'
+                element={<Checkout step={"delivery"} />}></Route>
             <Route path='forgotpassword' element={<ForgotPassword />}></Route>
         </Routes>
     </BrowserRouter>

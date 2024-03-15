@@ -31,7 +31,7 @@ const ChooseQuantity = ({ originQuantity }) => {
     }, []);
 
     return (
-        <div id='ChooseQuantity' className='.prevent-select'>
+        <div id='ChooseQuantity' className='prevent-select'>
             <span>Số lượng:</span>
             <span className='minus' onClick={handleDecrease}>
                 -

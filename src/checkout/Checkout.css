@@ -10,12 +10,17 @@
     align-items: center;
 }
 
+#Checkout .checkout-haft-top {
+    margin: 128px 0;
+}
+
 #Checkout .checkout-haft-bot {
+    margin-top: -128px;
     margin-bottom: 128px;
 }
 
 #CheckoutProgress {
-    margin: 64px 48px 100px;
+    margin: 64px 48px 128px;
     text-align: center;
 }
 
@@ -135,3 +140,104 @@
     align-items: center;
     padding-top: 16px;
 }
+
+/* end OrderSummary */
+
+#PaymentMethod {
+    margin-left: 48px;
+    width: 65%;
+}
+
+#PaymentMethod .payment-method-title {
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+#PaymentMethod .payment-method-body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 36px;
+}
+
+#PaymentMethod .payment-method-body .method-choice > * {
+    text-align: center;
+    border: 2px #969696 solid;
+    color: #969696;
+    padding: 64px 96px;
+    margin-bottom: 24px;
+}
+
+#PaymentMethod .payment-method-body div.enable {
+    color: #000;
+    border: 2px #000 solid;
+}
+
+#PaymentMethod .payment-method-body .confirm-payment-btn {
+    text-align: center;
+    margin: 12px auto;
+}
+
+/* end PaymentMethod */
+
+#ConfirmationCheckout {
+    margin-left: 48px;
+    width: 60%;
+}
+
+#ConfirmationCheckout .confirm-infor,
+#ConfirmationCheckout .confirm-receipt {
+    border: 1px #969696 solid;
+    border-radius: 12px;
+    padding: 24px 48px;
+    margin: 24px 0;
+}
+
+#ConfirmationCheckout .confirm-infor * {
+    margin: 12px 0;
+}
+
+#ConfirmationCheckout .confirm-infor .confirm-infor-title,
+#ConfirmationCheckout .confirm-receipt .confirm-receipt-title {
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 36px;
+}
+
+#ConfirmationCheckout .confirm-receipt * {
+    margin: 12px 0;
+}
+
+#ConfirmationCheckout .confirm-receipt-header > * {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#ConfirmationCheckout .confirm-receipt-header span {
+    color: #727272;
+    width: 60%;
+}
+
+#ConfirmationCheckout .confirm-receipt-body {
+    margin: 24px 0;
+    width: 100%;
+}
+
+#ConfirmationCheckout .confirm-receipt-body * {
+    padding: 12px 0;
+}
+
+#ConfirmationCheckou .confirm-receipt-body .confirm-receipt-total > * {
+    font-weight: 600;
+}
+
+/* #ConfirmationCheckou .confirm-receipt-body .confirm-receipt-total:last-child {
+    text-align: right;
+} */

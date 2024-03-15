@@ -5,8 +5,8 @@ import UserBody from "./UserBody";
 export default function () {
     return (
         <>
-            <Header></Header>
-            <UserBody></UserBody>
+            <Header />
+            <UserBody />
         </>
     );
 }

@@ -1,4 +1,4 @@
-const DeliveryAddress = () => {
+const DeliveryAddress = ({ handleClickedEvent }) => {
     return (
         <div id='DeliveryAddress'>
             <div className='delivery-address-title'>Địa chỉ nhận hàng</div>
@@ -21,7 +21,11 @@ const DeliveryAddress = () => {
                             Đặt làm địa chỉ mặc định
                         </label>
                     </div>
-                    <button className='button order-btn'>Tiếp theo</button>
+                    <button
+                        className='button order-btn'
+                        onClick={handleClickedEvent}>
+                        Tiếp theo
+                    </button>
                 </div>
             </div>
         </div>

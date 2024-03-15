@@ -73,35 +73,27 @@ export default function Header() {
                         className='header-nav-portfolio'
                         onMouseEnter={handleMosueEnterProductPortfolio}
                         onMouseLeave={handleMosueLeaveProductPortfolio}>
-                        <a className='main-navigation' href='#'>
-                            Danh mục sản phẩm
-                        </a>
+                        <a className='main-navigation'>Danh mục sản phẩm</a>
                         {showProductPortfolio && (
                             <Navigation type={"prod-portfolio"} />
                         )}
                     </div>
 
-                    <a className='main-navigation' href='#'>
-                        Hot Deals
-                    </a>
-                    <a className='main-navigation' href='#'>
-                        Bán chạy
-                    </a>
+                    <a className='main-navigation'>Hot Deals</a>
+                    <a className='main-navigation'>Bán chạy</a>
                     <div
                         className='header-nav-portfolio'
                         onMouseEnter={handleMosueEnterBrandPortfolio}
                         onMouseLeave={handleMosueLeaveBrandPortfolio}>
-                        <a className='main-navigation' href='#'>
-                            Thương hiệu
-                        </a>
+                        <a className='main-navigation'>Thương hiệu</a>
                         {showBrandPortfolio && <Navigation type={"brand"} />}
                     </div>
-                    <a className='main-navigation' href='#'>
+                    <Link to={"/about-us"} className='main-navigation'>
                         Giới thiệu
-                    </a>
-                    <a className='main-navigation' href='#'>
+                    </Link>
+                    <Link to={"/support"} className='main-navigation'>
                         Hỗ trợ
-                    </a>
+                    </Link>
                 </div>
             </div>
             <Outlet></Outlet>

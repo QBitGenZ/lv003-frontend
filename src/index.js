@@ -14,6 +14,9 @@ import Cart from "./cart/index.js";
 import Order from "./order/index.js";
 import ForgotPassword from "./forgotpassword/index.js";
 import Cleanser from "./cleanser/index.js";
+import AboutUs from "./aboutus/index.js";
+import Support from "./support/index.js";
+import Privacy from "./privacy/index.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -32,6 +35,9 @@ root.render(
                 element={<Checkout step={"delivery"} />}></Route>
             <Route path='forgotpassword' element={<ForgotPassword />}></Route>
             <Route path='cleanser' element={<Cleanser />}></Route>
+            <Route path='about-us' element={<AboutUs />}></Route>
+            <Route path='support' element={<Support />}></Route>
+            <Route path='privacy' element={<Privacy />}></Route>
         </Routes>
     </BrowserRouter>
 );

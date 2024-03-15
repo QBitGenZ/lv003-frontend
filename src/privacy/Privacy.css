@@ -1,0 +1,10 @@
+#PrivacyBody {
+    margin: 72px 48px;
+}
+
+#PrivacyBody .privacy-title {
+    text-transform: uppercase;
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 36px;
+}

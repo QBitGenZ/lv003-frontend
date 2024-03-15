@@ -1,6 +1,37 @@
+import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
+import SummaryCart from "./SummaryCart";
+import Navigation from "./Navigation";
 
 export default function Header() {
+    const [showSummaryCart, setShowSummaryCart] = useState(false);
+    const [showProductPortfolio, setShowProductPortfolio] = useState(false);
+    const [showBrandPortfolio, setShowBrandPortfolio] = useState(false);
+
+    const handleMosueEnterCart = () => {
+        setShowSummaryCart(true);
+    };
+
+    const handleMosueLeaveCart = () => {
+        setShowSummaryCart(false);
+    };
+
+    const handleMosueEnterProductPortfolio = () => {
+        setShowProductPortfolio(true);
+    };
+
+    const handleMosueLeaveProductPortfolio = () => {
+        setShowProductPortfolio(false);
+    };
+
+    const handleMosueEnterBrandPortfolio = () => {
+        setShowBrandPortfolio(true);
+    };
+
+    const handleMosueLeaveBrandPortfolio = () => {
+        setShowBrandPortfolio(false);
+    };
+
     return (
         <>
             <div className='header-container'>
@@ -24,22 +55,53 @@ export default function Header() {
                         <Link to={"/search"}>
                             <i class='fa-solid fa-magnifying-glass tools-icon'></i>
                         </Link>
-                        <Link to={"/cart"}>
+                        <Link
+                            to={"/cart"}
+                            onMouseEnter={handleMosueEnterCart}
+                            onMouseLeave={handleMosueLeaveCart}>
                             <i class='fa-solid fa-cart-shopping tools-icon'></i>
                         </Link>
                         <Link to={"/login"}>
                             <i class='fa-solid fa-user tools-icon'></i>
                         </Link>
+                        {showSummaryCart && <SummaryCart className='on-top' />}
                     </div>
                 </div>
 
                 <div className='header-nav'>
-                    <a href='#'>Danh mục sản phẩm</a>
-                    <a href='#'>Hot Deals</a>
-                    <a href='#'>Bán chạy</a>
-                    <a href='#'>Thương hiệu</a>
-                    <a href='#'>Giới thiệu</a>
-                    <a href='#'>Hỗ trợ</a>
+                    <div
+                        className='header-nav-portfolio'
+                        onMouseEnter={handleMosueEnterProductPortfolio}
+                        onMouseLeave={handleMosueLeaveProductPortfolio}>
+                        <a className='main-navigation' href='#'>
+                            Danh mục sản phẩm
+                        </a>
+                        {showProductPortfolio && (
+                            <Navigation type={"prod-portfolio"} />
+                        )}
+                    </div>
+
+                    <a className='main-navigation' href='#'>
+                        Hot Deals
+                    </a>
+                    <a className='main-navigation' href='#'>
+                        Bán chạy
+                    </a>
+                    <div
+                        className='header-nav-portfolio'
+                        onMouseEnter={handleMosueEnterBrandPortfolio}
+                        onMouseLeave={handleMosueLeaveBrandPortfolio}>
+                        <a className='main-navigation' href='#'>
+                            Thương hiệu
+                        </a>
+                        {showBrandPortfolio && <Navigation type={"brand"} />}
+                    </div>
+                    <a className='main-navigation' href='#'>
+                        Giới thiệu
+                    </a>
+                    <a className='main-navigation' href='#'>
+                        Hỗ trợ
+                    </a>
                 </div>
             </div>
             <Outlet></Outlet>

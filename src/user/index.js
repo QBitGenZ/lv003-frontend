@@ -2,11 +2,13 @@ import Header from "../common/Header";
 import "./User.css";
 import UserBody from "./UserBody";
 
-export default function () {
+const User = () => {
     return (
-        <>
+        <div id='User'>
             <Header />
             <UserBody />
-        </>
+        </div>
     );
-}
+};
+
+export default User;

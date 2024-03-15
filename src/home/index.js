@@ -5,6 +5,7 @@ import FeatureBrand from "./components/FeatureBrand";
 import Footer from "../common/Footer";
 import "./Home.css";
 import Banner from "./components/Banner";
+import Navigation from "../common/Navigation";
 
 const Home = (props) => {
     return (

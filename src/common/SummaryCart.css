@@ -62,3 +62,13 @@ div.SummaryCartItem {
 .summary-cart-item-prod-price .origin-price {
     text-decoration: line-through;
 }
+
+#SummaryCart.on-top {
+    position: absolute;
+    top: calc(45% + 10px);
+    right: calc(2% + 4px);
+    z-index: 100;
+    background-color: #fff;
+    width: 21%;
+    text-align: left;
+}

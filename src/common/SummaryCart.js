@@ -2,9 +2,9 @@ import { ProductData } from "../common/json/ProductData";
 import SummaryCartItem from "./SummaryCartItem";
 import "./SummaryCart.css";
 
-const SummaryCart = () => {
+const SummaryCart = ({ className }) => {
     return (
-        <div id='SummaryCart'>
+        <div id='SummaryCart' className={className}>
             <div className='summary-cart-title'>Giỏ hàng của bạn</div>
             <div className='summary-cart-body'>
                 {ProductData.map((product, index) => {

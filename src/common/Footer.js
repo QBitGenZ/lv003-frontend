@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function () {
     return (
         <div className='Footer'>
@@ -23,9 +25,9 @@ export default function () {
                     <a>Hướng dẫn đặt hàng</a>
                 </div>
                 <div className='navigation-col col-3'>
-                    <a>Chính sách bảo mật</a>
-                    <a>Điều khoản sử dụng</a>
-                    <a>Chính sách cookie</a>
+                    <Link to={"/privacy"}>Chính sách bảo mật</Link>
+                    <Link to={"/privacy"}>Điều khoản sử dụng</Link>
+                    <Link to={"/privacy"}>Chính sách cookie</Link>
                 </div>
                 <div className='navigation-col col-4'>
                     <a>Tìm cửa hàng</a>

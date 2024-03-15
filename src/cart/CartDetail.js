@@ -24,7 +24,7 @@ const CartDetail = ({ product, isInCart }) => {
                 <div className='right-side-detail'>
                     <div className='cart-detail-price'>
                         <div className='sale-price'>
-                            Giá sale: {product.ProductPrice}
+                            Giá sale: {product.ProductSaledPrice}
                         </div>
                         <div className='origin-price'>
                             Giá gốc: {product.ProductPrice}

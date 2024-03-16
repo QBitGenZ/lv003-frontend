@@ -1,4 +1,4 @@
-const UserInfor = () => {
+const UserInfor = ({ handleClickButton }) => {
     return (
         <div id='UserInfor'>
             <div className='user-infor-title'>Tài khoản của bạn</div>
@@ -20,7 +20,11 @@ const UserInfor = () => {
                     30/02/2002
                 </div>
             </div>
-            <div className='button user-change-infor-btn'>Chỉnh sửa</div>
+            <div
+                className='button user-change-infor-btn'
+                onClick={handleClickButton}>
+                Chỉnh sửa
+            </div>
         </div>
     );
 };

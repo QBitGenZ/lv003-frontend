@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const UserChangeInfor = () => {
+const UserChangeInfor = ({ handleClickButton }) => {
     const [isInforPage, setIsInforPage] = useState(true);
 
     return (
-        <div className='UserBody'>
+        <div id='UserChangeInfor'>
             <div className='user-left-side'>
                 <div
                     className={`infor ${isInforPage ? "user-body-active" : ""}`}
@@ -43,7 +43,14 @@ const UserChangeInfor = () => {
                             <h2>Ngày sinh</h2>
                             <p>01/01/2003</p>
                         </div>
-                        <div className='change-profile-btn'>Chỉnh sửa</div>
+                        <div className='button-container'>
+                            <div className='change-profile-btn'>Chỉnh sửa</div>
+                            <div
+                                className='button discard-btn'
+                                onClick={handleClickButton}>
+                                Hủy
+                            </div>
+                        </div>
                     </div>
                 ) : (
                     <div className='passwd-page'>

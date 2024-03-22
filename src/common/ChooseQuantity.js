@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import "./ChooseQuantity.css";
 
-const ChooseQuantity = ({ originQuantity }) => {
-    const [quantity, setQuantity] = useState(originQuantity);
+const ChooseQuantity = ({ quantity, setQuantity }) => {
+    // const [quantity, setQuantity] = useState(originQuantity);
 
     const handleIncrease = () => {
         setQuantity((prevQuantity) => prevQuantity + 1);
@@ -21,14 +21,12 @@ const ChooseQuantity = ({ originQuantity }) => {
         }
     };
 
-    useEffect(() => {
-        localStorage.setItem("productQuantity", quantity.toString());
-    }, [quantity]);
+    // useEffect(() => {}, [quantity]);
 
     useEffect(() => {
-        const savedQuantity = localStorage.getItem("productQuantity");
-        setQuantity(parseInt(savedQuantity));
-    }, []);
+        // const savedQuantity = localStorage.getItem(product?._id);
+        setQuantity(parseInt(quantity));
+    }, [quantity]);
 
     return (
         <div id='ChooseQuantity' className='prevent-select'>

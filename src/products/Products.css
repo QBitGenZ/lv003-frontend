@@ -1,16 +1,16 @@
-#Cleanser .cleanser-title {
+#Products .products-title {
     text-transform: uppercase;
     font-size: 30px;
     font-weight: 600;
     margin: 72px 48px 36px;
 }
 
-#CleanserBody {
+#ProductsBody {
     margin: 0 48px 96px;
 }
 
-#CleanserBody .cleanser-body-row-1,
-#CleanserBody .cleanser-body-row-2 {
+#ProductsBody .products-body-row-1,
+#ProductsBody .products-body-row-2 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;

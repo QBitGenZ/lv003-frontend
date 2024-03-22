@@ -13,7 +13,7 @@ import Checkout from "./checkout/index.js";
 import Cart from "./cart/index.js";
 import Order from "./order/index.js";
 import ForgotPassword from "./forgotpassword/index.js";
-import Cleanser from "./cleanser/index.js";
+import Products from "./products/index.js";
 import AboutUs from "./aboutus/index.js";
 import Support from "./support/index.js";
 import Privacy from "./privacy/index.js";
@@ -27,14 +27,14 @@ root.render(
             <Route path='register' element={<Register />}></Route>
             <Route path='user' element={<User />}></Route>
             <Route path='search' element={<Search />}></Route>
-            <Route path='product' element={<Product />}></Route>
+            <Route path='product/:id' element={<Product />}></Route>
             <Route path='cart' element={<Cart />}></Route>
             <Route path='order' element={<Order />}></Route>
             <Route
                 path='checkout'
                 element={<Checkout step={"delivery"} />}></Route>
             <Route path='forgotpassword' element={<ForgotPassword />}></Route>
-            <Route path='cleanser' element={<Cleanser />}></Route>
+            <Route path='products' element={<Products />}></Route>
             <Route path='about-us' element={<AboutUs />}></Route>
             <Route path='support' element={<Support />}></Route>
             <Route path='privacy' element={<Privacy />}></Route>

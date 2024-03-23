@@ -56,16 +56,23 @@ const CartBody = () => {
         <div id='CartBody'>
             <div className='cart-title'>Giỏ hàng của bạn</div>
             <div className='body-container'>
-                {carts?.map((item) => {
-                    return (
-                        <CartDetail
-                            item={item}
-                            isInCart={true}
-                            deleteItem={deleteItem}
-                            updateData={updateData}
-                        />
-                    );
-                })}
+                {carts.length > 0 ? (
+                    carts?.map((item) => {
+                        return (
+                            <CartDetail
+                                item={item}
+                                isInCart={true}
+                                deleteItem={deleteItem}
+                                updateData={updateData}
+                            />
+                        );
+                    })
+                ) : (
+                    <div id='no-product'>
+                        Bạn chưa mua gì, hãy đến xem{" "}
+                        <Link to={"/products"}>sản phẩm</Link> ngay
+                    </div>
+                )}
             </div>
             <div className='button-container'>
                 <div className='button choose-all-btn'>Chọn tất cả</div>

@@ -18,7 +18,7 @@ const SummaryCartItem = ({ product }) => {
                 <div className='summary-cart-item-prod-price'>
                     <div className='actual-price'>
                         <CurrencyFormat
-                            value={product?.price}
+                            value={product?.price * 0.8}
                             displayType={"text"}
                             thousandSeparator={true}
                             suffix={"VND"}

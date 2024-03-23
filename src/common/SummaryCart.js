@@ -6,7 +6,7 @@ const SummaryCart = ({ className }) => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:3000/v1/products", {
+        fetch("http://localhost:3000/v1/carts", {
             method: "GET",
             headers: {
                 Accept: "application/json",
@@ -14,18 +14,22 @@ const SummaryCart = ({ className }) => {
             },
         })
             .then((res) => res.json())
-            .then((data) => setProducts(data?.data))
+            .then((data) => {
+                console.log(data);
+                setProducts(data?.data);
+            })
             .catch((error) => console.log(error));
-    }, []);
+    }, [products?.quantity]);
+
     return (
         <div id='SummaryCart' className={className}>
             <div className='summary-cart-title'>Giỏ hàng của bạn</div>
             <div className='summary-cart-body'>
-                {products.map((product, index) => {
-                    if (index < 3) {
-                        return <SummaryCartItem product={product} />;
-                    }
-                })}
+                {products.length > 0
+                    ? products?.map((product) => {
+                          return <SummaryCartItem product={product} />;
+                      })
+                    : null}
             </div>
         </div>
     );

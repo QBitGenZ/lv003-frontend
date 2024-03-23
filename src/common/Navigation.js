@@ -7,7 +7,7 @@ const Navigation = ({ type }) => {
             <div className='prod-portfolio'>
                 <div className='portfolio-field portfolio-clean'>
                     <div className='portfolio-title'>Làm sạch</div>
-                    <Link to={"/cleanser"} className='portfolio-element'>
+                    <Link to={"/products"} className='portfolio-element'>
                         Sữa rửa mặt
                     </Link>
                     <div className='portfolio-element'>Tẩy trang</div>

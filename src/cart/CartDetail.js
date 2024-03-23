@@ -49,7 +49,7 @@ const CartDetail = ({ item, isInCart, deleteItem, updateData }) => {
                             <div className='sale-price'>
                                 Giá sale:
                                 <CurrencyFormat
-                                    value={item?.product?.price}
+                                    value={item?.product?.price * 0.8}
                                     displayType={"text"}
                                     thousandSeparator={true}
                                     suffix={"VND"}

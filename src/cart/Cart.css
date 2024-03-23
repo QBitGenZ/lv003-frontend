@@ -124,3 +124,8 @@
     font-size: 18px;
     margin-left: 2px;
 }
+
+#no-product > a {
+    text-decoration: underline;
+    font-weight: 600;
+}

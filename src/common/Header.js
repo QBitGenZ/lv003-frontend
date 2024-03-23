@@ -57,8 +57,9 @@ export default function Header() {
                         </Link>
                         <Link
                             to={"/cart"}
-                            onMouseEnter={handleMosueEnterCart}
-                            onMouseLeave={handleMosueLeaveCart}>
+                            // onMouseEnter={handleMosueEnterCart}
+                            // onMouseLeave={handleMosueLeaveCart}
+                        >
                             <i class='fa-solid fa-cart-shopping tools-icon'></i>
                         </Link>
                         <Link to={"/login"}>

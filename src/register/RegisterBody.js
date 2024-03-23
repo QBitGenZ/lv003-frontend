@@ -35,7 +35,10 @@ const RegisterBody = () => {
             body: formData,
         })
             .then((res) => res.json())
-            .then((data) => console.log(data))
+            .then((data) => {
+                alert("Tạo tài khoản thành công");
+                window.location.href = "/login";
+            })
             .catch((error) => console.log(error));
     };
 

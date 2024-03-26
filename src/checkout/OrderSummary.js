@@ -1,15 +1,54 @@
+import { useEffect, useState } from "react";
+import CurrencyFormat from "react-currency-format";
+
 const OrderSummary = () => {
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost:3000/v1/carts", {
+            method: "GET",
+            headers: {
+                Accept: "application/json",
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+        })
+            .then((res) => res.json())
+            .then((data) => setProducts(data?.data?.items))
+            .catch((error) => console.log(error));
+    }, []);
+
+    var price = 0;
+    products.map((product) => {
+        price += product?.product?.price * product?.quantity;
+    });
+
     return (
         <div id='OrderSummary'>
             <div className='order-summary-header'>Tóm tắt đơn hàng</div>
             <div className='order-summary-body'>
                 <div className='order-product-price'>
                     Tiền sản phẩm
-                    <span className='order-price'>1.989.000vnd</span>
+                    <span className='order-price'>
+                        <CurrencyFormat
+                            value={price}
+                            displayType={"text"}
+                            thousandSeparator={true}
+                            suffix={"VND"}
+                            renderText={(value) => <div>{value}</div>}
+                        />
+                    </span>
                 </div>
                 <div className='order-tax'>
                     Thuế
-                    <span className='order-price'>100.000vnd</span>
+                    <span className='order-price'>
+                        <CurrencyFormat
+                            value={price * 0.1}
+                            displayType={"text"}
+                            thousandSeparator={true}
+                            suffix={"VND"}
+                            renderText={(value) => <div>{value}</div>}
+                        />
+                    </span>
                 </div>
                 <div className='order-shipment'>
                     Phí giao hàng
@@ -22,7 +61,15 @@ const OrderSummary = () => {
             </div>
             <div className='order-summary-footer'>
                 Tổng đơn hàng
-                <span className='order-price'>2.024.000vnd</span>
+                <span className='order-price'>
+                    <CurrencyFormat
+                        value={price + price * 0.1 + 25000}
+                        displayType={"text"}
+                        thousandSeparator={true}
+                        suffix={"VND"}
+                        renderText={(value) => <div>{value}</div>}
+                    />
+                </span>
             </div>
         </div>
     );

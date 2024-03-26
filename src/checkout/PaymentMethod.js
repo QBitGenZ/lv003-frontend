@@ -1,5 +1,4 @@
 import { useState } from "react";
-import CurrencyFormat from "react-currency-format";
 
 const PaymentMethod = ({ paymentMethod, handleClicked }) => {
     const [currentPaymentMethod, setCurrentPaymentMethod] =
@@ -30,13 +29,6 @@ const PaymentMethod = ({ paymentMethod, handleClicked }) => {
                         }
                         onClick={handleChangeMethod}>
                         Thanh toán trực tuyến <br /> (Thông qua VNPay)
-                        <CurrencyFormat
-                            value={2456981}
-                            displayType={"text"}
-                            thousandSeparator={true}
-                            suffix={" vnd"}
-                            renderText={(value) => <div>{value}</div>}
-                        />
                     </div>
                 </div>
                 <div

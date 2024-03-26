@@ -5,6 +5,11 @@ import { Link } from "react-router-dom";
 const CartBody = () => {
     const [carts, setCarts] = useState([]);
 
+    const [paymentMethod, setPaymentMethod] = useState("");
+    const [deliveryMethod, setDeliveryMethod] = useState("");
+    const [address, setAddress] = useState("");
+    const [date, setDate] = useState();
+
     useLayoutEffect(() => getData(), []);
 
     function getData() {

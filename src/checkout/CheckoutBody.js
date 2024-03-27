@@ -4,34 +4,99 @@ import OrderSummary from "./OrderSummary";
 import SummaryCart from "../common/SummaryCart";
 import PaymentMethod from "./PaymentMethod";
 import ConfirmationCheckout from "./ConfirmationCheckout";
+import { useEffect, useState } from "react";
 
 const CheckoutBody = ({ currentStep, setCurrentStep }) => {
-    const postData = () => {
+    const [paymentMethod, setPaymentMethod] = useState("cod");
+    const [deliveryOPtions, setDeliveryOPtions] = useState("GHTK");
+    const [address, setAddress] = useState({
+        recipientName: "",
+        phoneNumber: "",
+        provinceCity: "",
+        district: "",
+        ward: "",
+        detailAddress: "",
+        isDefaultAddress: false,
+    });
+    const [cartItems, setCartItems] = useState([]);
+
+    useEffect(() => getCartItems(), []);
+
+    const getCartItems = () => {
         fetch("http://localhost:3000/v1/carts", {
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                const items = data?.data?.items;
+                setCartItems(
+                    items.map((value) => {
+                        return {
+                            product: value?.product?._id,
+                            quantity: value?.quantity,
+                        };
+                    })
+                );
+            })
+            .catch((error) => {
+                console.log(error);
+                alert("Lỗi! Vui lòng thử lại");
+            });
+    };
+
+    const postData = () => {
+        console.log("payment method: " + paymentMethod);
+        fetch("http://localhost:3000/v1/orders", {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
             body: JSON.stringify({
-                user: "65fc70b131da26ffabb2977a",
-                paymentMethod: "",
+                paymentMethod: paymentMethod,
+                deliveryMethod: deliveryOPtions,
+                address: "address",
+                items: cartItems,
             }),
-        });
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                alert("Mua hàng thành công");
+            })
+            .catch((error) => {
+                console.log("error: " + error);
+                alert("Lỗi! Vui lòng thử lại");
+            });
     };
 
     if (currentStep === "delivery") {
         return (
             <div id='CheckoutBody'>
                 <div className='checkout-haft-top'>
-                    <DeliveryOptions deliveryOptions={"GHTK"} />
+                    <DeliveryOptions
+                        deliveryOptions={deliveryOPtions}
+                        setDeliveryOptions={setDeliveryOPtions}
+                    />
                     <OrderSummary />
                 </div>
                 <div className='checkout-haft-bot'>
                     {currentStep === "confirmation" ? (
-                        <DeliveryAddress handleClickedEvent={null} />
+                        <DeliveryAddress
+                            handleClickedEvent={null}
+                            address={address}
+                            setAddress={setAddress}
+                        />
                     ) : (
-                        <DeliveryAddress handleClickedEvent={setCurrentStep} />
+                        <DeliveryAddress
+                            handleClickedEvent={setCurrentStep}
+                            address={address}
+                            setAddress={setAddress}
+                        />
                     )}
                     <SummaryCart />
                 </div>
@@ -46,8 +111,10 @@ const CheckoutBody = ({ currentStep, setCurrentStep }) => {
                 </div>
                 <div className='checkout-haft-bot'>
                     <PaymentMethod
-                        paymentMethod={"cod"}
+                        paymentMethod={paymentMethod}
                         handleClicked={setCurrentStep}
+                        setPaymentMethod={setPaymentMethod}
+                        onSubmit={postData}
                     />
                 </div>
             </div>

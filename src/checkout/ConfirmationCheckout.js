@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import CurrencyFormat from "react-currency-format";
 
-const ConfirmationCheckout = ({ order }) => {
+const ConfirmationCheckout = ({ order, totalPrice }) => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -21,8 +21,6 @@ const ConfirmationCheckout = ({ order }) => {
                 .catch((error) => console.log(error));
         });
     }, []);
-
-    var totalPrice = parseInt(localStorage.getItem("totalPrice"), 10);
 
     const dbDate = order?.created_at;
     // Chuyển đổi sang đối tượng Date
@@ -44,7 +42,11 @@ const ConfirmationCheckout = ({ order }) => {
                     <p className='order-price-infor'>
                         Tổng số tiền:{" "}
                         <CurrencyFormat
-                            value={totalPrice}
+                            value={
+                                totalPrice +
+                                totalPrice * 0.1 +
+                                (totalPrice ? 25000 : 0)
+                            }
                             displayType={"text"}
                             thousandSeparator={true}
                             suffix={"VND"}
@@ -68,7 +70,11 @@ const ConfirmationCheckout = ({ order }) => {
                     </p>
                     <p className='receipt-payment-method'>
                         Phương thức thanh toán:
-                        <span>{order?.paymentMethod}</span>
+                        <span>
+                            {order?.paymentMethod === "cod"
+                                ? "Thanh toán khi nhận hàng"
+                                : "Thanh toán qua VNPay"}
+                        </span>
                     </p>
                     <p className='receipt-address'>
                         Địa chỉ:

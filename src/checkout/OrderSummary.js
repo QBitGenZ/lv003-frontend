@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import CurrencyFormat from "react-currency-format";
 
-const OrderSummary = () => {
+const OrderSummary = ({ setTotalPrice }) => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -21,7 +21,8 @@ const OrderSummary = () => {
     products.map((product) => {
         price += product?.product?.price * product?.quantity;
     });
-    localStorage.setItem("totalPrice", price.toString());
+
+    setTotalPrice(price);
 
     return (
         <div id='OrderSummary'>

@@ -1,14 +1,55 @@
-const ConfirmationCheckout = () => {
+import { useEffect } from "react";
+import { useState } from "react";
+import CurrencyFormat from "react-currency-format";
+
+const ConfirmationCheckout = ({ order }) => {
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        order?.items?.map((item) => {
+            fetch(`${process.env.REACT_APP_IP}/v1/products/${item?.product}`, {
+                method: "GET",
+                headers: {
+                    Accept: "application/json",
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                },
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    setProducts([...products, data?.data]);
+                })
+                .catch((error) => console.log(error));
+        });
+    }, []);
+
+    var totalPrice = parseInt(localStorage.getItem("totalPrice"), 10);
+
+    const dbDate = order?.created_at;
+    // Chuyển đổi sang đối tượng Date
+    const dateObj = new Date(dbDate);
+
+    // Định dạng lại thời gian
+    const formattedDate = `${dateObj.getDate()}/${
+        dateObj.getMonth() + 1
+    }/${dateObj.getFullYear()} ${dateObj.getHours()}:${dateObj.getMinutes()}:${dateObj.getSeconds()}`;
+
     return (
         <div id='ConfirmationCheckout'>
             <div className='confirm-infor'>
                 <div className='confirm-infor-title'>Xác nhận thông tin</div>
                 <div className='confirm-infor-body'>
                     <p className='order-code-infor'>
-                        Bạn đã đặt thành công đơn hàng #0116196231
+                        Bạn đã đặt thành công đơn hàng #{order?._id}
                     </p>
                     <p className='order-price-infor'>
-                        Tổng số tiền: 2.024.000vnd
+                        Tổng số tiền:{" "}
+                        <CurrencyFormat
+                            value={totalPrice}
+                            displayType={"text"}
+                            thousandSeparator={true}
+                            suffix={"VND"}
+                            renderText={(value) => <div>{value}</div>}
+                        />
                     </p>
                     <p className='order-msg-infor'>
                         Bạn sẽ sớm nhận được đơn hàng
@@ -20,21 +61,18 @@ const ConfirmationCheckout = () => {
                 <div className='confirm-receipt-header'>
                     <p className='receipt-time'>
                         Thời gian lập hóa đơn:
-                        <span>9:30 16/03/2024</span>
+                        <span>{formattedDate}</span>
                     </p>
                     <p className='receipt-code'>
-                        Mã hóa đơn: <span>#0116196231</span>
+                        Mã hóa đơn: <span>#{order?._id}</span>
                     </p>
                     <p className='receipt-payment-method'>
                         Phương thức thanh toán:
-                        <span>Thanh toán khi nhận hàng</span>
+                        <span>{order?.paymentMethod}</span>
                     </p>
                     <p className='receipt-address'>
                         Địa chỉ:
-                        <span>
-                            Nguyễn Thị Thúy Loan, 012421211241 Số nhà 152, P.
-                            Xuân Khánh, Q. Ninh Kiều, TP. Cần Thơ
-                        </span>
+                        <span>{order?.address}</span>
                     </p>
                 </div>
                 <table className='confirm-receipt-body'>
@@ -44,6 +82,16 @@ const ConfirmationCheckout = () => {
                         <td>Số lượng</td>
                         <td>Thành tiền</td>
                     </tr>
+                    {products?.map((item) => {
+                        return (
+                            <tr>
+                                <td>{item?.name}</td>
+                                <td>{item?.price}</td>
+                                <td>{order?.quantity}</td>
+                                <td>{item?.price * order?.quantity}</td>
+                            </tr>
+                        );
+                    })}
                     <tr>
                         <td>Sản phẩm A</td>
                         <td>500.000vnd</td>

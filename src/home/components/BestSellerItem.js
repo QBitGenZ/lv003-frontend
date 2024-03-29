@@ -9,7 +9,8 @@ const BestSellerItem = ({ product }) => {
                     <div className='product-image'>
                         <img
                             src={
-                                "http://localhost:3000/" + product?.images[0]
+                                `${process.env.REACT_APP_IP}/` +
+                                product?.images[0]
                             }></img>
                     </div>
                     <div className='product-name'>{product?.brand}</div>

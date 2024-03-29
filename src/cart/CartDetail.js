@@ -26,7 +26,7 @@ const CartDetail = ({ item, isInCart, deleteItem, updateData }) => {
                         <div className='cart-detail-img'>
                             <img
                                 src={
-                                    "http://localhost:3000/" +
+                                    `${process.env.REACT_APP_IP}/` +
                                     item?.product?.images[0]
                                 }
                                 alt='product'></img>

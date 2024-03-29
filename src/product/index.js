@@ -10,7 +10,7 @@ export default function () {
 
     useEffect(() => {
         console.log(id);
-        fetch(`http://localhost:3000/v1/products/${id}`, {
+        fetch(`${process.env.REACT_APP_IP}/v1/products/${id}`, {
             method: "GET",
             headers: {
                 Accept: "application/json",

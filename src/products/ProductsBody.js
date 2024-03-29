@@ -5,7 +5,7 @@ const ProductsBody = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:3000/v1/products", {
+        fetch(`${process.env.REACT_APP_IP}/v1/products`, {
             method: "GET",
             headers: {
                 Accept: "application/json",

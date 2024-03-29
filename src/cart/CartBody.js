@@ -13,7 +13,7 @@ const CartBody = () => {
     useLayoutEffect(() => getData(), []);
 
     function getData() {
-        fetch("http://localhost:3000/v1/carts", {
+        fetch(`${process.env.REACT_APP_IP}/v1/carts`, {
             method: "GET",
             headers: {
                 Accept: "application/json",
@@ -29,7 +29,7 @@ const CartBody = () => {
     }
 
     function deleteItem(id) {
-        fetch(`http://localhost:3000/v1/carts/${id}`, {
+        fetch(`${process.env.REACT_APP_IP}/v1/carts/${id}`, {
             method: "DELETE",
             headers: {
                 Accept: "application/json",
@@ -42,7 +42,7 @@ const CartBody = () => {
 
     function updateData(id, productId, quantity) {
         console.log(productId);
-        fetch(`http://localhost:3000/v1/carts/${id}`, {
+        fetch(`${process.env.REACT_APP_IP}/v1/carts/${id}`, {
             method: "PUT",
             headers: {
                 Accept: "application/json",

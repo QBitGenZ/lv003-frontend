@@ -8,7 +8,7 @@ const ProductDetail = ({ product }) => {
     const [quantity, setQuantity] = useState(1);
 
     const handleAddCartButton = () => {
-        fetch("http://localhost:3000/v1/carts/", {
+        fetch(`${process.env.REACT_APP_IP}/v1/carts/`, {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -39,7 +39,7 @@ const ProductDetail = ({ product }) => {
         <div id='ProductDetail'>
             <div className='product-detail-img'>
                 <img
-                    src={"http://localhost:3000/" + product?.images[0]}
+                    src={`${process.env.REACT_APP_IP}/` + product?.images[0]}
                     alt='product'></img>
             </div>
             <div className='product-detail-content'>

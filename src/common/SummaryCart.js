@@ -8,7 +8,7 @@ const SummaryCart = ({ className }) => {
     useEffect(() => updateCart(), []);
 
     function updateCart() {
-        fetch("http://localhost:3000/v1/carts", {
+        fetch(`${process.env.REACT_APP_IP}/v1/carts`, {
             method: "GET",
             headers: {
                 Accept: "application/json",

@@ -6,7 +6,8 @@ const SummaryCartItem = ({ product }) => {
             <div className='summary-cart-item-left'>
                 <img
                     src={
-                        "http://localhost:3000/" + product?.product?.images[0]
+                        `${process.env.REACT_APP_IP}/` +
+                        product?.product?.images[0]
                     }></img>
             </div>
 

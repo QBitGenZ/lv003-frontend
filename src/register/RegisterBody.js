@@ -27,7 +27,7 @@ const RegisterBody = () => {
         formData.append("birthday", Date(birthday));
         formData.append("phone", phone);
 
-        fetch("http://localhost:3000/v1/register", {
+        fetch(`${process.env.REACT_APP_IP}/v1/register`, {
             headers: {
                 Accept: "application/json",
             },

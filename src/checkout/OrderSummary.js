@@ -5,7 +5,7 @@ const OrderSummary = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:3000/v1/carts", {
+        fetch(`${process.env.REACT_APP_IP}/v1/carts`, {
             method: "GET",
             headers: {
                 Accept: "application/json",
@@ -21,13 +21,14 @@ const OrderSummary = () => {
     products.map((product) => {
         price += product?.product?.price * product?.quantity;
     });
+    localStorage.setItem("totalPrice", price.toString());
 
     return (
         <div id='OrderSummary'>
             <div className='order-summary-header'>Tóm tắt đơn hàng</div>
             <div className='order-summary-body'>
                 <div className='order-product-price'>
-                    Tiền sản phẩm
+                    Tiền sản phẩm{" "}
                     <span className='order-price'>
                         <CurrencyFormat
                             value={price}
@@ -39,7 +40,7 @@ const OrderSummary = () => {
                     </span>
                 </div>
                 <div className='order-tax'>
-                    Thuế
+                    Thuế{" "}
                     <span className='order-price'>
                         <CurrencyFormat
                             value={price * 0.1}
@@ -51,16 +52,14 @@ const OrderSummary = () => {
                     </span>
                 </div>
                 <div className='order-shipment'>
-                    Phí giao hàng
-                    <span className='order-price'>25.000vnd</span>
+                    Phí giao hàng <span className='order-price'>25.000vnd</span>
                 </div>
                 <div className='order-voucher'>
-                    Voucher
-                    <span className='order-price'>0vnd</span>
+                    Voucher <span className='order-price'>0vnd</span>
                 </div>
             </div>
             <div className='order-summary-footer'>
-                Tổng đơn hàng
+                Tổng đơn hàng{" "}
                 <span className='order-price'>
                     <CurrencyFormat
                         value={price + price * 0.1 + 25000}

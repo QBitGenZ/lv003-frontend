@@ -257,6 +257,10 @@
     font-weight: 600;
 }
 
+#Checkout .order-price-infor > div {
+    display: inline-block;
+}
+
 /* #ConfirmationCheckou .confirm-receipt-body .confirm-receipt-total:last-child {
     text-align: right;
 } */

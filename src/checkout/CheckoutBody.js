@@ -19,11 +19,12 @@ const CheckoutBody = ({ currentStep, setCurrentStep }) => {
         isDefaultAddress: false,
     });
     const [cartItems, setCartItems] = useState([]);
+    const [orders, setOrders] = useState(null);
 
     useEffect(() => getCartItems(), []);
 
     const getCartItems = () => {
-        fetch("http://localhost:3000/v1/carts", {
+        fetch(`${process.env.REACT_APP_IP}/v1/carts`, {
             method: "GET",
             headers: {
                 Accept: "application/json",
@@ -49,8 +50,7 @@ const CheckoutBody = ({ currentStep, setCurrentStep }) => {
     };
 
     const postData = () => {
-        console.log("payment method: " + paymentMethod);
-        fetch("http://localhost:3000/v1/orders", {
+        fetch(`${process.env.REACT_APP_IP}/v1/orders`, {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -66,6 +66,7 @@ const CheckoutBody = ({ currentStep, setCurrentStep }) => {
         })
             .then((res) => res.json())
             .then((data) => {
+                setOrders(data?.data);
                 alert("Mua hàng thành công");
             })
             .catch((error) => {
@@ -123,7 +124,7 @@ const CheckoutBody = ({ currentStep, setCurrentStep }) => {
         return (
             <div id='CheckoutBody'>
                 <div className='checkout-haft-top'>
-                    <ConfirmationCheckout />
+                    <ConfirmationCheckout order={orders} />
                     <OrderSummary />
                 </div>
             </div>

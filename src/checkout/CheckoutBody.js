@@ -20,6 +20,7 @@ const CheckoutBody = ({ currentStep, setCurrentStep }) => {
     });
     const [cartItems, setCartItems] = useState([]);
     const [orders, setOrders] = useState(null);
+    const [totalPrice, setTotalPrice] = useState(0);
 
     useEffect(() => getCartItems(), []);
 
@@ -67,12 +68,15 @@ const CheckoutBody = ({ currentStep, setCurrentStep }) => {
             .then((res) => res.json())
             .then((data) => {
                 setOrders(data?.data);
+                console.log("orders1: " + data?.data);
                 alert("Mua hàng thành công");
             })
             .catch((error) => {
                 console.log("error: " + error);
                 alert("Lỗi! Vui lòng thử lại");
             });
+
+        console.log("orders2: " + orders);
     };
 
     if (currentStep === "delivery") {
@@ -83,7 +87,7 @@ const CheckoutBody = ({ currentStep, setCurrentStep }) => {
                         deliveryOptions={deliveryOPtions}
                         setDeliveryOptions={setDeliveryOPtions}
                     />
-                    <OrderSummary />
+                    <OrderSummary setTotalPrice={setTotalPrice} />
                 </div>
                 <div className='checkout-haft-bot'>
                     {currentStep === "confirmation" ? (
@@ -107,7 +111,7 @@ const CheckoutBody = ({ currentStep, setCurrentStep }) => {
         return (
             <div id='CheckoutBody' className='in-payment'>
                 <div className='checkout-haft-top'>
-                    <OrderSummary />
+                    <OrderSummary setTotalPrice={setTotalPrice} />
                     <SummaryCart />
                 </div>
                 <div className='checkout-haft-bot'>
@@ -124,8 +128,11 @@ const CheckoutBody = ({ currentStep, setCurrentStep }) => {
         return (
             <div id='CheckoutBody'>
                 <div className='checkout-haft-top'>
-                    <ConfirmationCheckout order={orders} />
-                    <OrderSummary />
+                    <ConfirmationCheckout
+                        order={orders}
+                        totalPrice={totalPrice}
+                    />
+                    <OrderSummary setTotalPrice={setTotalPrice} />
                 </div>
             </div>
         );

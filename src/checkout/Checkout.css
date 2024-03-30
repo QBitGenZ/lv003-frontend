@@ -2,6 +2,17 @@
     width: 100vw;
 }
 
+#CheckoutBody.in-payment > .checkout-haft-top {
+    justify-content: center;
+    margin-bottom: 10rem;
+}
+
+#CheckoutBody.in-payment > .checkout-haft-bot {
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 12rem;
+}
+
 #Checkout .checkout-haft-top,
 #Checkout .checkout-haft-bot {
     display: flex;
@@ -153,6 +164,7 @@
     margin-bottom: 24px;
     font-size: 30px;
     font-weight: 600;
+    text-align: center;
 }
 
 #PaymentMethod .payment-method-body {
@@ -162,6 +174,13 @@
     justify-content: center;
     align-items: center;
     margin-top: 36px;
+}
+
+#PaymentMethod .payment-method-body .method-choice {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100vw;
 }
 
 #PaymentMethod .payment-method-body .method-choice > * {
@@ -236,6 +255,10 @@
 
 #ConfirmationCheckou .confirm-receipt-body .confirm-receipt-total > * {
     font-weight: 600;
+}
+
+#Checkout .order-price-infor > div {
+    display: inline-block;
 }
 
 /* #ConfirmationCheckou .confirm-receipt-body .confirm-receipt-total:last-child {

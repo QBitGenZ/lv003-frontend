@@ -1,18 +1,18 @@
 import Header from "../common/Header";
 import Footer from "../common/Footer";
 import CheckoutProgress from "./CheckoutProgress";
-import DeliveryOptions from "./DeliverryOptions";
-import DeliveryAddress from "./DeliveryAddress";
-import OrderSummary from "./OrderSummary";
-import SummaryCart from "../common/SummaryCart";
-import PaymentMethod from "./PaymentMethod";
 import { useEffect, useState } from "react";
-import ConfirmationCheckout from "./ConfirmationCheckout";
+import CheckoutBody from "./CheckoutBody";
 
 const Checkout = ({ step }) => {
     const stepList = ["delivery", "payment", "confirmation"];
 
     const [currentStep, setCurrentStep] = useState(step);
+
+    const handleChangeCurrentStep = () => {
+        setCurrentStep(getNextStep(stepList, currentStep));
+        console.log(currentStep);
+    };
 
     const getNextStep = (list, currentStep) => {
         let currentIndex = stepList.indexOf(currentStep);
@@ -22,56 +22,45 @@ const Checkout = ({ step }) => {
         return list[currentIndex + 1];
     };
 
-    const handleChangeCurrentStep = () => {
-        setCurrentStep(getNextStep(stepList, currentStep));
-        console.log(currentStep);
-    };
-
     useEffect(() => {}, [currentStep]);
 
-    return (
-        <div id='Checkout'>
-            <Header />
-            {currentStep === "delivery" ? (
+    if (currentStep === "delivery") {
+        return (
+            <div id='Checkout'>
+                <Header />
                 <CheckoutProgress currentProgress={"delivery"} />
-            ) : null}
-            {currentStep === "payment" ? (
-                <CheckoutProgress currentProgress={"payment"} />
-            ) : null}
-            {currentStep === "confirmation" ? (
-                <CheckoutProgress currentProgress={"confirmation"} />
-            ) : null}
-
-            <div className='checkout-haft-top'>
-                {currentStep === "delivery" ? (
-                    <DeliveryOptions deliveryOptions={"GHTK"} />
-                ) : null}
-                {currentStep === "payment" ? (
-                    <PaymentMethod
-                        paymentMethod={"cod"}
-                        handleClicked={handleChangeCurrentStep}
-                    />
-                ) : null}
-                {currentStep === "confirmation" ? (
-                    <ConfirmationCheckout />
-                ) : null}
-                <OrderSummary />
+                <CheckoutBody
+                    currentStep={"delivery"}
+                    setCurrentStep={handleChangeCurrentStep}
+                />
+                <Footer />
             </div>
-            {currentStep === "delivery" ? (
-                <div className='checkout-haft-bot'>
-                    {currentStep === "confirmation" ? (
-                        <DeliveryAddress handleClickedEvent={null} />
-                    ) : (
-                        <DeliveryAddress
-                            handleClickedEvent={handleChangeCurrentStep}
-                        />
-                    )}
-                    <SummaryCart />
-                </div>
-            ) : null}
-            <Footer />
-        </div>
-    );
+        );
+    } else if (currentStep === "payment") {
+        return (
+            <div id='Checkout'>
+                <Header />
+                <CheckoutProgress currentProgress={"payment"} />
+                <CheckoutBody
+                    currentStep={"payment"}
+                    setCurrentStep={handleChangeCurrentStep}
+                />
+                <Footer />
+            </div>
+        );
+    } else {
+        return (
+            <div id='Checkout'>
+                <Header />
+                <CheckoutProgress currentProgress={"confirmation"} />
+                <CheckoutBody
+                    currentStep={"checkout"}
+                    setCurrentStep={handleChangeCurrentStep}
+                />
+                <Footer />
+            </div>
+        );
+    }
 };
 
 export default Checkout;

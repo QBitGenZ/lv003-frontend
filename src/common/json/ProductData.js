@@ -1,6 +1,6 @@
 export const ProductData = [
     {
-        ProductNo: "001",
+        _id: "65fd554a04d5cf994a48c2c9",
         ProductName: "SKIN 1004",
         ProductImage: [
             process.env.PUBLIC_URL + "/images/product001.png",

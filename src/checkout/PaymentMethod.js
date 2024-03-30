@@ -1,12 +1,18 @@
 import { useState } from "react";
-import CurrencyFormat from "react-currency-format";
 
-const PaymentMethod = ({ paymentMethod, handleClicked }) => {
-    const [currentPaymentMethod, setCurrentPaymentMethod] =
-        useState(paymentMethod);
-
+const PaymentMethod = ({
+    paymentMethod,
+    handleClicked,
+    setPaymentMethod,
+    onSubmit,
+}) => {
     const handleChangeMethod = (event) => {
-        setCurrentPaymentMethod(event.target.classList.item(0));
+        setPaymentMethod(event.target.classList.item(0));
+    };
+
+    const submit = () => {
+        onSubmit();
+        handleClicked();
     };
 
     return (
@@ -17,7 +23,7 @@ const PaymentMethod = ({ paymentMethod, handleClicked }) => {
                     <div
                         className={
                             "cod payment-method-cod " +
-                            (currentPaymentMethod === "cod" ? "enable" : "")
+                            (paymentMethod === "cod" ? "enable" : "")
                         }
                         onClick={handleChangeMethod}>
                         COD
@@ -26,22 +32,13 @@ const PaymentMethod = ({ paymentMethod, handleClicked }) => {
                     <div
                         className={
                             "online payment-method-online " +
-                            (currentPaymentMethod === "online" ? "enable" : "")
+                            (paymentMethod === "online" ? "enable" : "")
                         }
                         onClick={handleChangeMethod}>
                         Thanh toán trực tuyến <br /> (Thông qua VNPay)
-                        <CurrencyFormat
-                            value={2456981}
-                            displayType={"text"}
-                            thousandSeparator={true}
-                            suffix={" vnd"}
-                            renderText={(value) => <div>{value}</div>}
-                        />
                     </div>
                 </div>
-                <div
-                    className='button confirm-payment-btn'
-                    onClick={handleClicked}>
+                <div className='button confirm-payment-btn' onClick={submit}>
                     Thanh toán
                 </div>
             </div>

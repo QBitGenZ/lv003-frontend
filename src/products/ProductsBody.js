@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import BestSellerItem from "../home/components/BestSellerItem";
 
-const ProductRecommend = () => {
+const ProductsBody = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -18,10 +18,14 @@ const ProductRecommend = () => {
     }, []);
 
     return (
-        <div className='ProductRecommend'>
-            <div className='recommend-title'>Có thể bạn sẽ thích</div>
-            <div className='recommend-detail'>
-                {products.map((item) => (
+        <div id='ProductsBody'>
+            <div className='products-body-row-1'>
+                {products?.map((item) => (
+                    <BestSellerItem product={item} />
+                ))}
+            </div>
+            <div className='products-body-row-2'>
+                {products?.map((item) => (
                     <BestSellerItem product={item} />
                 ))}
             </div>
@@ -29,4 +33,4 @@ const ProductRecommend = () => {
     );
 };
 
-export default ProductRecommend;
+export default ProductsBody;

@@ -73,7 +73,9 @@ export default function Header() {
                         className='header-nav-portfolio'
                         onMouseEnter={handleMosueEnterProductPortfolio}
                         onMouseLeave={handleMosueLeaveProductPortfolio}>
-                        <a className='main-navigation'>Danh mục sản phẩm</a>
+                        <Link to={"/products"} className='main-navigation'>
+                            Danh mục sản phẩm
+                        </Link>
                         {showProductPortfolio && (
                             <Navigation type={"prod-portfolio"} />
                         )}

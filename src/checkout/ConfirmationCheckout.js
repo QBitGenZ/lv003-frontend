@@ -1,27 +1,6 @@
-import { useEffect } from "react";
-import { useState } from "react";
 import CurrencyFormat from "react-currency-format";
 
 const ConfirmationCheckout = ({ order, totalPrice }) => {
-    const [products, setProducts] = useState([]);
-
-    useEffect(() => {
-        order?.items?.map((item) => {
-            fetch(`${process.env.REACT_APP_IP}/v1/products/${item?.product}`, {
-                method: "GET",
-                headers: {
-                    Accept: "application/json",
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
-                },
-            })
-                .then((res) => res.json())
-                .then((data) => {
-                    setProducts([...products, data?.data]);
-                })
-                .catch((error) => console.log(error));
-        });
-    }, []);
-
     const dbDate = order?.created_at;
     // Chuyển đổi sang đối tượng Date
     const dateObj = new Date(dbDate);
@@ -30,6 +9,10 @@ const ConfirmationCheckout = ({ order, totalPrice }) => {
     const formattedDate = `${dateObj.getDate()}/${
         dateObj.getMonth() + 1
     }/${dateObj.getFullYear()} ${dateObj.getHours()}:${dateObj.getMinutes()}:${dateObj.getSeconds()}`;
+
+    console.log(order);
+
+    let total = 0;
 
     return (
         <div id='ConfirmationCheckout'>
@@ -84,41 +67,66 @@ const ConfirmationCheckout = ({ order, totalPrice }) => {
                 <table className='confirm-receipt-body'>
                     <tr>
                         <td>Tên sản phẩm</td>
-                        <td>Đơn giá</td>
-                        <td>Số lượng</td>
-                        <td>Thành tiền</td>
+                        <th>Đơn giá</th>
+                        <th>Số lượng</th>
+                        <th>Thành tiền</th>
                     </tr>
-                    {products?.map((item) => {
+                    {order?.items?.map((item) => {
+                        total += item?.product?.price * item?.quantity;
                         return (
                             <tr>
-                                <td>{item?.name}</td>
-                                <td>{item?.price}</td>
-                                <td>{order?.quantity}</td>
-                                <td>{item?.price * order?.quantity}</td>
+                                <td style={{ width: "45%" }}>
+                                    {item?.product?.name}
+                                </td>
+                                <td style={{ textAlign: "center" }}>
+                                    {item?.product?.price}
+                                </td>
+                                <td style={{ textAlign: "center" }}>
+                                    {item?.quantity}
+                                </td>
+                                <td style={{ textAlign: "center" }}>
+                                    {item?.product?.price * item?.quantity}
+                                </td>
                             </tr>
                         );
                     })}
-                    <tr>
-                        <td>Sản phẩm A</td>
-                        <td>500.000vnd</td>
-                        <td>2</td>
-                        <td>1.000.000vnd</td>
+                    <tr className='confirm-receipt-tax'>
+                        <td colSpan={2}>Thuế</td>
+                        <td colSpan={2}>
+                            <CurrencyFormat
+                                value={total * 0.1}
+                                displayType={"text"}
+                                thousandSeparator={true}
+                                suffix={"VND"}
+                                renderText={(value) => <div>{value}</div>}
+                            />
+                        </td>
                     </tr>
-                    <tr>
-                        <td>Sản phẩm A</td>
-                        <td>500.000vnd</td>
-                        <td>2</td>
-                        <td>1.000.000vnd</td>
-                    </tr>
-                    <tr>
-                        <td>Sản phẩm A</td>
-                        <td>500.000vnd</td>
-                        <td>2</td>
-                        <td>1.000.000vnd</td>
+                    <tr className='confirm-receipt-shipment'>
+                        <td colSpan={2}>Phí giao hàng</td>
+                        <td colSpan={2}>
+                            <CurrencyFormat
+                                value={total ? 25000 : 0}
+                                displayType={"text"}
+                                thousandSeparator={true}
+                                suffix={"VND"}
+                                renderText={(value) => <div>{value}</div>}
+                            />
+                        </td>
                     </tr>
                     <tr className='confirm-receipt-total'>
                         <td colSpan={2}>Tổng hóa đơn</td>
-                        <td colSpan={2}>3.000.000vnd</td>
+                        <td colSpan={2}>
+                            <CurrencyFormat
+                                value={
+                                    total + total * 0.1 + (total ? 25000 : 0)
+                                }
+                                displayType={"text"}
+                                thousandSeparator={true}
+                                suffix={"VND"}
+                                renderText={(value) => <div>{value}</div>}
+                            />
+                        </td>
                     </tr>
                 </table>
             </div>

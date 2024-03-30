@@ -51,6 +51,14 @@ const CheckoutBody = ({ currentStep, setCurrentStep }) => {
     };
 
     const postData = () => {
+        const {
+            recipientName,
+            phoneNumber,
+            provinceCity,
+            district,
+            ward,
+            detailAddress,
+        } = address;
         fetch(`${process.env.REACT_APP_IP}/v1/orders`, {
             method: "POST",
             headers: {
@@ -61,7 +69,7 @@ const CheckoutBody = ({ currentStep, setCurrentStep }) => {
             body: JSON.stringify({
                 paymentMethod: paymentMethod,
                 deliveryMethod: deliveryOPtions,
-                address: "address",
+                address: `${recipientName}; ${phoneNumber}; ${detailAddress}, ${ward}, ${district}, ${provinceCity}`,
                 items: cartItems,
             }),
         })

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Rating from "./Rating";
 
 const ProductComments = () => {
     const [isShow, setIsShow] = useState(false);
@@ -14,12 +15,9 @@ const ProductComments = () => {
     return (
         <div className='ProductComments'>
             <div className='comment-stars'>
-                <img
-                    src={
-                        process.env.PUBLIC_URL + "/images/comment_stars.png"
-                    }></img>
-                {"  "}
-                Tuyệt vời
+                <Rating/>
+                
+                <p>Tuyệt vời</p>
             </div>
             <div className='comment-customer'>Khách hàng: Tuyết</div>
             {isShow ? (

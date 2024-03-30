@@ -1,10 +1,10 @@
 * {
     color: #000;
-    font-family: Roboto;
+    font-family: "Source Sans Pro", sans-serif;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    font-size: 24px;
+    /* font-size: 24px; */
 }
 
 body {

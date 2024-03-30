@@ -1,0 +1,18 @@
+/* Rating.css */
+
+/* Định dạng các ngôi sao */
+.fa-solid.fa-star {
+    font-size: 34px; /* Kích thước của ngôi sao */
+    color: #000000; /* Màu của ngôi sao */
+}
+
+/* Định dạng các ngôi sao rỗng */
+.fa-regular.fa-star {
+    font-size: 34px; /* Kích thước của ngôi sao */
+    color: #000000; /* Màu của ngôi sao rỗng */
+}
+
+/* Định dạng input radio ẩn */
+input[type='radio'] {
+    display: none; /* Ẩn input radio */
+}

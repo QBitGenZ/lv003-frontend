@@ -1,3 +1,6 @@
+import React from 'react';
+import Rating from './Rating'; 
+
 const ProductReviews = () => {
     return (
         <div className='ProductReviews'>
@@ -16,19 +19,13 @@ const ProductReviews = () => {
                     </div>
                 </div>
                 <div className='reviews-right-side'>
+                   
                     <div className='right-side-star'>
-                        <img
-                            src={
-                                process.env.PUBLIC_URL +
-                                "/images/review_stars.png"
-                            }></img>
+                        <Rating />
                     </div>
                     <div className='right-side-rate'>4.3 / 5</div>
                     <div className='right-side-reviews-quantity'>
                         (1735 đánh giá)
-                    </div>
-                    <div className='button right-side-review-btn'>
-                        Viết đánh giá
                     </div>
                 </div>
             </div>

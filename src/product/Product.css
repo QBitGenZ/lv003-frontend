@@ -106,7 +106,7 @@ input::-webkit-inner-spin-button {
 }
 
 .product-reviews-container .reviews-left-side {
-    max-width: 40%;
+    max-width: 35%;
 }
 
 .reviews-left-side .left-side-title {
@@ -152,7 +152,17 @@ input::-webkit-inner-spin-button {
 .ProductComments .comment-customer {
     color: #696969;
 }
-
+.comment-stars{
+    display: flex;
+    flex-direction: row;
+}
+.comment-stars p{
+    font-size: 32px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+margin-left: 20px;
+}
 .ProductComments .show-detail-btn,
 .ProductComments .hide-detail-btn {
     text-transform: uppercase;

@@ -1,10 +1,8 @@
 import { useCollapse } from "react-collapsed";
 import { useState } from "react";
 
-
-const ProductDescription = () => {
+const ProductDescription = ({product}) => {
     const [isExpanded, setIsExpanded] = useState(false);
-
     const { getCollapseProps, getToggleProps } = useCollapse();
 
     const toggleExpand = () => {

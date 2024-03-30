@@ -1,10 +1,6 @@
-import { useState } from "react";
-
-const DeliveryOptions = ({ deliveryOptions }) => {
-    const [currentOption, setCurrentOption] = useState(deliveryOptions);
-
+const DeliveryOptions = ({ deliveryOptions, setDeliveryOptions }) => {
     const handleChangeOption = (event) => {
-        setCurrentOption(event.target.classList.item(0));
+        setDeliveryOptions(event.target.classList.item(0));
     };
 
     return (
@@ -13,14 +9,14 @@ const DeliveryOptions = ({ deliveryOptions }) => {
             <div className='delivery-options-body'>
                 <div
                     className={
-                        "GHTK " + (currentOption === "GHTK" ? "enable" : "")
+                        "GHTK " + (deliveryOptions === "GHTK" ? "enable" : "")
                     }
                     onClick={handleChangeOption}>
                     Giao hàng tiết kiệm
                 </div>
                 <div
                     className={
-                        "GHN " + (currentOption === "GHN" ? "enable" : "")
+                        "GHN " + (deliveryOptions === "GHN" ? "enable" : "")
                     }
                     onClick={handleChangeOption}>
                     Giao hàng nhanh
@@ -28,7 +24,7 @@ const DeliveryOptions = ({ deliveryOptions }) => {
                 <div
                     className={
                         "on-site " +
-                        (currentOption === "on-site" ? "enable" : "")
+                        (deliveryOptions === "on-site" ? "enable" : "")
                     }
                     onClick={handleChangeOption}>
                     Nhận tại cửa hàng

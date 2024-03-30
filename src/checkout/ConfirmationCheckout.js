@@ -1,14 +1,40 @@
-const ConfirmationCheckout = () => {
+import CurrencyFormat from "react-currency-format";
+
+const ConfirmationCheckout = ({ order, totalPrice }) => {
+    const dbDate = order?.created_at;
+    // Chuyển đổi sang đối tượng Date
+    const dateObj = new Date(dbDate);
+
+    // Định dạng lại thời gian
+    const formattedDate = `${dateObj.getDate()}/${
+        dateObj.getMonth() + 1
+    }/${dateObj.getFullYear()} ${dateObj.getHours()}:${dateObj.getMinutes()}:${dateObj.getSeconds()}`;
+
+    console.log(order);
+
+    let total = 0;
+
     return (
         <div id='ConfirmationCheckout'>
             <div className='confirm-infor'>
                 <div className='confirm-infor-title'>Xác nhận thông tin</div>
                 <div className='confirm-infor-body'>
                     <p className='order-code-infor'>
-                        Bạn đã đặt thành công đơn hàng #0116196231
+                        Bạn đã đặt thành công đơn hàng #{order?._id}
                     </p>
                     <p className='order-price-infor'>
-                        Tổng số tiền: 2.024.000vnd
+                        Tổng số tiền:{" "}
+                        <CurrencyFormat
+                            value={
+                                totalPrice +
+                                totalPrice * 0.1 +
+                                (totalPrice ? 25000 : 0)
+                            }
+                            displayType={"text"}
+                            thousandSeparator={true}
+                            suffix={"VND"}
+                            renderText={(value) => <div>{value}</div>}
+                        />
                     </p>
                     <p className='order-msg-infor'>
                         Bạn sẽ sớm nhận được đơn hàng
@@ -20,51 +46,87 @@ const ConfirmationCheckout = () => {
                 <div className='confirm-receipt-header'>
                     <p className='receipt-time'>
                         Thời gian lập hóa đơn:
-                        <span>9:30 16/03/2024</span>
+                        <span>{formattedDate}</span>
                     </p>
                     <p className='receipt-code'>
-                        Mã hóa đơn: <span>#0116196231</span>
+                        Mã hóa đơn: <span>#{order?._id}</span>
                     </p>
                     <p className='receipt-payment-method'>
                         Phương thức thanh toán:
-                        <span>Thanh toán khi nhận hàng</span>
+                        <span>
+                            {order?.paymentMethod === "cod"
+                                ? "Thanh toán khi nhận hàng"
+                                : "Thanh toán qua VNPay"}
+                        </span>
                     </p>
                     <p className='receipt-address'>
                         Địa chỉ:
-                        <span>
-                            Nguyễn Thị Thúy Loan, 012421211241 Số nhà 152, P.
-                            Xuân Khánh, Q. Ninh Kiều, TP. Cần Thơ
-                        </span>
+                        <span>{order?.address}</span>
                     </p>
                 </div>
                 <table className='confirm-receipt-body'>
                     <tr>
                         <td>Tên sản phẩm</td>
-                        <td>Đơn giá</td>
-                        <td>Số lượng</td>
-                        <td>Thành tiền</td>
+                        <th>Đơn giá</th>
+                        <th>Số lượng</th>
+                        <th>Thành tiền</th>
                     </tr>
-                    <tr>
-                        <td>Sản phẩm A</td>
-                        <td>500.000vnd</td>
-                        <td>2</td>
-                        <td>1.000.000vnd</td>
+                    {order?.items?.map((item) => {
+                        total += item?.product?.price * item?.quantity;
+                        return (
+                            <tr>
+                                <td style={{ width: "45%" }}>
+                                    {item?.product?.name}
+                                </td>
+                                <td style={{ textAlign: "center" }}>
+                                    {item?.product?.price}
+                                </td>
+                                <td style={{ textAlign: "center" }}>
+                                    {item?.quantity}
+                                </td>
+                                <td style={{ textAlign: "center" }}>
+                                    {item?.product?.price * item?.quantity}
+                                </td>
+                            </tr>
+                        );
+                    })}
+                    <tr className='confirm-receipt-tax'>
+                        <td colSpan={2}>Thuế</td>
+                        <td colSpan={2}>
+                            <CurrencyFormat
+                                value={total * 0.1}
+                                displayType={"text"}
+                                thousandSeparator={true}
+                                suffix={"VND"}
+                                renderText={(value) => <div>{value}</div>}
+                            />
+                        </td>
                     </tr>
-                    <tr>
-                        <td>Sản phẩm A</td>
-                        <td>500.000vnd</td>
-                        <td>2</td>
-                        <td>1.000.000vnd</td>
-                    </tr>
-                    <tr>
-                        <td>Sản phẩm A</td>
-                        <td>500.000vnd</td>
-                        <td>2</td>
-                        <td>1.000.000vnd</td>
+                    <tr className='confirm-receipt-shipment'>
+                        <td colSpan={2}>Phí giao hàng</td>
+                        <td colSpan={2}>
+                            <CurrencyFormat
+                                value={total ? 25000 : 0}
+                                displayType={"text"}
+                                thousandSeparator={true}
+                                suffix={"VND"}
+                                renderText={(value) => <div>{value}</div>}
+                            />
+                        </td>
                     </tr>
                     <tr className='confirm-receipt-total'>
                         <td colSpan={2}>Tổng hóa đơn</td>
-                        <td colSpan={2}>3.000.000vnd</td>
+                        <td colSpan={2}>
+                            <CurrencyFormat
+                                value={
+                                    total + total * 0.1 + (total ? 25000 : 0)
+                                }
+                                displayType={"text"}
+                                thousandSeparator={true}
+                                suffix={"VND"}
+                                renderText={(value) => <div>{value}</div>}
+                            />
+                        </td>
                     </tr>
                 </table>
             </div>

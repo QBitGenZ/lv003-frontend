@@ -5,11 +5,11 @@ import ProductReviews from "./ProductReviews";
 import ProductRecommend from "./ProductRecommend";
 import ProductComments from "./ProductComments";
 
-const ProductBody = ({ ProductNo }) => {
+const ProductBody = ({ product }) => {
     return (
         <div className='ProductBody'>
-            <ProductDetail ProductNo={ProductNo} />
-            <ProductDescription />
+            <ProductDetail product={product} />
+            <ProductDescription product={product} />
             <ProductReviews />
             <ProductComments />
             <ProductRecommend />

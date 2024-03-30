@@ -17,7 +17,11 @@ const ChooseQuantity = ({ quantity, setQuantity }) => {
     const handleChange = (event) => {
         const newQuantity = parseInt(event.target.value);
         if (!isNaN(newQuantity)) {
-            setQuantity(newQuantity);
+            if (newQuantity < 0) {
+                setQuantity(1);
+            } else {
+                setQuantity(newQuantity);
+            }
         }
     };
 

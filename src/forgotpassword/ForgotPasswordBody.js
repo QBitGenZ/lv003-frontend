@@ -20,17 +20,24 @@ const ForgotPasswordBody = () => {
         setIsEmailValidation(false);
     };
 
-    useEffect(() => {
-        let timer = setTimeout(() => {
-            setCount((count) => count - 1);
-        }, 1000);
-
-        if (count == 0) clearTimeout(timer);
-    });
-
     const handleClickedSendCode = () => {
         setIsClickedSendCode(true);
+        setCount(30); 
     };
+    
+    useEffect(() => {
+        let timer;
+        if (isClickedSendCode && count > 0) {
+            timer = setTimeout(() => {
+                setCount((prevCount) => prevCount - 1);
+            }, 1000); 
+        }
+    
+        return () => {
+            clearTimeout(timer); 
+        };
+    }, [count, isClickedSendCode]); 
+    
 
     return (
         <div id='ForgotPasswordBody'>

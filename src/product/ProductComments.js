@@ -15,7 +15,11 @@ const ProductComments = () => {
     return (
         <div className='ProductComments'>
             <div className='comment-stars'>
-                <Rating/>
+            <img
+                            src={
+                                process.env.PUBLIC_URL +
+                                "/images/review_stars.png"
+                            }></img>
                 
                 <p>Tuyệt vời</p>
             </div>

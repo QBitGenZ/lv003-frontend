@@ -1,9 +1,17 @@
-const DeliveryAddress = ({ handleClickedEvent, address, setAddress }) => {
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setAddress({ ...address, [name]: value });
-    };
+import React from "react";
+import { useNavigate } from 'react-router-dom';
 
+const DeliveryAddress = ({ handleClickedEvent, address, setAddress }) => {
+    const navigate = useNavigate();
+
+    const handleChange = (e) => {
+        const { name, value, type, checked } = e.target;
+        const newValue = type === 'checkbox' ? checked : value;
+        setAddress({ ...address, [name]: newValue });
+    };
+        const handleBackButtonClick = () => {
+        navigate(-1); // Trở về trang trước đó
+    };
     return (
         <div id='DeliveryAddress'>
             <div className='delivery-address-title'>Địa chỉ nhận hàng</div>
@@ -44,7 +52,6 @@ const DeliveryAddress = ({ handleClickedEvent, address, setAddress }) => {
                     placeholder='Chi tiết (số nhà, đường...)'
                     value={address.detailAddress}
                     onChange={handleChange}></input>
-                <div className='form-footer'>
                     <div className='default-address'>
                         <input
                             name='isDefaultAddress'
@@ -57,12 +64,19 @@ const DeliveryAddress = ({ handleClickedEvent, address, setAddress }) => {
                             Đặt làm địa chỉ mặc định
                         </label>
                     </div>
+                <div className='form-footer'>
+                <button
+                        className='button order-btn'
+                        onClick={handleBackButtonClick}>
+                        Trở lại
+                    </button>
                     <button
                         className='button order-btn'
                         onClick={handleClickedEvent}>
                         Tiếp theo
                     </button>
                 </div>
+                
             </div>
         </div>
     );

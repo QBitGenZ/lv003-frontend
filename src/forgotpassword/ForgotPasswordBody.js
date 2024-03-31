@@ -64,7 +64,8 @@ const ForgotPasswordBody = () => {
                         </div>
                     </div>
                     {isShow ? (
-                        <div className='validation-field'>
+                        <div className="validation-field-form">
+                                <div className='validation-field'>
                             {isEmailValidation ? (
                                 <input
                                     type='email'
@@ -82,6 +83,8 @@ const ForgotPasswordBody = () => {
                                     : "Gửi mã"}
                             </span>
                         </div>
+                        </div>
+                        
                     ) : (
                         <></>
                     )}

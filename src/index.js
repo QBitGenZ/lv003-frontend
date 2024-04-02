@@ -17,6 +17,7 @@ import Products from "./products/index.js";
 import AboutUs from "./aboutus/index.js";
 import Support from "./support/index.js";
 import Privacy from "./privacy/index.js";
+import PaymentForm from "./checkout/PaymentForm.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -38,6 +39,9 @@ root.render(
             <Route path='about-us' element={<AboutUs />}></Route>
             <Route path='support' element={<Support />}></Route>
             <Route path='privacy' element={<Privacy />}></Route>
+            <Route
+                path='order/online-payment'
+                element={<PaymentForm />}></Route>
         </Routes>
     </BrowserRouter>
 );

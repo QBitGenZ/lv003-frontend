@@ -59,6 +59,7 @@ const CheckoutBody = ({ currentStep, setCurrentStep }) => {
             ward,
             detailAddress,
         } = address;
+
         fetch(`${process.env.REACT_APP_IP}/v1/orders`, {
             method: "POST",
             headers: {
@@ -76,15 +77,12 @@ const CheckoutBody = ({ currentStep, setCurrentStep }) => {
             .then((res) => res.json())
             .then((data) => {
                 setOrders(data?.data);
-                console.log("orders1: " + data?.data);
                 alert("Mua hàng thành công");
             })
             .catch((error) => {
                 console.log("error: " + error);
                 alert("Lỗi! Vui lòng thử lại");
             });
-
-        console.log("orders2: " + orders);
     };
 
     if (currentStep === "delivery") {

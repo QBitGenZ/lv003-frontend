@@ -24,7 +24,8 @@ const RegisterBody = () => {
         formData.append("fullname", fullname);
         formData.append("email", email);
         // formData.append("gender", gender);
-        formData.append("birthday", Date(birthday));
+        const formatedDate = new Date(birthday).toISOString().split("T")[0];
+        formData.append("birthday", formatedDate);
         formData.append("phone", phone);
 
         fetch(`${process.env.REACT_APP_IP}/v1/register`, {
@@ -40,6 +41,7 @@ const RegisterBody = () => {
                 window.location.href = "/login";
             })
             .catch((error) => console.log(error));
+        console.log(Date(birthday));
     };
 
     return (

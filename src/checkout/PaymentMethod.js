@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { redirect } from "react-router-dom";
+import PaymentForm from "./PaymentForm";
 
 const PaymentMethod = ({
     paymentMethod,
@@ -11,8 +13,12 @@ const PaymentMethod = ({
     };
 
     const submit = () => {
-        onSubmit();
-        handleClicked();
+        if (paymentMethod === "cod") {
+            onSubmit();
+            handleClicked();
+        } else {
+            window.location.href = "order/online-payment";
+        }
     };
 
     return (

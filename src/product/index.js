@@ -9,7 +9,6 @@ export default function () {
     const { id } = useParams();
 
     useEffect(() => {
-        console.log(id);
         fetch(`${process.env.REACT_APP_IP}/v1/products/${id}`, {
             method: "GET",
             headers: {

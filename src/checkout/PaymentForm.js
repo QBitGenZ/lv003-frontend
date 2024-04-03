@@ -1,47 +1,35 @@
 import React, { useState } from "react";
 
 function PaymentForm() {
-    const [amount, setAmount] = useState(0);
-    const [bankCode, setBankCode] = useState("");
+    const [amount, setAmount] = useState();
+    const [bankCode, setBankCode] = useState();
     const [language, setLanguage] = useState("vn");
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-
-        const paymentData = {
-            amount: amount,
-            bankCode: bankCode,
-            language: language,
-        };
-
-        try {
-            const response = await fetch(
-                `${process.env.REACT_APP_IP}/v1/payment/create_payment_url`,
-                {
-                    method: "POST",
-                    headers: {
-                        Accept: "*/*",
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(paymentData),
-                }
-            );
-
-            if (response.ok) {
-                const data = await response.json();
+    const handleSubmit = () => {
+        fetch(`${process.env.REACT_APP_IP}/v1/payment/create_payment_url`, {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+            },
+            body: JSON.stringify({
+                amount: amount,
+                bankCode: bankCode,
+                language: language,
+            }),
+        })
+            .then((res) => res.json())
+            .then((data) => {
                 console.log(data);
-                // Redirect to the payment URL received from the backend
-                window.location.href = data.paymentUrl;
-            } else {
-                console.error("Failed to create payment URL");
-            }
-        } catch (error) {
-            console.error("Error:", error);
-        }
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <div>
             <div>
                 <label>Amount:</label>
                 <input
@@ -67,8 +55,10 @@ function PaymentForm() {
                     <option value='en'>English</option>
                 </select>
             </div>
-            <button type='submit'>Pay Now</button>
-        </form>
+            <button type='submit' onClick={handleSubmit}>
+                Pay Now
+            </button>
+        </div>
     );
 }
 

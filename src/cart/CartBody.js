@@ -40,8 +40,7 @@ const CartBody = () => {
             .catch((error) => console.log(error));
     }
 
-    function updateData(id, productId, quantity) {
-        console.log(productId);
+    function updateData(id, quantity) {
         fetch(`${process.env.REACT_APP_IP}/v1/carts/${id}`, {
             method: "PUT",
             headers: {

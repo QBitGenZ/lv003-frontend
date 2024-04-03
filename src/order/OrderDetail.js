@@ -1,7 +1,12 @@
+import { useEffect, useLayoutEffect, useState } from "react";
 import CartDetail from "../cart/CartDetail";
 import { ProductData } from "../common/json/ProductData";
 
 const OrderDetail = () => {
+    const [name, setName] = useState("");
+    const [phone, setPhone] = useState(null);
+    const [address, setAddress] = useState("");
+
     return (
         <div id='OrderDetail'>
             <div className='order-detail-body-container'>

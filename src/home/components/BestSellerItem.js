@@ -18,9 +18,7 @@ const BestSellerItem = ({ product }) => {
                 </div>
                 <div className='product-bot'>
                     <div className='product-vote'>
-                    <div><i class='fa-solid fa-star fa-sm'></i></div>
-                    
-                    <p>4.8</p>
+                        <i class='fa-solid fa-star fa-sm'></i> <p>4.8</p>
                     </div>
                     <div className='product-price'>
                         <CurrencyFormat

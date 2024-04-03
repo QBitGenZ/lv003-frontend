@@ -22,7 +22,7 @@ const LoginBody = () => {
         })
             .then((res) => res.json())
             .then((data) => {
-                localStorage.setItem("token", data.access_token);
+                setTokenAndExpirationTime(data.access_token);
                 if (localStorage.getItem("token")) {
                     alert("Đăng nhập thành công");
                     window.location.href = "/";
@@ -32,6 +32,15 @@ const LoginBody = () => {
                 console.log(error);
                 alert("Đăng nhập thất bại");
             });
+    };
+
+    const setTokenAndExpirationTime = (token) => {
+        localStorage.setItem("token", token);
+        const currentTime = new Date();
+        console.log(new Date().getTime());
+        const minute = 60 * 1000;
+        const expirationTime = currentTime.getTime() + 50 * minute;
+        localStorage.setItem("expirationTime", expirationTime.toString());
     };
 
     return (

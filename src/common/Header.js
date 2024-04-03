@@ -8,6 +8,8 @@ export default function Header() {
     const [showProductPortfolio, setShowProductPortfolio] = useState(false);
     const [showBrandPortfolio, setShowBrandPortfolio] = useState(false);
 
+    const [isLogin, setIsLogin] = useState(false);
+
     const handleMosueEnterCart = () => {
         setShowSummaryCart(true);
     };
@@ -61,7 +63,7 @@ export default function Header() {
                             onMouseLeave={handleMosueLeaveCart}>
                             <i class='fa-solid fa-cart-shopping tools-icon'></i>
                         </Link>
-                        <Link to={"/login"}>
+                        <Link to={"/user"}>
                             <i class='fa-solid fa-user tools-icon'></i>
                         </Link>
                         {showSummaryCart && <SummaryCart className='on-top' />}

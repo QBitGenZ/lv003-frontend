@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import './Rating.css';
+import React, { useState } from "react";
+import "./Rating.css";
 
 const Rating = () => {
     const [rating, setRating] = useState(0);
@@ -33,12 +33,12 @@ const Rating = () => {
                         <i
                             className={
                                 ratingValue <= (hoverRating || rating)
-                                    ? 'fa-solid fa-star'
-                                    : 'fa-regular fa-star'
+                                    ? "fa-solid fa-star fa-2xs"
+                                    : "fa-regular fa-star fa-2xs"
                             }
+                            style={{ color: "#FFD43B" }}
                             onMouseEnter={() => handleMouseEnter(ratingValue)}
-                            onMouseLeave={handleMouseLeave}
-                        ></i>
+                            onMouseLeave={handleMouseLeave}></i>
                     </label>
                 );
             })}

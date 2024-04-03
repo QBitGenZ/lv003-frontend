@@ -1,8 +1,12 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
 const UserChangeInfor = ({ handleClickButton }) => {
     const [isInforPage, setIsInforPage] = useState(true);
+
+    const logout = () => {
+        localStorage.removeItem("token");
+        window.location.href = "/";
+    };
 
     return (
         <div id='UserChangeInfor'>
@@ -19,9 +23,9 @@ const UserChangeInfor = ({ handleClickButton }) => {
                     onClick={() => setIsInforPage(false)}>
                     Thay đổi mật khẩu
                 </div>
-                <Link className='logout' to={"/login"}>
+                <div className='logout' onClick={logout}>
                     Đăng xuất
-                </Link>
+                </div>
             </div>
             <div className='seperate-line'></div>
             <div className='user-right-side'>

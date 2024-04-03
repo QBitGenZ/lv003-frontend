@@ -19,7 +19,7 @@ const Rating = () => {
 
     return (
         <div className='rating'>
-            {[...Array(5)].map((star, index) => {
+            {[...Array(5)].map(( star,index) => {
                 const ratingValue = index + 1;
 
                 return (

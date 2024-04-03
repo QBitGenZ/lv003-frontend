@@ -55,10 +55,8 @@ const ProductDetail = ({ product }) => {
                     Xuất xứ: {product?.origin}
                 </div>
                 <div className='product-content-vote'>
-                    <i
-                        class='fa-solid fa-star fa-2xs'
-                        style={{ color: "#FFD43B" }}></i>
-                    4.8
+                    <i class='fa-solid fa-star fa-sm'></i>
+                    <p>4.8</p>
                 </div>
                 <div className='product-content-price'>
                     <CurrencyFormat

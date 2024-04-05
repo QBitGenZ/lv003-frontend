@@ -6,12 +6,12 @@ function PaymentForm() {
     const [language, setLanguage] = useState("vn");
 
     const handleSubmit = () => {
-        fetch(`${process.env.REACT_APP_IP}/v1/payment/create_payment_url`, {
+        fetch(`${process.env.REACT_APP_IP}/v1/payments/create_payment_url`, {
             method: "POST",
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*",
+                // "Access-Control-Allow-Origin": "*"
             },
             body: JSON.stringify({
                 amount: amount,

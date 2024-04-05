@@ -1,11 +1,68 @@
 import { useState } from "react";
 
-const UserChangeInfor = ({ handleClickButton }) => {
+const UserChangeInfor = ({ user, handleClickButton }) => {
     const [isInforPage, setIsInforPage] = useState(true);
+
+    const formatedDate = convertDateFormat(user?.birthday);
+
+    const [fullname, setFullname] = useState(user?.fullname);
+    const [email, setEmail] = useState(user?.email);
+    const [phone, setPhone] = useState(user?.phone);
+    const [birthday, setBirthday] = useState(formatedDate);
 
     const logout = () => {
         localStorage.removeItem("token");
         window.location.href = "/";
+    };
+
+    function convertDateFormat(dateTimeString) {
+        // Tạo một đối tượng Date từ chuỗi ngày giờ
+        const dateObject = new Date(dateTimeString);
+
+        // Trích xuất ngày, tháng và năm từ đối tượng Date
+        const day = String(dateObject.getDate()).padStart(2, "0"); // Thêm số 0 vào trước nếu cần thiết
+        const month = String(dateObject.getMonth() + 1).padStart(2, "0"); // Tháng bắt đầu từ 0, nên phải cộng thêm 1
+        const year = dateObject.getFullYear();
+
+        // Xây dựng chuỗi định dạng mới
+        const formattedDate = `${year}-${month}-${day}`;
+
+        return formattedDate;
+    }
+
+    const revertDateFormat = (dateString) => {
+        const [year, month, day] = dateString.split("-");
+        const revertedDate = new Date(year, month - 1, day);
+        return revertedDate.toISOString();
+    };
+
+    const submitChangeInfor = () => {
+        const data = {
+            fullname: fullname,
+            email: email,
+            phone: phone,
+            birthday: revertDateFormat(birthday),
+        };
+
+        fetch(`${process.env.REACT_APP_IP}/v1`, {
+            method: "PUT",
+            headers: {
+                Accpet: "application/json",
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+            body: JSON.stringify(data),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                alert("Thay đổi thông tin thành công");
+            })
+            .catch((error) => {
+                alert("Thay đổi thông tin thất bại");
+                console.log(error);
+            });
+
+        window.location.reload();
     };
 
     return (
@@ -33,22 +90,52 @@ const UserChangeInfor = ({ handleClickButton }) => {
                     <div className='infor-page'>
                         <div className='name'>
                             <h2>Họ và tên</h2>
-                            <p>Nguyễn Phúc Nguyên Khoa</p>
+                            <input
+                                className='change-infor-input'
+                                type='text'
+                                value={fullname}
+                                onChange={(e) =>
+                                    setFullname(e.target.value)
+                                }></input>
                         </div>
                         <div className='email'>
                             <h2>Email</h2>
-                            <p>khoa.nphucnguyen@gmail.com</p>
+                            <input
+                                className='change-infor-input'
+                                type='email'
+                                value={email}
+                                onChange={(e) =>
+                                    setEmail(e.target.value)
+                                }></input>
                         </div>
                         <div className='phone'>
                             <h2>Số điện thoại</h2>
-                            <p>0999999999</p>
+                            <input
+                                className='change-infor-input'
+                                type='text'
+                                value={phone}
+                                onChange={(e) =>
+                                    setPhone(e.target.value)
+                                }></input>
                         </div>
                         <div className='birthday'>
                             <h2>Ngày sinh</h2>
-                            <p>01/01/2003</p>
+                            <input
+                                className='change-infor-input'
+                                type='date'
+                                value={formatedDate}
+                                onChange={(e) => {
+                                    setBirthday(
+                                        convertDateFormat(e.target.value)
+                                    );
+                                }}></input>
                         </div>
                         <div className='button-container'>
-                            <div className='change-profile-btn'>Chỉnh sửa</div>
+                            <div
+                                className='change-profile-btn'
+                                onClick={submitChangeInfor}>
+                                Lưu
+                            </div>
                             <div
                                 className='button discard-btn'
                                 onClick={handleClickButton}>

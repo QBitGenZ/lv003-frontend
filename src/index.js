@@ -18,6 +18,7 @@ import AboutUs from "./aboutus/index.js";
 import Support from "./support/index.js";
 import Privacy from "./privacy/index.js";
 import PaymentForm from "./checkout/PaymentForm.js";
+import SuccessVNP from "./checkout/SuccessVNP.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -42,6 +43,7 @@ root.render(
             <Route
                 path='order/online-payment'
                 element={<PaymentForm />}></Route>
+            <Route path='checkout/success' element={<SuccessVNP />}></Route>
         </Routes>
     </BrowserRouter>
 );

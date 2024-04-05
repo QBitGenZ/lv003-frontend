@@ -10,8 +10,6 @@ const ConfirmationCheckout = ({ order, totalPrice }) => {
         dateObj.getMonth() + 1
     }/${dateObj.getFullYear()} ${dateObj.getHours()}:${dateObj.getMinutes()}:${dateObj.getSeconds()}`;
 
-    console.log(order);
-
     let total = 0;
 
     return (

@@ -12,12 +12,37 @@ const PaymentMethod = ({
         setPaymentMethod(event.target.classList.item(0));
     };
 
+    const handleSubmit = () => {
+        fetch(`${process.env.REACT_APP_IP}/v1/payments/create_payment_url`, {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                amount: localStorage.getItem("totalPrice"),
+                bankCode: "NCB",
+                language: "vn",
+            }),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                window.open(data?.vnpUrl, "_blank");
+                console.log(data?.vnpUrl);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
     const submit = () => {
+        onSubmit();
         if (paymentMethod === "cod") {
-            onSubmit();
             handleClicked();
         } else {
-            window.location.href = "order/online-payment";
+            // window.location.href = "order/online-payment";
+            handleSubmit();
         }
     };
 

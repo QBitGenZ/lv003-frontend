@@ -1,0 +1,53 @@
+#SuccessVNP {
+    margin-left: 48px;
+    width: 60%;
+}
+
+#SuccessVNP .confirm-infor,
+#SuccessVNP .confirm-receipt {
+    border: 1px #969696 solid;
+    border-radius: 12px;
+    padding: 24px 48px;
+    margin: 24px 0;
+}
+
+#SuccessVNP .confirm-infor * {
+    margin: 12px 0;
+}
+
+#SuccessVNP .confirm-infor .confirm-infor-title,
+#SuccessVNP .confirm-receipt .confirm-receipt-title {
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 36px;
+}
+
+#SuccessVNP .confirm-receipt * {
+    margin: 12px 0;
+}
+
+#SuccessVNP .confirm-receipt-header > * {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#SuccessVNP .confirm-receipt-header span {
+    color: #727272;
+    width: 60%;
+}
+
+#SuccessVNP .confirm-receipt-body {
+    margin: 24px 0;
+    width: 100%;
+}
+
+#SuccessVNP .confirm-receipt-body * {
+    padding: 12px 0;
+}
+
+#SuccessVNP .confirm-receipt-body .confirm-receipt-total > * {
+    font-weight: 600;
+}

@@ -3,7 +3,7 @@ import CurrencyFormat from "react-currency-format";
 const UserOrder = ({ order }) => {
     let isDelivering = false;
 
-    if (order.status != "Đã giao hàng") isDelivering = true;
+    if (order.status !== "Đã giao hàng") isDelivering = true;
 
     var orderCost = 0;
     order?.items?.map((item) => {

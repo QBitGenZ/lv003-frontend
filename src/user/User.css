@@ -23,7 +23,7 @@
     background-color: #edecfd;
     width: 60%;
     padding: 60px;
-    height: 320px;
+    height: 60vh;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -39,7 +39,7 @@ p {
     width: 3px;
     background-color: #aaa;
     box-shadow: 2px 2px 8px #ddd;
-    height: 137%;
+    height: 120%;
 }
 
 .user-body-active {
@@ -72,6 +72,11 @@ p {
 .user-right-side {
     width: 50%;
     margin-top: -20px;
+}
+
+.user-right-side .change-infor-input {
+    width: 100%;
+    padding: 10px 8px;
 }
 
 .infor-page div h2 {

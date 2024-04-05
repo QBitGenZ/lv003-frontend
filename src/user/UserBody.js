@@ -82,7 +82,10 @@ const UserBody = () => {
                     </div>
                 </>
             ) : userBody === "changeInfor" ? (
-                <UserChangeInfor handleClickButton={handleClickCancelChgBtn} />
+                <UserChangeInfor
+                    user={user}
+                    handleClickButton={handleClickCancelChgBtn}
+                />
             ) : null}
         </div>
     );

@@ -23,6 +23,7 @@ const OrderSummary = ({ setTotalPrice }) => {
     });
 
     setTotalPrice(price);
+    localStorage.setItem("totalPrice", price);
 
     return (
         <div id='OrderSummary'>

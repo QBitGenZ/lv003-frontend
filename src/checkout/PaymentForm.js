@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { redirect } from "react-router-dom";
 
 function PaymentForm() {
     const [amount, setAmount] = useState();
@@ -22,6 +23,8 @@ function PaymentForm() {
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
+                window.open(data?.vnpUrl, "_blank");
+                console.log(data?.vnpUrl);
             })
             .catch((error) => {
                 console.log(error);

@@ -253,7 +253,7 @@
     padding: 12px 0;
 }
 
-#ConfirmationCheckou .confirm-receipt-body .confirm-receipt-total > * {
+#ConfirmationCheckout .confirm-receipt-body .confirm-receipt-total > * {
     font-weight: 600;
 }
 

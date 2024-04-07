@@ -27,7 +27,7 @@ const UserOrder = ({ order }) => {
                         Ngày đặt hàng {formattedDate}
                     </div>
                     <div className='order-status'>
-                        Trạng thái {order.status}
+                        {order.status}
                     </div>
                 </div>
                 <div className='order-cost'>

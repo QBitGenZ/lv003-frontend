@@ -69,7 +69,7 @@ const OrderDetail = () => {
 
             <div className='order-detail-button-container'>
                 <div className='button paid-btn'>Đã nhận hàng</div>
-                <div className='button review-btn'>Xem đánh giá</div>
+                <div className='button review-btn'>Đánh giá</div>
             </div>
         </div>
     );

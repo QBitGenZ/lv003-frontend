@@ -55,7 +55,8 @@ const ProductDetail = ({ product }) => {
                     Xuất xứ: {product?.origin}
                 </div>
                 <div className='product-content-vote'>
-                    <i class='fa-solid fa-star fa-sm'></i>
+                <div><i class='fa-solid fa-star fa-sm'></i></div>
+                    
                     <p>4.8</p>
                 </div>
                 <div className='product-content-price'>

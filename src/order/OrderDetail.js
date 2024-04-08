@@ -1,8 +1,9 @@
 import { useEffect, useLayoutEffect, useState } from "react";
 import CartDetail from "../cart/CartDetail";
 import { ProductData } from "../common/json/ProductData";
+import CurrencyFormat from "react-currency-format";
 
-const OrderDetail = () => {
+const OrderDetail = ({ order }) => {
     const [name, setName] = useState("");
     const [phone, setPhone] = useState(null);
     const [address, setAddress] = useState("");
@@ -14,46 +15,98 @@ const OrderDetail = () => {
                     <div className='address-title'>Địa chỉ nhận hàng</div>
                     <div className='address-customer-name'>
                         Người nhận
-                        <span>Hồ Nhĩ Khang</span>
+                        <span>{order?.user?.fullname}</span>
                     </div>
                     <div className='address-customer-phone'>
                         Số điện thoại
-                        <span>09999999</span>
+                        <span>{order?.user?.phone}</span>
                     </div>
                     <div className='customer-address'>
                         Địa chỉ
-                        <span>
-                            Số nhà 54, Hẻm 51, Đường 3/2, Phường Xuân Khánh,
-                            Quân Ninh Kiều, Thành Phố Cần Thơ
-                        </span>
+                        <span>{order?.address}</span>
                     </div>
                 </div>
                 <div className='order-detail-body'>
                     <div className='ordered-product'>
-                        {ProductData.map((product) => (
-                            <CartDetail product={product} isInCart={false} />
+                        {order?.items?.map((product) => (
+                            <CartDetail item={product} isInCart={false} />
                         ))}
                     </div>
                     <div className='ordered-price'>
                         <div className='products-price'>
                             Tiền sản phẩm
-                            <span>1.989.000vnd</span>
+                            <span>
+                                <CurrencyFormat
+                                    value={parseInt(
+                                        localStorage.getItem("totalPrice")
+                                    )}
+                                    displayType={"text"}
+                                    thousandSeparator={true}
+                                    suffix={"VND"}
+                                    renderText={(value) => <div>{value}</div>}
+                                />
+                            </span>
                         </div>
                         <div className='tax'>
                             Thuế
-                            <span>100.000vnd</span>
+                            <span>
+                                <CurrencyFormat
+                                    value={
+                                        parseInt(
+                                            localStorage.getItem("totalPrice")
+                                        ) * 0.1
+                                    }
+                                    displayType={"text"}
+                                    thousandSeparator={true}
+                                    suffix={"VND"}
+                                    renderText={(value) => <div>{value}</div>}
+                                />
+                            </span>
                         </div>
                         <div className='shipment-price'>
                             Phí giao hàng
-                            <span>25.000vnd</span>
+                            <span>
+                                <CurrencyFormat
+                                    value={25000}
+                                    displayType={"text"}
+                                    thousandSeparator={true}
+                                    suffix={"VND"}
+                                    renderText={(value) => <div>{value}</div>}
+                                />
+                            </span>
                         </div>
                         <div className='voucher'>
                             voucher
-                            <span>25.000vnd</span>
+                            <span>
+                                <CurrencyFormat
+                                    value={0}
+                                    displayType={"text"}
+                                    thousandSeparator={true}
+                                    suffix={"VND"}
+                                    renderText={(value) => <div>{value}</div>}
+                                />
+                            </span>
                         </div>
                         <div className='total-price'>
                             Tổng đơn hàng
-                            <span>2.024.000vnd</span>
+                            <span>
+                                <CurrencyFormat
+                                    value={
+                                        parseInt(
+                                            localStorage.getItem("totalPrice")
+                                        ) +
+                                        parseInt(
+                                            localStorage.getItem("totalPrice")
+                                        ) *
+                                            0.1 +
+                                        25000
+                                    }
+                                    displayType={"text"}
+                                    thousandSeparator={true}
+                                    suffix={"VND"}
+                                    renderText={(value) => <div>{value}</div>}
+                                />
+                            </span>
                         </div>
                     </div>
                 </div>

@@ -27,9 +27,7 @@ const PaymentMethod = ({
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
-                window.open(data?.vnpUrl, "_blank");
-                console.log(data?.vnpUrl);
+                window.open(data?.vnpUrl, "_self");
             })
             .catch((error) => {
                 console.log(error);
@@ -39,9 +37,9 @@ const PaymentMethod = ({
     const submit = () => {
         onSubmit();
         if (paymentMethod === "cod") {
+            alert("Mua hàng thành công");
             handleClicked();
         } else {
-            // window.location.href = "order/online-payment";
             handleSubmit();
         }
     };

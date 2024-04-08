@@ -20,14 +20,16 @@ const ProductsBody = () => {
     return (
         <div id='ProductsBody'>
             <div className='products-body-row-1'>
-                {products?.map((item) => (
-                    <BestSellerItem product={item} />
-                ))}
+                {products?.map(
+                    (item, index) =>
+                        index < 5 && <BestSellerItem product={item} />
+                )}
             </div>
             <div className='products-body-row-2'>
-                {products?.map((item) => (
-                    <BestSellerItem product={item} />
-                ))}
+                {products?.map(
+                    (item, index) =>
+                        index < 5 && <BestSellerItem product={item} />
+                )}
             </div>
         </div>
     );

@@ -39,7 +39,15 @@ const CartDetail = ({ item, isInCart, deleteItem, updateData }) => {
                 </div>
                 <div className='right-side-detail'>
                     <div className='cart-detail-price'>
-                        <div className='sale-price'>{item?.product?.price}</div>
+                        <div className='sale-price'>
+                            <CurrencyFormat
+                                value={item?.product?.price * item?.quantity}
+                                displayType={"text"}
+                                thousandSeparator={true}
+                                suffix={"VND"}
+                                renderText={(value) => <div>{value}</div>}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

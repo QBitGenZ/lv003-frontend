@@ -1,4 +1,5 @@
 import CurrencyFormat from "react-currency-format";
+import { Link } from "react-router-dom";
 
 const UserOrder = ({ order }) => {
     let isDelivering = false;
@@ -20,7 +21,7 @@ const UserOrder = ({ order }) => {
 
     return (
         isDelivering && (
-            <div className='UserOrder'>
+            <Link to={`/order/${order._id}`} className='UserOrder'>
                 <div className='order-number'>Đơn hàng #{order._id}</div>
                 <div className='order-body-container'>
                     <div className='order-date'>
@@ -42,7 +43,7 @@ const UserOrder = ({ order }) => {
                         />
                     }
                 </div>
-            </div>
+            </Link>
         )
     );
 };

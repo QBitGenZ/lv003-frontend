@@ -187,6 +187,7 @@ p {
 /* end UserInfor */
 #UserBody .UserOrder,
 #UserBody .UserPurchaseHistory {
+    display: block;
     width: 90%;
     margin: 12px 0;
     border: 1px #969696 solid;

@@ -31,7 +31,8 @@ root.render(
             <Route path='search' element={<Search />}></Route>
             <Route path='product/:id' element={<Product />}></Route>
             <Route path='cart' element={<Cart />}></Route>
-            <Route path='order' element={<Order />}></Route>
+            {/* <Route path='order' element={<Order />}></Route> */}
+            <Route path='order/:id' element={<Order />}></Route>
             <Route
                 path='checkout'
                 element={<Checkout step={"delivery"} />}></Route>

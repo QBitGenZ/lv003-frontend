@@ -78,7 +78,6 @@ const CheckoutBody = ({ currentStep, setCurrentStep }) => {
             .then((data) => {
                 setOrders(data?.data);
                 localStorage.setItem("orderId", data?.data?._id);
-                alert("Mua hàng thành công");
             })
             .catch((error) => {
                 console.log("error: " + error);

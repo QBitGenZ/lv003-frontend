@@ -47,8 +47,7 @@ const UserChangeInfor = ({ user, handleClickButton }) => {
         fetch(`${process.env.REACT_APP_IP}/v1`, {
             method: "PUT",
             headers: {
-                Accpet: "application/json",
-                "Content-Type": "application/json",
+                Accept: "application/json",
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
             body: JSON.stringify(data),

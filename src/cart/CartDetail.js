@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import ChooseQuantity from "../common/ChooseQuantity";
 import CurrencyFormat from "react-currency-format";
 
-const CartDetail = ({ item, isInCart, deleteItem, updateData }) => {
+const CartDetail = ({ item, isInCart, deleteItem, updateData, selected }) => {
     const [quantity, setQuantity] = useState(item?.quantity);
 
     const updateCart = () => (isInCart ? updateData() : null);
+    
 
     const handleRemoveButtonCliecked = () => {
         deleteItem(item?._id);
@@ -57,8 +58,8 @@ const CartDetail = ({ item, isInCart, deleteItem, updateData }) => {
     return (
         <div id={"CartDetail"} className={item?.product?.ProductNo}>
             <div className='left-side-detail'>
-                <div className='cart-detail-choice'>
-                    <input type='checkbox'></input>
+            <div className='cart-detail-choice'>
+                    <input type='checkbox' checked={selected} readOnly></input> 
                 </div>
                 <div className='cart-detail-img'>
                     <img

@@ -121,8 +121,8 @@ const OrderDetail = ({ order }) => {
             </div>
 
             <div className='order-detail-button-container'>
-                <div className='button paid-btn'>Đã nhận hàng</div>
-                <div className='button review-btn'>Đánh giá</div>
+                <button className='paid-btn'>Đã nhận hàng</button>
+                <button className='review-btn'>Đánh giá</button>
             </div>
         </div>
     );

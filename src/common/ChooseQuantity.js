@@ -6,6 +6,7 @@ const ChooseQuantity = ({ quantity, setQuantity }) => {
 
     const handleIncrease = () => {
         setQuantity((prevQuantity) => prevQuantity + 1);
+        // console.log(quantity);
     };
 
     const handleDecrease = () => {
@@ -17,6 +18,7 @@ const ChooseQuantity = ({ quantity, setQuantity }) => {
     const handleChange = (event) => {
         const newQuantity = parseInt(event.target.value);
         if (!isNaN(newQuantity)) {
+            console.log(newQuantity);
             if (newQuantity < 0) {
                 setQuantity(1);
             } else {

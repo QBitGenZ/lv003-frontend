@@ -9,6 +9,7 @@ const CartBody = () => {
     const [deliveryMethod, setDeliveryMethod] = useState("");
     const [address, setAddress] = useState("");
     const [date, setDate] = useState();
+    const [selectAll, setSelectAll] = useState(false);
 
     useLayoutEffect(() => getData(), []);
 
@@ -68,6 +69,7 @@ const CartBody = () => {
                                 isInCart={true}
                                 deleteItem={deleteItem}
                                 updateData={updateData}
+                                selected={selectAll}
                             />
                         );
                     })
@@ -79,7 +81,7 @@ const CartBody = () => {
                 )}
             </div>
             <div className='button-container'>
-                <div className='button choose-all-btn'>Chọn tất cả</div>
+            <div className='button choose-all-btn' onClick={() => setSelectAll(!selectAll)}>Chọn tất cả</div> 
                 <Link to={"/checkout"} className='button checkout-btn'>
                     Mua hàng
                 </Link>

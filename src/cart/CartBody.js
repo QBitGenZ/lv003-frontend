@@ -1,15 +1,11 @@
+// CartBody.js
 import { useLayoutEffect, useState } from "react";
 import CartDetail from "./CartDetail";
 import { Link } from "react-router-dom";
 
 const CartBody = () => {
     const [carts, setCarts] = useState([]);
-
-    const [paymentMethod, setPaymentMethod] = useState("");
-    const [deliveryMethod, setDeliveryMethod] = useState("");
-    const [address, setAddress] = useState("");
-    const [date, setDate] = useState();
-    const [selectAll, setSelectAll] = useState(false);
+    const [selectedItems, setSelectedItems] = useState({});
 
     useLayoutEffect(() => getData(), []);
 
@@ -24,7 +20,12 @@ const CartBody = () => {
             .then((res) => res.json())
             .then((data) => {
                 setCarts(data?.data?.items);
-                console.log("test: " + carts);
+                // Khởi tạo trạng thái của các checkbox
+                const initialSelectedItems = data?.data?.items.reduce((acc, item) => {
+                    acc[item._id] = false;
+                    return acc;
+                }, {});
+                setSelectedItems(initialSelectedItems);
             })
             .catch((error) => console.log(error));
     }
@@ -57,6 +58,13 @@ const CartBody = () => {
             .catch((error) => console.log(error));
     }
 
+    const handleCheckboxChange = (itemId) => {
+        setSelectedItems((prevSelectedItems) => ({
+            ...prevSelectedItems,
+            [itemId]: !prevSelectedItems[itemId],
+        }));
+    };
+
     return (
         <div id='CartBody'>
             <div className='cart-title'>Giỏ hàng của bạn</div>
@@ -65,11 +73,13 @@ const CartBody = () => {
                     carts?.map((item) => {
                         return (
                             <CartDetail
+                                key={item._id}
                                 item={item}
                                 isInCart={true}
                                 deleteItem={deleteItem}
                                 updateData={updateData}
-                                selected={selectAll}
+                                selected={selectedItems[item._id]}
+                                onCheckboxChange={handleCheckboxChange}
                             />
                         );
                     })
@@ -81,7 +91,18 @@ const CartBody = () => {
                 )}
             </div>
             <div className='button-container'>
-            <div className='button choose-all-btn' onClick={() => setSelectAll(!selectAll)}>Chọn tất cả</div> 
+                <div
+                    className='button choose-all-btn'
+                    onClick={() => {
+                        const allSelected = Object.values(selectedItems).every((isSelected) => isSelected);
+                        const updatedSelectedItems = carts.reduce((acc, item) => {
+                            acc[item._id] = !allSelected;
+                            return acc;
+                        }, {});
+                        setSelectedItems(updatedSelectedItems);
+                    }}>
+                    Chọn tất cả
+                </div>
                 <Link to={"/checkout"} className='button checkout-btn'>
                     Mua hàng
                 </Link>

@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+// import { useAuth } from "../common/AuthContext";
 
 const LoginBody = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+
+
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -25,8 +28,10 @@ const LoginBody = () => {
                 setTokenAndExpirationTime(data.access_token);
                 if (localStorage.getItem("token")) {
                     alert("Đăng nhập thành công");
+                    
                     window.location.href = "/";
                 }
+                
             })
             .catch((error) => {
                 console.log(error);

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 import SummaryCart from "./SummaryCart";
 import Navigation from "./Navigation";
@@ -9,6 +9,7 @@ export default function Header() {
     const [showBrandPortfolio, setShowBrandPortfolio] = useState(false);
 
     const [isLogin, setIsLogin] = useState(false);
+    
 
     const handleMosueEnterCart = () => {
         setShowSummaryCart(true);
@@ -33,7 +34,21 @@ export default function Header() {
     const handleMosueLeaveBrandPortfolio = () => {
         setShowBrandPortfolio(false);
     };
-
+    const handleLogout = () => {
+        // Perform logout actions here, e.g., clear token, update login status
+        localStorage.removeItem("token");
+        setIsLogin(false);
+        // Redirect or perform any other necessary actions after logout
+        // For example, redirect to the homepage
+        window.location.href = "/";
+        
+    };
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (token) {
+            setIsLogin(true);
+        }
+    }, []);
     return (
         <>
             <div className='header-container'>
@@ -63,9 +78,20 @@ export default function Header() {
                             onMouseLeave={handleMosueLeaveCart}>
                             <i class='fa-solid fa-cart-shopping tools-icon'></i>
                         </Link>
-                        <Link to={"/user"}>
-                            <i class='fa-solid fa-user tools-icon'></i>
-                        </Link>
+                        {isLogin ? (
+                            <>
+                                <Link to={"/user"}>
+                                    <i className='fa-solid fa-user tools-icon'></i>
+                                </Link>
+                                <Link to={"/logout"} onClick={handleLogout}>
+                                <i class="fa-solid fa-right-to-bracket"></i>
+                                </Link>
+                            </>
+                        ) : (
+                            <Link to={"/login"}>
+                                <i className='fa-solid fa-user tools-icon'></i>
+                            </Link>
+                        )}
                         {showSummaryCart && <SummaryCart className='on-top' />}
                     </div>
                 </div>
@@ -103,4 +129,5 @@ export default function Header() {
             <Outlet></Outlet>
         </>
     );
+    
 }

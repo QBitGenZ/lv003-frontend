@@ -13,9 +13,9 @@ const CartDetail = ({ item, isInCart, deleteItem, updateData, selected, onCheckb
         deleteItem(item?._id);
     };
 
-    // const handleCheckboxChange = () => {
-    //     onCheckboxChange(item._id); // Thông báo rằng checkbox đã thay đổi với ID tương ứng
-    // };
+    const handleCheckboxChange = () => {
+        onCheckboxChange(item._id); // Thông báo rằng checkbox đã thay đổi với ID tương ứng
+    };
 
     return (
         <div id={"CartDetail"} className={item?.product?.ProductNo}>

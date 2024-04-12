@@ -3,16 +3,8 @@ import React from "react";
 import ChooseQuantity from "../common/ChooseQuantity";
 import CurrencyFormat from "react-currency-format";
 
-const CartDetail = ({ item, isInCart, deleteItem, updateData, updateSelectedStatus}) => {
-    const [quantity, setQuantity] = useState(item?.quantity);
-    const [isSelected, setIsSelected] = useState(item?.selected);
-
-    const updateCart = () => (isInCart ? updateData() : null);
-
-    useEffect(() => {
-        setIsSelected(item?.selected)
-        // updateSelectedStatus(item._id, selectAll)
-    }, [item])
+const CartDetail = ({ item, isInCart, deleteItem, updateData, selected, onCheckboxChange }) => {
+    const [quantity, setQuantity] = React.useState(item?.quantity);
     
     const handleRemoveButtonClicked = () => {
         deleteItem(item?._id);
@@ -25,12 +17,13 @@ const CartDetail = ({ item, isInCart, deleteItem, updateData, updateSelectedStat
     return (
         <div id={"CartDetail"} className={item?.product?.ProductNo}>
             <div className='left-side-detail'>
-            <div className='cart-detail-choice'>
-                    <input type='checkbox' checked={isSelected} onChange={() => {
-                        setIsSelected(!isSelected)
-                        updateSelectedStatus(item._id, !isSelected)
-                    }}></input> 
-                </div>  
+                <div className='cart-detail-choice'>
+                    <input 
+                        type='checkbox' 
+                        checked={selected} 
+                        onChange={handleCheckboxChange} // Thêm sự kiện onChange
+                    /> 
+                </div>
                 <div className='cart-detail-img'>
                     <img
                         src={`${process.env.REACT_APP_IP}/` + item?.product?.images[0]}

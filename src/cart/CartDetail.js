@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+// CartDetail.js
+import React from "react";
 import ChooseQuantity from "../common/ChooseQuantity";
 import CurrencyFormat from "react-currency-format";
 
@@ -13,53 +14,13 @@ const CartDetail = ({ item, isInCart, deleteItem, updateData, updateSelectedStat
         // updateSelectedStatus(item._id, selectAll)
     }, [item])
     
-
-    const handleRemoveButtonCliecked = () => {
+    const handleRemoveButtonClicked = () => {
         deleteItem(item?._id);
     };
 
-    useEffect(() => updateCart, [quantity]);
-
-    if (!isInCart) {
-        return (
-            <div id='CartDetail' className='not-in-cart'>
-                <div className='left-side-detail'>
-                    <div className='cart-detail-img'>
-                        <img
-                            src={
-                                `${process.env.REACT_APP_IP}/` +
-                                item?.product?.images[0]
-                            }
-                            alt='product'></img>
-                    </div>
-                    <div className='cart-detail-body'>
-                        <div className='cart-detail-prod-name'>
-                            {item?.product?.name}
-                        </div>
-                        <div className='cart-detail-prod-brand'>
-                            {item?.product?.brand}
-                        </div>
-                        <div className='quantity'>
-                            Số lượng: {item?.quantity}
-                        </div>
-                    </div>
-                </div>
-                <div className='right-side-detail'>
-                    <div className='cart-detail-price'>
-                        <div className='sale-price'>
-                            <CurrencyFormat
-                                value={item?.product?.price * item?.quantity}
-                                displayType={"text"}
-                                thousandSeparator={true}
-                                suffix={"VND"}
-                                renderText={(value) => <div>{value}</div>}
-                            />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-    }
+    const handleCheckboxChange = () => {
+        onCheckboxChange(item._id); // Thông báo rằng checkbox đã thay đổi với ID tương ứng
+    };
 
     return (
         <div id={"CartDetail"} className={item?.product?.ProductNo}>
@@ -72,23 +33,14 @@ const CartDetail = ({ item, isInCart, deleteItem, updateData, updateSelectedStat
                 </div>  
                 <div className='cart-detail-img'>
                     <img
-                        src={
-                            `${process.env.REACT_APP_IP}/` +
-                            item?.product?.images[0]
-                        }
-                        alt='product'></img>
+                        src={`${process.env.REACT_APP_IP}/` + item?.product?.images[0]}
+                        alt='product'
+                    />
                 </div>
                 <div className='cart-detail-body'>
-                    <div className='cart-detail-prod-name'>
-                        {item?.product?.name}
-                    </div>
-                    <div className='cart-detail-prod-brand'>
-                        {item?.product?.brand}
-                    </div>
-                    <ChooseQuantity
-                        quantity={quantity}
-                        setQuantity={setQuantity}
-                    />
+                    <div className='cart-detail-prod-name'>{item?.product?.name}</div>
+                    <div className='cart-detail-prod-brand'>{item?.product?.brand}</div>
+                    <ChooseQuantity quantity={quantity} setQuantity={setQuantity} />
                 </div>
             </div>
             <div className='right-side-detail'>
@@ -114,10 +66,8 @@ const CartDetail = ({ item, isInCart, deleteItem, updateData, updateSelectedStat
                         />
                     </div>
                 </div>
-                <div
-                    className='remove-btn'
-                    onClick={handleRemoveButtonCliecked}>
-                    <i class='fa-solid fa-trash'></i>
+                <div className='remove-btn' onClick={handleRemoveButtonClicked}>
+                    <i className='fa-solid fa-trash'></i>
                 </div>
             </div>
         </div>

@@ -1,10 +1,10 @@
+// CartBody.js
 import { useLayoutEffect, useState } from "react";
 import CartDetail from "./CartDetail";
 import { Link } from "react-router-dom";
 
 const CartBody = () => {
     const [carts, setCarts] = useState([]);
-
     const [paymentMethod, setPaymentMethod] = useState("");
     const [deliveryMethod, setDeliveryMethod] = useState("");
     const [address, setAddress] = useState("");
@@ -22,8 +22,7 @@ const CartBody = () => {
             },
         })
             .then((res) => res.json())
-            .then((data) => {
-                
+            .then((data) => {       
                 const items = data?.data?.items?.map(item => {
                     return {
                         ...item,
@@ -76,8 +75,6 @@ const CartBody = () => {
         });
         setCarts(updatedCarts);
     }
-    
-    
 
     return (
         <div id='CartBody'>
@@ -87,6 +84,7 @@ const CartBody = () => {
                     carts?.map((item) => {
                         return (
                             <CartDetail
+                                key={item._id}
                                 item={item}
                                 isInCart={true}
                                 deleteItem={deleteItem}

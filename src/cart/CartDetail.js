@@ -1,39 +1,54 @@
 // CartDetail.js
 import React from "react";
+import { useState, useEffect } from "react";
 import ChooseQuantity from "../common/ChooseQuantity";
 import CurrencyFormat from "react-currency-format";
+
 
 const CartDetail = ({ item, isInCart, deleteItem, updateData, selected, onCheckboxChange }) => {
     const [quantity, setQuantity] = React.useState(item?.quantity);
     
+
     const handleRemoveButtonClicked = () => {
         deleteItem(item?._id);
     };
 
-    const handleCheckboxChange = () => {
-        onCheckboxChange(item._id); // Thông báo rằng checkbox đã thay đổi với ID tương ứng
-    };
+    // const handleCheckboxChange = () => {
+    //     onCheckboxChange(item._id); // Thông báo rằng checkbox đã thay đổi với ID tương ứng
+    // };
 
     return (
         <div id={"CartDetail"} className={item?.product?.ProductNo}>
             <div className='left-side-detail'>
                 <div className='cart-detail-choice'>
+
                     <input 
                         type='checkbox' 
                         checked={selected} 
                         onChange={handleCheckboxChange} // Thêm sự kiện onChange
                     /> 
+
                 </div>
                 <div className='cart-detail-img'>
                     <img
-                        src={`${process.env.REACT_APP_IP}/` + item?.product?.images[0]}
+                        src={
+                            `${process.env.REACT_APP_IP}/` +
+                            item?.product?.images[0]
+                        }
                         alt='product'
                     />
                 </div>
                 <div className='cart-detail-body'>
-                    <div className='cart-detail-prod-name'>{item?.product?.name}</div>
-                    <div className='cart-detail-prod-brand'>{item?.product?.brand}</div>
-                    <ChooseQuantity quantity={quantity} setQuantity={setQuantity} />
+                    <div className='cart-detail-prod-name'>
+                        {item?.product?.name}
+                    </div>
+                    <div className='cart-detail-prod-brand'>
+                        {item?.product?.brand}
+                    </div>
+                    <ChooseQuantity
+                        quantity={quantity}
+                        setQuantity={setQuantity}
+                    />
                 </div>
             </div>
             <div className='right-side-detail'>

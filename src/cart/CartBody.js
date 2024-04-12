@@ -5,8 +5,6 @@ import { Link, useNavigate } from "react-router-dom";
 const CartBody = () => {
     const [carts, setCarts] = useState([]);
 
-    const [selectedItems, setSelectedItems] = useState({});
-
     const [paymentMethod, setPaymentMethod] = useState("");
     const [deliveryMethod, setDeliveryMethod] = useState("");
     const [address, setAddress] = useState("");
@@ -102,17 +100,16 @@ const CartBody = () => {
         <div id='CartBody'>
             <div className='cart-title'>Giỏ hàng của bạn</div>
             <div className='body-container'>
-                {carts?.length > 0 ? (
+                {carts.length > 0 ? (
                     carts?.map((item) => {
                         return (
                             <CartDetail
-                                key={item._id}
                                 item={item}
                                 isInCart={true}
                                 deleteItem={deleteItem}
                                 updateData={updateData}
-                                selected={selectedItems[item._id]}
-                                onCheckboxChange={handleCheckboxChange}
+                                updateSelectedStatus={updateSelectedStatus}
+                                selectAll={selectAll}
                             />
                         );
                     })

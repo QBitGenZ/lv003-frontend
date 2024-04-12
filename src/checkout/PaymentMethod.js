@@ -35,11 +35,12 @@ const PaymentMethod = ({
     };
 
     const submit = () => {
-        onSubmit();
         if (paymentMethod === "cod") {
+            onSubmit();
             alert("Mua hàng thành công");
             handleClicked();
         } else {
+            onSubmit(); // TODO: sửa lại nè
             handleSubmit();
         }
     };

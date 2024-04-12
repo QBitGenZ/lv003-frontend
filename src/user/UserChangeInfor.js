@@ -37,12 +37,12 @@ const UserChangeInfor = ({ user, handleClickButton }) => {
     };
 
     const submitChangeInfor = () => {
-        const data = {
-            fullname: fullname,
-            email: email,
-            phone: phone,
-            birthday: revertDateFormat(birthday),
-        };
+
+        const form = new FormData()
+        form.append('fullname', fullname)
+        form.append('email', email)
+        form.append('phone', phone)
+        form.append('birtday', revertDateFormat(birthday))
 
         fetch(`${process.env.REACT_APP_IP}/v1`, {
             method: "PUT",
@@ -50,7 +50,7 @@ const UserChangeInfor = ({ user, handleClickButton }) => {
                 Accept: "application/json",
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
-            body: JSON.stringify(data),
+            body: form,
         })
             .then((response) => response.json())
             .then((data) => {

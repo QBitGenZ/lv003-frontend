@@ -22,8 +22,8 @@ const OrderSummary = ({ setTotalPrice }) => {
         price += product?.product?.price * product?.quantity;
     });
 
-    setTotalPrice(price);
-    localStorage.setItem("totalPrice", price);
+    setTotalPrice(price + price * 0.1 + 25000);
+    localStorage.setItem("totalPrice", price + price * 0.1 + 25000);
 
     return (
         <div id='OrderSummary'>

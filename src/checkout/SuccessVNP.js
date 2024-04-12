@@ -55,9 +55,7 @@ const SuccessVNP = ({ totalPrice }) => {
                             Tổng số tiền:{" "}
                             <CurrencyFormat
                                 value={
-                                    totalPrice +
-                                    totalPrice * 0.1 +
-                                    (totalPrice ? 25000 : 0)
+                                    totalPrice
                                 }
                                 displayType={"text"}
                                 thousandSeparator={true}

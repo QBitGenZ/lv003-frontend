@@ -13,9 +13,30 @@ const RegisterBody = () => {
     const [gender, setGender] = useState("Male");
     const [birthday, setBirthday] = useState("");
     const [phone, setPhone] = useState("");
+    const [isChecked, setIsChecked] = useState(false)
 
     const handleSubmit = (e) => {
+        if(!isChecked){
+            alert('Đọc kỹ đi má');
+            return;
+        }
+        if (
+            !username ||
+            !password ||
+            !fullname ||
+            !email ||
+            !birthday ||
+            !phone
+        ) {
+            alert("Điền giúp nha.");
+            return;
+        }
+
+
         e.preventDefault();
+
+        
+       
 
         const formData = new FormData();
 
@@ -93,7 +114,10 @@ const RegisterBody = () => {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}></input>
                     <div className='confirm-container'>
-                        <input type='checkbox' id='confirm'></input>
+                        <input type='checkbox' id='confirm' checked={isChecked} onChange={() => 
+                            {
+                                setIsChecked(!isChecked)
+                            }}></input>
                         <label htmlFor='confirm'>
                             Bằng cách gửi biểu mẫu này. Tôi xác nhận rằng đã đọc
                             và chấp nhận <span>Chính sách bảo mật</span> của

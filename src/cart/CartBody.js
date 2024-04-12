@@ -1,6 +1,6 @@
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import CartDetail from "./CartDetail";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const CartBody = () => {
     const [carts, setCarts] = useState([]);
@@ -9,9 +9,13 @@ const CartBody = () => {
     const [deliveryMethod, setDeliveryMethod] = useState("");
     const [address, setAddress] = useState("");
     const [date, setDate] = useState();
-    const [selectAll, setSelectAll] = useState(false)
+    const [selectAll, setSelectAll] = useState(true)
+    const history = useNavigate()
 
     useLayoutEffect(() => getData(), []);
+    useEffect(() => {
+        localStorage.removeItem('cart')
+    }, [])
 
     function getData() {
         fetch(`${process.env.REACT_APP_IP}/v1/carts`, {
@@ -32,6 +36,7 @@ const CartBody = () => {
                 })
                 // setCarts(data?.data?.items);
                 setCarts(items)
+                // setSelectAll(false)
             })
             .catch((error) => console.log(error));
     }
@@ -76,6 +81,18 @@ const CartBody = () => {
         });
         setCarts(updatedCarts);
     }
+
+    const handleBuyNowClick = (e) => {
+        e.preventDefault(); 
+
+        const selectedItem = carts.filter(item => item.selected)
+        
+        if(selectedItem.length <= 0) {
+            return alert('Vui lòng chọn sản phẩm')
+        }
+        localStorage.setItem('cart', JSON.stringify(selectedItem));
+        history('/checkout');
+    };
     
     
 
@@ -105,17 +122,15 @@ const CartBody = () => {
             </div>
             <div className='button-container'>
             <div className='button choose-all-btn' onClick={() => {
-               setSelectAll(!selectAll);
+               
                 const updatedCarts = carts.map((cartItem) => {
                     const updatedCartItem = { ...cartItem, selected: selectAll };
                     return updatedCartItem;
                })
+               setSelectAll(!selectAll);
                setCarts(updatedCarts);
-               console.log(carts)
             }}>Chọn tất cả</div> 
-                <Link to={"/checkout"} className='button checkout-btn' onClick={() => {
-                    localStorage.setItem('cart', JSON.stringify(carts.filter(item => item.selected)))
-                }}>
+                <Link to={"#"} className='button checkout-btn' onClick={handleBuyNowClick}>
                     Mua hàng
                 </Link>
             </div>

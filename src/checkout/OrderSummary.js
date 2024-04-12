@@ -5,20 +5,22 @@ const OrderSummary = ({ setTotalPrice }) => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_IP}/v1/carts`, {
-            method: "GET",
-            headers: {
-                Accept: "application/json",
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-        })
-            .then((res) => res.json())
-            .then((data) => setProducts(data?.data?.items))
-            .catch((error) => console.log(error));
+        // fetch(`${process.env.REACT_APP_IP}/v1/carts`, {
+        //     method: "GET",
+        //     headers: {
+        //         Accept: "application/json",
+        //         Authorization: `Bearer ${localStorage.getItem("token")}`,
+        //     },
+        // })
+        //     .then((res) => res.json())
+        //     .then((data) => setProducts(data?.data?.items))
+        //     .catch((error) => console.log(error));
+        const cart = JSON.parse(localStorage.getItem('cart'))
+        setProducts(cart)
     }, []);
 
     var price = 0;
-    products.map((product) => {
+    products?.map((product) => {
         price += product?.product?.price * product?.quantity;
     });
 

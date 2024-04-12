@@ -9,7 +9,8 @@ const DeliveryAddress = ({ handleClickedEvent, address, setAddress }) => {
         const newValue = type === 'checkbox' ? checked : value;
         setAddress({ ...address, [name]: newValue });
     };
-        const handleBackButtonClick = () => {
+    
+    const handleBackButtonClick = () => {
         navigate(-1); // Trở về trang trước đó
     };
     return (
@@ -72,7 +73,14 @@ const DeliveryAddress = ({ handleClickedEvent, address, setAddress }) => {
                     </button>
                     <button
                         className='button order-btn'
-                        onClick={handleClickedEvent}>
+                        onClick={() => {
+                            if (!address.recipientName || !address.phoneNumber || !address.provinceCity || !address.district || !address.ward || !address.detailAddress) {
+                                alert('Vui lòng nhập đầy đủ thông tin địa chỉ');
+                                return;
+                            }
+                            handleClickedEvent()
+                            }
+                        }>
                         Tiếp theo
                     </button>
                 </div>

@@ -25,29 +25,38 @@ const CheckoutBody = ({ currentStep, setCurrentStep }) => {
     useEffect(() => getCartItems(), []);
 
     const getCartItems = () => {
-        fetch(`${process.env.REACT_APP_IP}/v1/carts`, {
-            method: "GET",
-            headers: {
-                Accept: "application/json",
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                const items = data?.data?.items;
-                setCartItems(
-                    items.map((value) => {
-                        return {
-                            product: value?.product?._id,
-                            quantity: value?.quantity,
-                        };
-                    })
-                );
-            })
-            .catch((error) => {
-                console.log(error);
-                alert("Lỗi! Vui lòng thử lại");
-            });
+        // fetch(`${process.env.REACT_APP_IP}/v1/carts`, {
+        //     method: "GET",
+        //     headers: {
+        //         Accept: "application/json",
+        //         Authorization: `Bearer ${localStorage.getItem("token")}`,
+        //     },
+        // })
+        //     .then((res) => res.json())
+        //     .then((data) => {
+        //         const items = data?.data?.items;
+        //         setCartItems(
+        //             items.map((value) => {
+        //                 return {
+        //                     product: value?.product?._id,
+        //                     quantity: value?.quantity,
+        //                 };
+        //             })
+        //         );
+        //     })
+        //     .catch((error) => {
+        //         console.log(error);
+        //         alert("Lỗi! Vui lòng thử lại");
+        //     });
+        const items = JSON.parse(localStorage.getItem('cart'))
+
+        setCartItems(items.map(item => {
+            return {
+                product: item.product._id,
+                quantity: item.quantity
+            }
+        }))
+        // console.log(cartItems)
     };
 
     const postData = () => {
@@ -59,6 +68,11 @@ const CheckoutBody = ({ currentStep, setCurrentStep }) => {
             ward,
             detailAddress,
         } = address;
+
+        if (!recipientName || !phoneNumber || !provinceCity || !district || !ward || !detailAddress) {
+            return alert("Yêu cầu nhập thông tin đầy đủ")
+        }
+
 
         fetch(`${process.env.REACT_APP_IP}/v1/orders`, {
             method: "POST",

@@ -9,7 +9,7 @@ const CartBody = () => {
     const [deliveryMethod, setDeliveryMethod] = useState("");
     const [address, setAddress] = useState("");
     const [date, setDate] = useState();
-    const [selectAll, setSelectAll] = useState(false)
+    const [selectAll, setSelectAll] = useState(false);
 
     useLayoutEffect(() => getData(), []);
 
@@ -22,15 +22,15 @@ const CartBody = () => {
             },
         })
             .then((res) => res.json())
-            .then((data) => {       
-                const items = data?.data?.items?.map(item => {
+            .then((data) => {
+                const items = data?.data?.items?.map((item) => {
                     return {
                         ...item,
-                        selected: false
-                    }
-                })
+                        selected: false,
+                    };
+                });
                 // setCarts(data?.data?.items);
-                setCarts(items)
+                setCarts(items);
             })
             .catch((error) => console.log(error));
     }
@@ -64,7 +64,7 @@ const CartBody = () => {
     }
 
     function updateSelectedStatus(id, selected) {
-        console.log(id, selected)
+        console.log(id, selected);
         const updatedCarts = carts.map((cartItem) => {
             if (cartItem._id === id) {
                 // Tạo một bản sao của đối tượng và thay đổi thuộc tính selected
@@ -80,7 +80,7 @@ const CartBody = () => {
         <div id='CartBody'>
             <div className='cart-title'>Giỏ hàng của bạn</div>
             <div className='body-container'>
-                {carts.length > 0 ? (
+                {carts?.length > 0 ? (
                     carts?.map((item) => {
                         return (
                             <CartDetail
@@ -102,18 +102,33 @@ const CartBody = () => {
                 )}
             </div>
             <div className='button-container'>
-            <div className='button choose-all-btn' onClick={() => {
-               setSelectAll(!selectAll);
-                const updatedCarts = carts.map((cartItem) => {
-                    const updatedCartItem = { ...cartItem, selected: selectAll };
-                    return updatedCartItem;
-               })
-               setCarts(updatedCarts);
-               console.log(carts)
-            }}>Chọn tất cả</div> 
-                <Link to={"/checkout"} className='button checkout-btn' onClick={() => {
-                    localStorage.setItem('cart', JSON.stringify(carts.filter(item => item.selected)))
-                }}>
+                <div
+                    className='button choose-all-btn'
+                    onClick={() => {
+                        setSelectAll(!selectAll);
+                        const updatedCarts = carts.map((cartItem) => {
+                            const updatedCartItem = {
+                                ...cartItem,
+                                selected: selectAll,
+                            };
+                            return updatedCartItem;
+                        });
+                        setCarts(updatedCarts);
+                        console.log(carts);
+                    }}>
+                    Chọn tất cả
+                </div>
+                <Link
+                    to={"/checkout"}
+                    className='button checkout-btn'
+                    onClick={() => {
+                        localStorage.setItem(
+                            "cart",
+                            JSON.stringify(
+                                carts.filter((item) => item.selected)
+                            )
+                        );
+                    }}>
                     Mua hàng
                 </Link>
             </div>

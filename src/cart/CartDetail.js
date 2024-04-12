@@ -1,6 +1,4 @@
-// CartDetail.js
-import React from "react";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import ChooseQuantity from "../common/ChooseQuantity";
 import CurrencyFormat from "react-currency-format";
 
@@ -16,7 +14,7 @@ const CartDetail = ({ item, isInCart, deleteItem, updateData, updateSelectedStat
     }, [item])
     
 
-    const handleRemoveButtonClicked = () => {
+    const handleRemoveButtonCliecked = () => {
         deleteItem(item?._id);
     };
 
@@ -66,23 +64,19 @@ const CartDetail = ({ item, isInCart, deleteItem, updateData, updateSelectedStat
     return (
         <div id={"CartDetail"} className={item?.product?.ProductNo}>
             <div className='left-side-detail'>
-                <div className='cart-detail-choice'>
-
-                    <input 
-                        type='checkbox' 
-                        checked={selected} 
-                        onChange={handleCheckboxChange} // Thêm sự kiện onChange
-                    /> 
-
-                </div>
+            <div className='cart-detail-choice'>
+                    <input type='checkbox' checked={isSelected} onChange={() => {
+                        setIsSelected(!isSelected)
+                        updateSelectedStatus(item._id, !isSelected)
+                    }}></input> 
+                </div>  
                 <div className='cart-detail-img'>
                     <img
                         src={
                             `${process.env.REACT_APP_IP}/` +
                             item?.product?.images[0]
                         }
-                        alt='product'
-                    />
+                        alt='product'></img>
                 </div>
                 <div className='cart-detail-body'>
                     <div className='cart-detail-prod-name'>
@@ -120,8 +114,10 @@ const CartDetail = ({ item, isInCart, deleteItem, updateData, updateSelectedStat
                         />
                     </div>
                 </div>
-                <div className='remove-btn' onClick={handleRemoveButtonClicked}>
-                    <i className='fa-solid fa-trash'></i>
+                <div
+                    className='remove-btn'
+                    onClick={handleRemoveButtonCliecked}>
+                    <i class='fa-solid fa-trash'></i>
                 </div>
             </div>
         </div>

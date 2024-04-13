@@ -92,6 +92,7 @@ const ProductDetail = ({ product }) => {
                     <ChooseQuantity
                         quantity={quantity}
                         setQuantity={setQuantity}
+                        maxQuantity={product?.quantity}
                     />
                 </div>
                 <div className='product-content-origin'>

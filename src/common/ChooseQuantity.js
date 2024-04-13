@@ -8,7 +8,6 @@ const ChooseQuantity = ({ quantity, setQuantity, maxQuantity }) => {
         if (quantity < maxQuantity) {
             setQuantity((prevQuantity) => prevQuantity + 1);
         }
-        // console.log(quantity);
     };
 
     const handleDecrease = () => {
@@ -28,8 +27,6 @@ const ChooseQuantity = ({ quantity, setQuantity, maxQuantity }) => {
             }
         }
     };
-
-    // useEffect(() => {}, [quantity]);
 
     useEffect(() => {
         // const savedQuantity = localStorage.getItem(product?._id);

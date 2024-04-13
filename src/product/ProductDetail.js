@@ -6,6 +6,22 @@ const ProductDetail = ({ product }) => {
     useEffect(() => window.scrollTo(0, 0), []);
 
     const [quantity, setQuantity] = useState(1);
+    const [brand, setBrand] = useState();
+
+    useEffect(() => {
+        fetch(`${process.env.REACT_APP_IP}/v1/brands`, {
+            method: "GET",
+            headers: {
+                Accept: "application/json",
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+            })
+            .catch((error) => console.log(error));
+    }, []);
 
     const handleAddCartButton = () => {
         fetch(`${process.env.REACT_APP_IP}/v1/carts/`, {
@@ -35,6 +51,7 @@ const ProductDetail = ({ product }) => {
         );
     }
 
+    console.log(product);
     return (
         <div id='ProductDetail'>
             <div className='product-detail-img'>
@@ -44,7 +61,9 @@ const ProductDetail = ({ product }) => {
             </div>
             <div className='product-detail-content'>
                 <div className='product-content-name'>{product?.name}</div>
-                <div className='product-content-code'>{product?.brand}</div>
+                <div className='product-content-code'>
+                    {product?.brand?.name}
+                </div>
                 <div className='product-content-description'>
                     {product?.utility}
                 </div>
@@ -55,8 +74,9 @@ const ProductDetail = ({ product }) => {
                     Xuất xứ: {product?.origin}
                 </div>
                 <div className='product-content-vote'>
-                <div><i class='fa-solid fa-star fa-sm'></i></div>
-                    
+                    <div>
+                        <i class='fa-solid fa-star fa-sm'></i>
+                    </div>
                     <p>4.8</p>
                 </div>
                 <div className='product-content-price'>
@@ -73,6 +93,9 @@ const ProductDetail = ({ product }) => {
                         quantity={quantity}
                         setQuantity={setQuantity}
                     />
+                </div>
+                <div className='product-content-origin'>
+                    Tồn kho: {product?.quantity}
                 </div>
                 <div
                     className='button product-content-add-btn'

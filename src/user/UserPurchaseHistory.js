@@ -1,9 +1,10 @@
 import CurrencyFormat from "react-currency-format";
+import { Link } from "react-router-dom";
 
 const UserPurchaseHistory = ({ order }) => {
-    let isDelivering = false;
+    let isDelivered = false;
 
-    if (order.status === "Đã giao hàng") isDelivering = true;
+    if (order.status === "Đã giao") isDelivered = true;
 
     var orderCost = 0;
     order?.items?.map((item) => {
@@ -19,8 +20,8 @@ const UserPurchaseHistory = ({ order }) => {
     }/${dateObj.getFullYear()} ${dateObj.getHours()}:${dateObj.getMinutes()}:${dateObj.getSeconds()}`;
 
     return (
-        isDelivering && (
-            <div className='UserPurchaseHistory'>
+        isDelivered && (
+            <Link to={`/order/${order._id}`} className='UserPurchaseHistory'>
                 <div className='order-number'>Đơn hàng {order?._id}</div>
                 <div className='order-body-container'>
                     <div className='order-date'>
@@ -42,7 +43,7 @@ const UserPurchaseHistory = ({ order }) => {
                         />
                     }
                 </div>
-            </div>
+            </Link>
         )
     );
 };

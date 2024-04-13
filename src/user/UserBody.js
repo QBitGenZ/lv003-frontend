@@ -70,7 +70,7 @@ const UserBody = () => {
                         <div className='user-purchase-history-title'>
                             Lịch sử mua hàng
                         </div>
-                        {order.map((item) => (
+                        {order?.map((item) => (
                             <UserPurchaseHistory order={item} />
                         ))}
                     </div>

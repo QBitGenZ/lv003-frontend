@@ -2,17 +2,22 @@ import { useEffect, useState } from "react";
 import ChooseQuantity from "../common/ChooseQuantity";
 import CurrencyFormat from "react-currency-format";
 
-const CartDetail = ({ item, isInCart, deleteItem, updateData, updateSelectedStatus}) => {
+const CartDetail = ({
+    item,
+    isInCart,
+    deleteItem,
+    updateData,
+    updateSelectedStatus,
+}) => {
     const [quantity, setQuantity] = useState(item?.quantity);
     const [isSelected, setIsSelected] = useState(item?.selected);
 
     const updateCart = () => (isInCart ? updateData(item._id, quantity) : null);
 
     useEffect(() => {
-        setIsSelected(item?.selected)
+        setIsSelected(item?.selected);
         // updateSelectedStatus(item._id, selectAll)
-    }, [item])
-    
+    }, [item]);
 
     const handleRemoveButtonCliecked = () => {
         deleteItem(item?._id);
@@ -37,7 +42,7 @@ const CartDetail = ({ item, isInCart, deleteItem, updateData, updateSelectedStat
                             {item?.product?.name}
                         </div>
                         <div className='cart-detail-prod-brand'>
-                            {item?.product?.brand}
+                            {item?.product?.brand?.name}
                         </div>
                         <div className='quantity'>
                             Số lượng: {item?.quantity}
@@ -64,12 +69,15 @@ const CartDetail = ({ item, isInCart, deleteItem, updateData, updateSelectedStat
     return (
         <div id={"CartDetail"} className={item?.product?.ProductNo}>
             <div className='left-side-detail'>
-            <div className='cart-detail-choice'>
-                    <input type='checkbox' checked={isSelected} onChange={() => {
-                        setIsSelected(!isSelected)
-                        updateSelectedStatus(item._id, !isSelected)
-                    }}></input> 
-                </div>  
+                <div className='cart-detail-choice'>
+                    <input
+                        type='checkbox'
+                        checked={isSelected}
+                        onChange={() => {
+                            setIsSelected(!isSelected);
+                            updateSelectedStatus(item._id, !isSelected);
+                        }}></input>
+                </div>
                 <div className='cart-detail-img'>
                     <img
                         src={
@@ -83,7 +91,7 @@ const CartDetail = ({ item, isInCart, deleteItem, updateData, updateSelectedStat
                         {item?.product?.name}
                     </div>
                     <div className='cart-detail-prod-brand'>
-                        {item?.product?.brand}
+                        {item?.product?.brand?.name}
                     </div>
                     <ChooseQuantity
                         quantity={quantity}

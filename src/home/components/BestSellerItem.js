@@ -13,7 +13,7 @@ const BestSellerItem = ({ product }) => {
                                 product?.images[0]
                             }></img>
                     </div>
-                    <div className='product-name'>{product?.brand}</div>
+                    <div className='product-name'>{product?.brand?.name}</div>
                     <div className='product-description'>{product?.name}</div>
                 </div>
                 <div className='product-bot'>

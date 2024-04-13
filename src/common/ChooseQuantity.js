@@ -10,7 +10,7 @@ const ChooseQuantity = ({ quantity, setQuantity, maxQuantity }) => {
     };
 
     const handleDecrease = () => {
-        if (quantity > 1 && newQuantity <= maxQuantity) {
+        if (quantity > 1 && quantity <= maxQuantity) {
             setQuantity((prevQuantity) => prevQuantity - 1);
         }
     };

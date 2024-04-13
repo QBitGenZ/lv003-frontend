@@ -5,12 +5,14 @@ const ChooseQuantity = ({ quantity, setQuantity, maxQuantity }) => {
     // const [quantity, setQuantity] = useState(originQuantity);
 
     const handleIncrease = () => {
-        setQuantity((prevQuantity) => prevQuantity + 1);
+        if (quantity < maxQuantity) {
+            setQuantity((prevQuantity) => prevQuantity + 1);
+        }
         // console.log(quantity);
     };
 
     const handleDecrease = () => {
-        if (quantity > 1 && quantity <= maxQuantity) {
+        if (quantity > 1) {
             setQuantity((prevQuantity) => prevQuantity - 1);
         }
     };
@@ -44,7 +46,8 @@ const ChooseQuantity = ({ quantity, setQuantity, maxQuantity }) => {
                 type='number'
                 value={quantity}
                 onChange={handleChange}
-                max={maxQuantity}></input>
+                max={maxQuantity}
+                readOnly></input>
             <span className='plus' onClick={handleIncrease}>
                 +
             </span>

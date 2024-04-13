@@ -96,6 +96,7 @@ const CartDetail = ({
                     <ChooseQuantity
                         quantity={quantity}
                         setQuantity={setQuantity}
+                        maxQuantity={item?.product?.quantity}
                     />
                 </div>
             </div>

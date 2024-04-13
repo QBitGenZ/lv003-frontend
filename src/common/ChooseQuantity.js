@@ -43,7 +43,6 @@ const ChooseQuantity = ({ quantity, setQuantity, maxQuantity }) => {
                 type='number'
                 value={quantity}
                 onChange={handleChange}
-                max={maxQuantity}
                 readOnly></input>
             <span className='plus' onClick={handleIncrease}>
                 +

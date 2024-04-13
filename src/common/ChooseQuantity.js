@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./ChooseQuantity.css";
 
-const ChooseQuantity = ({ quantity, setQuantity }) => {
+const ChooseQuantity = ({ quantity, setQuantity, maxQuantity }) => {
     // const [quantity, setQuantity] = useState(originQuantity);
 
     const handleIncrease = () => {
@@ -10,7 +10,7 @@ const ChooseQuantity = ({ quantity, setQuantity }) => {
     };
 
     const handleDecrease = () => {
-        if (quantity > 1) {
+        if (quantity > 1 && newQuantity <= maxQuantity) {
             setQuantity((prevQuantity) => prevQuantity - 1);
         }
     };
@@ -43,7 +43,8 @@ const ChooseQuantity = ({ quantity, setQuantity }) => {
             <input
                 type='number'
                 value={quantity}
-                onChange={handleChange}></input>
+                onChange={handleChange}
+                max={maxQuantity}></input>
             <span className='plus' onClick={handleIncrease}>
                 +
             </span>

@@ -15,8 +15,8 @@ const OrderSummary = ({ setTotalPrice }) => {
         //     .then((res) => res.json())
         //     .then((data) => setProducts(data?.data?.items))
         //     .catch((error) => console.log(error));
-        const cart = JSON.parse(localStorage.getItem('cart'))
-        setProducts(cart)
+        const cart = JSON.parse(localStorage.getItem("cart"));
+        setProducts(cart);
     }, []);
 
     var price = 0;
@@ -43,7 +43,7 @@ const OrderSummary = ({ setTotalPrice }) => {
                         />
                     </span>
                 </div>
-                <div className='order-tax'>
+                {/* <div className='order-tax'>
                     Thuế{" "}
                     <span className='order-price'>
                         <CurrencyFormat
@@ -54,7 +54,7 @@ const OrderSummary = ({ setTotalPrice }) => {
                             renderText={(value) => <div>{value}</div>}
                         />
                     </span>
-                </div>
+                </div> */}
                 <div className='order-shipment'>
                     Phí giao hàng <span className='order-price'>25.000vnd</span>
                 </div>
@@ -66,7 +66,7 @@ const OrderSummary = ({ setTotalPrice }) => {
                 Tổng đơn hàng{" "}
                 <span className='order-price'>
                     <CurrencyFormat
-                        value={price + price * 0.1 + 25000}
+                        value={price + 25000}
                         displayType={"text"}
                         thousandSeparator={true}
                         suffix={"VND"}

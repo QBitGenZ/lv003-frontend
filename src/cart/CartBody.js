@@ -9,13 +9,13 @@ const CartBody = () => {
     const [deliveryMethod, setDeliveryMethod] = useState("");
     const [address, setAddress] = useState("");
     const [date, setDate] = useState();
-    const [selectAll, setSelectAll] = useState(true)
-    const history = useNavigate()
+    const [selectAll, setSelectAll] = useState(true);
+    const history = useNavigate();
 
     useLayoutEffect(() => getData(), []);
     useEffect(() => {
-        localStorage.removeItem('cart')
-    }, [])
+        localStorage.removeItem("cart");
+    }, []);
 
     function getData() {
         fetch(`${process.env.REACT_APP_IP}/v1/carts`, {
@@ -27,15 +27,14 @@ const CartBody = () => {
         })
             .then((res) => res.json())
             .then((data) => {
-                
-                const items = data?.data?.items?.map(item => {
+                const items = data?.data?.items?.map((item) => {
                     return {
                         ...item,
-                        selected: false
-                    }
-                })
+                        selected: false,
+                    };
+                });
                 // setCarts(data?.data?.items);
-                setCarts(items)
+                setCarts(items);
                 // setSelectAll(false)
             })
             .catch((error) => console.log(error));
@@ -70,7 +69,7 @@ const CartBody = () => {
     }
 
     function updateSelectedStatus(id, selected) {
-        console.log(id, selected)
+        console.log(id, selected);
         const updatedCarts = carts.map((cartItem) => {
             if (cartItem._id === id) {
                 // Tạo một bản sao của đối tượng và thay đổi thuộc tính selected
@@ -83,18 +82,16 @@ const CartBody = () => {
     }
 
     const handleBuyNowClick = (e) => {
-        e.preventDefault(); 
+        e.preventDefault();
 
-        const selectedItem = carts.filter(item => item.selected)
-        
-        if(selectedItem.length <= 0) {
-            return alert('Vui lòng chọn sản phẩm')
+        const selectedItem = carts.filter((item) => item.selected);
+
+        if (selectedItem.length <= 0) {
+            return alert("Vui lòng chọn sản phẩm");
         }
-        localStorage.setItem('cart', JSON.stringify(selectedItem));
-        history('/checkout');
+        localStorage.setItem("cart", JSON.stringify(selectedItem));
+        history("/checkout");
     };
-    
-    
 
     return (
         <div id='CartBody'>
@@ -121,16 +118,25 @@ const CartBody = () => {
                 )}
             </div>
             <div className='button-container'>
-            <div className='button choose-all-btn' onClick={() => {
-               
-                const updatedCarts = carts.map((cartItem) => {
-                    const updatedCartItem = { ...cartItem, selected: selectAll };
-                    return updatedCartItem;
-               })
-               setSelectAll(!selectAll);
-               setCarts(updatedCarts);
-            }}>Chọn tất cả</div> 
-                <Link to={"#"} className='button checkout-btn' onClick={handleBuyNowClick}>
+                <div
+                    className='button choose-all-btn'
+                    onClick={() => {
+                        const updatedCarts = carts.map((cartItem) => {
+                            const updatedCartItem = {
+                                ...cartItem,
+                                selected: selectAll,
+                            };
+                            return updatedCartItem;
+                        });
+                        setSelectAll(!selectAll);
+                        setCarts(updatedCarts);
+                    }}>
+                    Chọn tất cả
+                </div>
+                <Link
+                    to={"#"}
+                    className='button checkout-btn'
+                    onClick={handleBuyNowClick}>
                     Mua hàng
                 </Link>
             </div>

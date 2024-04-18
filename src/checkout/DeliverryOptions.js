@@ -21,14 +21,6 @@ const DeliveryOptions = ({ deliveryOptions, setDeliveryOptions }) => {
                     onClick={handleChangeOption}>
                     Giao hàng nhanh
                 </div>
-                <div
-                    className={
-                        "on-site " +
-                        (deliveryOptions === "on-site" ? "enable" : "")
-                    }
-                    onClick={handleChangeOption}>
-                    Nhận tại cửa hàng
-                </div>
             </div>
         </div>
     );

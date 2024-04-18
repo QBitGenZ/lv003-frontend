@@ -9,7 +9,8 @@ export default function Header() {
     const [showBrandPortfolio, setShowBrandPortfolio] = useState(false);
 
     const [isLogin, setIsLogin] = useState(false);
-    
+
+    const [isShowSearch, setIsShowSearch] = useState(false);
 
     const handleMosueEnterCart = () => {
         setShowSummaryCart(true);
@@ -41,7 +42,6 @@ export default function Header() {
         // Redirect or perform any other necessary actions after logout
         // For example, redirect to the homepage
         window.location.href = "/";
-        
     };
     useEffect(() => {
         const token = localStorage.getItem("token");
@@ -84,7 +84,7 @@ export default function Header() {
                                     <i className='fa-solid fa-user tools-icon'></i>
                                 </Link>
                                 <Link to={"/logout"} onClick={handleLogout}>
-                                <i class="fa-solid fa-right-to-bracket"></i>
+                                    <i class='fa-solid fa-right-to-bracket'></i>
                                 </Link>
                             </>
                         ) : (
@@ -129,5 +129,4 @@ export default function Header() {
             <Outlet></Outlet>
         </>
     );
-    
 }

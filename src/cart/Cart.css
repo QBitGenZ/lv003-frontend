@@ -55,14 +55,14 @@
 }
 
 .cart-detail-body .cart-detail-prod-name {
-    font-size: 36px;
+    font-size: 24px;
     margin: 6px 0;
 }
 
 .cart-detail-body .cart-detail-prod-brand {
-    font-size: 24px;
+    font-size: 20px;
     color: #595959;
-    margin: 6px;
+    margin: 6px 0;
 }
 
 #CartDetail .right-side-detail {

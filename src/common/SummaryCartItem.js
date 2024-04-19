@@ -16,7 +16,7 @@ const SummaryCartItem = ({ product }) => {
                     {product?.product?.name}
                 </div>
                 <div className='summary-cart-item-prod-brand'>
-                    {product?.product?.brand}
+                    {product?.product?.brand?.name}
                 </div>
                 <div className='summary-cart-item-prod-quantity'>
                     SL: {product?.quantity}

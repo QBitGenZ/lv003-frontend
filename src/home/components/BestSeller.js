@@ -15,7 +15,25 @@ export default function () {
             .then((res) => res.json())
             .then((data) => setProducts(data?.data))
             .catch((error) => console.log(error));
+        // getBestSeller();
     }, []);
+
+    const getBestSeller = () => {
+        fetch(`${process.env.REACT_APP_IP}/v1/statistics/best-seller`, {
+            method: "GET",
+            headers: {
+                Accept: "application/json",
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                // setProducts(data?.data)
+                console.log(data);
+            })
+            .catch((error) => console.log(error));
+    };
+
     return (
         <div className='BestSeller'>
             <div className='title'>Best Sellers</div>

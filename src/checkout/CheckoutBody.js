@@ -20,46 +20,37 @@ const CheckoutBody = ({ currentStep, setCurrentStep }) => {
     });
     const [cartItems, setCartItems] = useState([]);
     const [orders, setOrders] = useState(null);
-    const [totalPrice, setTotalPrice] = useState(0);
 
     useEffect(() => getCartItems(), []);
 
     const getCartItems = () => {
-        // fetch(`${process.env.REACT_APP_IP}/v1/carts`, {
-        //     method: "GET",
-        //     headers: {
-        //         Accept: "application/json",
-        //         Authorization: `Bearer ${localStorage.getItem("token")}`,
-        //     },
-        // })
-        //     .then((res) => res.json())
-        //     .then((data) => {
-        //         const items = data?.data?.items;
-        //         setCartItems(
-        //             items.map((value) => {
-        //                 return {
-        //                     product: value?.product?._id,
-        //                     quantity: value?.quantity,
-        //                 };
-        //             })
-        //         );
-        //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //         alert("Lỗi! Vui lòng thử lại");
-        //     });
-        const items = JSON.parse(localStorage.getItem('cart'))
+        const items = JSON.parse(localStorage.getItem("cart"));
 
-        setCartItems(items.map(item => {
-            return {
-                product: item.product._id,
-                quantity: item.quantity
-            }
-        }))
-        // console.log(cartItems)
+        setCartItems(
+            items.map((item) => {
+                return {
+                    product: item.product._id,
+                    price: item?.product?.price * item?.quantity,
+                    quantity: item.quantity,
+                };
+            })
+        );
     };
 
-    const postData = () => {
+    const calculateTotalPrice = (cartItems) => {
+        let price = 0;
+        cartItems?.forEach((element) => {
+            price += element?.price;
+        });
+
+        price += 25000;
+
+        console.log(typeof price);
+
+        return price;
+    };
+
+    const postData = async () => {
         const {
             recipientName,
             phoneNumber,
@@ -69,12 +60,20 @@ const CheckoutBody = ({ currentStep, setCurrentStep }) => {
             detailAddress,
         } = address;
 
-        if (!recipientName || !phoneNumber || !provinceCity || !district || !ward || !detailAddress) {
-            return alert("Yêu cầu nhập thông tin đầy đủ")
+        if (
+            !recipientName ||
+            !phoneNumber ||
+            !provinceCity ||
+            !district ||
+            !ward ||
+            !detailAddress
+        ) {
+            return alert("Yêu cầu nhập thông tin đầy đủ");
         }
 
-
-        fetch(`${process.env.REACT_APP_IP}/v1/orders`, {
+        let statusCode;
+        console.log(calculateTotalPrice(cartItems));
+        await fetch(`${process.env.REACT_APP_IP}/v1/orders`, {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -85,18 +84,36 @@ const CheckoutBody = ({ currentStep, setCurrentStep }) => {
                 paymentMethod: paymentMethod,
                 deliveryMethod: deliveryOPtions,
                 address: `${recipientName}; ${phoneNumber}; ${detailAddress}, ${ward}, ${district}, ${provinceCity}`,
-                items: cartItems,
+                items: cartItems.map((item) => {
+                    return {
+                        product: item.product,
+                        quantity: item.quantity,
+                    };
+                }),
+                totalPrice: Number.parseFloat(calculateTotalPrice(cartItems)),
             }),
         })
-            .then((res) => res.json())
+            .then((res) => {
+                statusCode = res.status;
+                if (statusCode === 201) {
+                    alert("Đặt hàng thành công");
+                    return res.json();
+                } else {
+                    return Promise.reject(
+                        "Đặt hàng thất bại! Vui lòng thử lại!"
+                    );
+                }
+            })
             .then((data) => {
                 setOrders(data?.data);
                 localStorage.setItem("orderId", data?.data?._id);
             })
             .catch((error) => {
+                alert(error);
                 console.log("error: " + error);
-                alert("Lỗi! Vui lòng thử lại");
             });
+
+        return statusCode;
     };
 
     if (currentStep === "delivery") {
@@ -107,7 +124,7 @@ const CheckoutBody = ({ currentStep, setCurrentStep }) => {
                         deliveryOptions={deliveryOPtions}
                         setDeliveryOptions={setDeliveryOPtions}
                     />
-                    <OrderSummary setTotalPrice={setTotalPrice} />
+                    <OrderSummary order={orders} />
                 </div>
                 <div className='checkout-haft-bot'>
                     {currentStep === "confirmation" ? (
@@ -131,7 +148,7 @@ const CheckoutBody = ({ currentStep, setCurrentStep }) => {
         return (
             <div id='CheckoutBody' className='in-payment'>
                 <div className='checkout-haft-top'>
-                    <OrderSummary setTotalPrice={setTotalPrice} />
+                    <OrderSummary order={orders} />
                     <SummaryCart />
                 </div>
                 <div className='checkout-haft-bot'>
@@ -148,11 +165,8 @@ const CheckoutBody = ({ currentStep, setCurrentStep }) => {
         return (
             <div id='CheckoutBody'>
                 <div className='checkout-haft-top'>
-                    <ConfirmationCheckout
-                        order={orders}
-                        totalPrice={totalPrice}
-                    />
-                    <OrderSummary setTotalPrice={setTotalPrice} />
+                    <ConfirmationCheckout order={orders} />
+                    <OrderSummary order={orders} />
                 </div>
             </div>
         );

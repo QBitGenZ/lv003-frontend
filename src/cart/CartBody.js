@@ -13,6 +13,7 @@ const CartBody = () => {
     const history = useNavigate();
 
     useLayoutEffect(() => getData(), []);
+
     useEffect(() => {
         localStorage.removeItem("cart");
     }, []);

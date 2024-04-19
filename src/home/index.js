@@ -4,18 +4,30 @@ import BestSeller from "./components/BestSeller";
 import FeatureBrand from "./components/FeatureBrand";
 import Footer from "../common/Footer";
 import "./Home.css";
+import { useState } from "react";
 import Banner from "./components/Banner";
-import Navigation from "../common/Navigation";
+import SearchBody from "../common/SearchBody";
 
-const Home = (props) => {
+const Home = () => {
+    const [isShowSearch, setIsShowSearch] = useState(false);
+
     return (
         <>
-            <Header />
-            <Banner />
-            <Promotion />
-            <BestSeller />
-            <FeatureBrand />
-            <Footer />
+            <Header
+                isShowSearch={isShowSearch}
+                setIsShowSearch={setIsShowSearch}
+            />
+            {isShowSearch ? (
+                <SearchBody setIsShowSearch={setIsShowSearch} />
+            ) : (
+                <>
+                    <Banner />
+                    <Promotion />
+                    <BestSeller />
+                    <FeatureBrand />
+                    <Footer />
+                </>
+            )}
         </>
     );
 };

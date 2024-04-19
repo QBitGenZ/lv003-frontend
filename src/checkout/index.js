@@ -11,7 +11,6 @@ const Checkout = ({ step }) => {
 
     const handleChangeCurrentStep = () => {
         setCurrentStep(getNextStep(stepList, currentStep));
-        console.log(currentStep);
     };
 
     const getNextStep = (list, currentStep) => {

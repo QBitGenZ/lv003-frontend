@@ -1,3 +1,7 @@
+.visibility-hiden {
+    visibility: hidden;
+}
+
 .header-container {
     width: 100%;
     position: relative;
@@ -29,6 +33,10 @@
     margin: auto 0;
 }
 
+.main-tools-container .search-icon:hover {
+    cursor: pointer;
+}
+
 .main-tools-container i {
     padding: 2px;
     margin: 0 10px;
@@ -51,14 +59,12 @@
     font-size: 20px;
 }
 
-
 .header-nav .main-navigation:hover,
 .header-nav .main-navigation:focus {
     cursor: pointer;
     opacity: 0.8;
     border-bottom: 3px solid #beeefe;
 }
-
 
 /* End header section */
 
@@ -121,6 +127,7 @@
     border: 1px #ccc solid;
     min-height: 400px;
     transition: transform 0.3s;
+    margin: 20px 0;
 }
 
 .BestSellerItem:hover {

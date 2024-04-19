@@ -6,8 +6,6 @@ const LoginBody = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-
-
     const handleLogin = (e) => {
         e.preventDefault();
 
@@ -28,10 +26,9 @@ const LoginBody = () => {
                 setTokenAndExpirationTime(data.access_token);
                 if (localStorage.getItem("token")) {
                     alert("Đăng nhập thành công");
-                    
+
                     window.location.href = "/";
                 }
-                
             })
             .catch((error) => {
                 console.log(error);
@@ -44,7 +41,7 @@ const LoginBody = () => {
         const currentTime = new Date();
         console.log(new Date().getTime());
         const minute = 60 * 1000;
-        const expirationTime = currentTime.getTime() + 50 * minute;
+        const expirationTime = currentTime.getTime() + 365 * 24 * 60 * minute;
         localStorage.setItem("expirationTime", expirationTime.toString());
     };
 

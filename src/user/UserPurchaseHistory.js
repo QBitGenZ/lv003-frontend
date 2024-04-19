@@ -27,15 +27,13 @@ const UserPurchaseHistory = ({ order }) => {
                     <div className='order-date'>
                         Ngày đặt hàng {formattedDate}
                     </div>
-                    <div className='order-status'>
-                        Trạng thái {order?.status}
-                    </div>
+                    <div className='order-status'>{order?.status}</div>
                 </div>
                 <div className='order-cost'>
                     Tổng đơn hàng{" "}
                     {
                         <CurrencyFormat
-                            value={orderCost + orderCost * 0.1 + 25000}
+                            value={order?.totalPrice}
                             displayType={"text"}
                             thousandSeparator={true}
                             suffix={"VND"}

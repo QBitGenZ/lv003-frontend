@@ -1,6 +1,5 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useState } from "react";
 import CartDetail from "../cart/CartDetail";
-import { ProductData } from "../common/json/ProductData";
 import CurrencyFormat from "react-currency-format";
 
 const OrderDetail = ({ order }) => {

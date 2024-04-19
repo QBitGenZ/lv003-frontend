@@ -40,7 +40,7 @@ const RegisterBody = () => {
         formData.append("password", password);
         formData.append("fullname", fullname);
         formData.append("email", email);
-        // formData.append("gender", gender);
+        formData.append("gender", gender);
         const formatedDate = new Date(birthday).toISOString().split("T")[0];
         formData.append("birthday", formatedDate);
         formData.append("phone", phone);

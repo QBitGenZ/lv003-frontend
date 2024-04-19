@@ -5,23 +5,26 @@ import "./SummaryCart.css";
 const SummaryCart = ({ className }) => {
     const [products, setProducts] = useState([]);
 
-    useEffect(() => updateCart(), []);
+    useEffect(() => updateCart(window.location.pathname), []);
 
-    function updateCart() {
-        // fetch(`${process.env.REACT_APP_IP}/v1/carts`, {
-        //     method: "GET",
-        //     headers: {
-        //         Accept: "application/json",
-        //         Authorization: `Bearer ${localStorage.getItem("token")}`,
-        //     },
-        // })
-        //     .then((res) => res.json())
-        //     .then((data) => {
-        //         setProducts(data?.data?.items);
-        //     })
-        //     .catch((error) => console.log(error));
-        const cart = JSON.parse(localStorage.getItem('cart'))
-        setProducts(cart)
+    function updateCart(currentPath) {
+        if (currentPath === "/") {
+            fetch(`${process.env.REACT_APP_IP}/v1/carts`, {
+                method: "GET",
+                headers: {
+                    Accept: "application/json",
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                },
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    setProducts(data?.data?.items);
+                })
+                .catch((error) => console.log(error));
+        } else {
+            const cart = JSON.parse(localStorage.getItem("cart"));
+            setProducts(cart);
+        }
     }
 
     return (

@@ -13,11 +13,11 @@ const RegisterBody = () => {
     const [gender, setGender] = useState("Male");
     const [birthday, setBirthday] = useState("");
     const [phone, setPhone] = useState("");
-    const [isChecked, setIsChecked] = useState(false)
+    const [isChecked, setIsChecked] = useState(false);
 
     const handleSubmit = (e) => {
-        if(!isChecked){
-            alert('Đọc kỹ đi má');
+        if (!isChecked) {
+            alert("Vui lòng đồng ý với điều khoản sử dụng.");
             return;
         }
         if (
@@ -28,15 +28,11 @@ const RegisterBody = () => {
             !birthday ||
             !phone
         ) {
-            alert("Điền giúp nha.");
+            alert("Vui lòng điền đầy đủ thông tin.");
             return;
         }
 
-
         e.preventDefault();
-
-        
-       
 
         const formData = new FormData();
 
@@ -56,13 +52,20 @@ const RegisterBody = () => {
             method: "POST",
             body: formData,
         })
-            .then((res) => res.json())
-            .then((data) => {
-                alert("Tạo tài khoản thành công");
-                window.location.href = "/login";
+            .then((res) => {
+                if (res.status === 201) {
+                    alert("Tạo tài khoản thành công");
+                    window.location.href = "/login";
+                } else if (res.status === 422) {
+                    alert("Tên đăng nhập tồn tại");
+                } else {
+                    alert("Tạo tài khoản thất bại");
+                    return Promise.reject();
+                }
             })
-            .catch((error) => console.log(error));
-        console.log(Date(birthday));
+            .catch((error) => {
+                console.log(error);
+            });
     };
 
     return (
@@ -114,9 +117,12 @@ const RegisterBody = () => {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}></input>
                     <div className='confirm-container'>
-                        <input type='checkbox' id='confirm' checked={isChecked} onChange={() => 
-                            {
-                                setIsChecked(!isChecked)
+                        <input
+                            type='checkbox'
+                            id='confirm'
+                            checked={isChecked}
+                            onChange={() => {
+                                setIsChecked(!isChecked);
                             }}></input>
                         <label htmlFor='confirm'>
                             Bằng cách gửi biểu mẫu này. Tôi xác nhận rằng đã đọc

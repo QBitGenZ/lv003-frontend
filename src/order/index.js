@@ -11,6 +11,13 @@ const Order = () => {
     const { id } = useParams();
 
     useEffect(() => {
+        getOrderById();
+        return () => {
+            console.log("unmount");
+        };
+    }, []);
+
+    const getOrderById = () => {
         fetch(`${process.env.REACT_APP_IP}/v1/orders/${id}`, {
             method: "GET",
             headers: {
@@ -27,7 +34,7 @@ const Order = () => {
                 // alert("Lỗi kết nối đến server");
                 console.log(error);
             });
-    }, []);
+    };
 
     return (
         <div id='Order'>

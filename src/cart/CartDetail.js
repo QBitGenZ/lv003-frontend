@@ -12,7 +12,9 @@ const CartDetail = ({
     const [quantity, setQuantity] = useState(item?.quantity);
     const [isSelected, setIsSelected] = useState(item?.selected);
 
-    const updateCart = () => (isInCart ? updateData(item._id, quantity) : null);
+    const updateCart = () => {
+        isInCart && updateData(item._id, quantity);
+    };
 
     useEffect(() => {
         setIsSelected(item?.selected);
@@ -23,7 +25,9 @@ const CartDetail = ({
         deleteItem(item?._id);
     };
 
-    useEffect(() => updateCart(), [quantity]);
+    useEffect(() => {
+        updateCart();
+    }, [quantity]);
 
     if (!isInCart) {
         return (

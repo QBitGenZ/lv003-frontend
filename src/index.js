@@ -7,7 +7,6 @@ import { BrowserRouter, Route, RouterProvider, Routes } from "react-router-dom";
 import Login from "./login/index.js";
 import Register from "./register/index.js";
 import User from "./user/index.js";
-import Search from "./search/index.js";
 import Product from "./product/index.js";
 import Checkout from "./checkout/index.js";
 import Cart from "./cart/index.js";
@@ -17,7 +16,6 @@ import Products from "./products/index.js";
 import AboutUs from "./aboutus/index.js";
 import Support from "./support/index.js";
 import Privacy from "./privacy/index.js";
-import PaymentForm from "./checkout/PaymentForm.js";
 import SuccessVNP from "./checkout/SuccessVNP.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -28,7 +26,6 @@ root.render(
             <Route path='login' element={<Login />}></Route>
             <Route path='register' element={<Register />}></Route>
             <Route path='user' element={<User />}></Route>
-            <Route path='search' element={<Search />}></Route>
             <Route path='product/:id' element={<Product />}></Route>
             <Route path='cart' element={<Cart />}></Route>
             {/* <Route path='order' element={<Order />}></Route> */}
@@ -41,9 +38,6 @@ root.render(
             <Route path='about-us' element={<AboutUs />}></Route>
             <Route path='support' element={<Support />}></Route>
             <Route path='privacy' element={<Privacy />}></Route>
-            <Route
-                path='order/online-payment'
-                element={<PaymentForm />}></Route>
             <Route path='checkout/success' element={<SuccessVNP />}></Route>
         </Routes>
     </BrowserRouter>

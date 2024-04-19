@@ -1,6 +1,6 @@
 import CurrencyFormat from "react-currency-format";
 
-const ConfirmationCheckout = ({ order, totalPrice }) => {
+const ConfirmationCheckout = ({ order }) => {
     const dbDate = order?.created_at;
     // Chuyển đổi sang đối tượng Date
     const dateObj = new Date(dbDate);
@@ -23,9 +23,7 @@ const ConfirmationCheckout = ({ order, totalPrice }) => {
                     <p className='order-price-infor'>
                         Tổng số tiền:{" "}
                         <CurrencyFormat
-                            value={
-                                totalPrice
-                            }
+                            value={order?.totalPrice}
                             displayType={"text"}
                             thousandSeparator={true}
                             suffix={"VND"}
@@ -75,29 +73,36 @@ const ConfirmationCheckout = ({ order, totalPrice }) => {
                                     {item?.product?.name}
                                 </td>
                                 <td style={{ textAlign: "center" }}>
-                                    {item?.product?.price}
+                                    <CurrencyFormat
+                                        value={item?.product?.price}
+                                        displayType={"text"}
+                                        thousandSeparator={true}
+                                        suffix={"VND"}
+                                        renderText={(value) => (
+                                            <div>{value}</div>
+                                        )}
+                                    />
                                 </td>
                                 <td style={{ textAlign: "center" }}>
                                     {item?.quantity}
                                 </td>
                                 <td style={{ textAlign: "center" }}>
-                                    {item?.product?.price * item?.quantity}
+                                    <CurrencyFormat
+                                        value={
+                                            item?.product?.price *
+                                            item?.quantity
+                                        }
+                                        displayType={"text"}
+                                        thousandSeparator={true}
+                                        suffix={"VND"}
+                                        renderText={(value) => (
+                                            <div>{value}</div>
+                                        )}
+                                    />
                                 </td>
                             </tr>
                         );
                     })}
-                    <tr className='confirm-receipt-tax'>
-                        <td colSpan={2}>Thuế</td>
-                        <td colSpan={2}>
-                            <CurrencyFormat
-                                value={total * 0.1}
-                                displayType={"text"}
-                                thousandSeparator={true}
-                                suffix={"VND"}
-                                renderText={(value) => <div>{value}</div>}
-                            />
-                        </td>
-                    </tr>
                     <tr className='confirm-receipt-shipment'>
                         <td colSpan={2}>Phí giao hàng</td>
                         <td colSpan={2}>
@@ -114,9 +119,7 @@ const ConfirmationCheckout = ({ order, totalPrice }) => {
                         <td colSpan={2}>Tổng hóa đơn</td>
                         <td colSpan={2}>
                             <CurrencyFormat
-                                value={
-                                    total + total * 0.1 + (total ? 25000 : 0)
-                                }
+                                value={order?.totalPrice}
                                 displayType={"text"}
                                 thousandSeparator={true}
                                 suffix={"VND"}

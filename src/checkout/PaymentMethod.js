@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { redirect } from "react-router-dom";
-import PaymentForm from "./PaymentForm";
 
 const PaymentMethod = ({
     paymentMethod,
@@ -21,7 +20,6 @@ const PaymentMethod = ({
             },
             body: JSON.stringify({
                 amount: localStorage.getItem("totalPrice"),
-                bankCode: "NCB",
                 language: "vn",
             }),
         })
@@ -34,11 +32,12 @@ const PaymentMethod = ({
             });
     };
 
-    const submit = () => {
+    const submit = async () => {
         if (paymentMethod === "cod") {
-            onSubmit();
-            alert("Mua hàng thành công");
-            handleClicked();
+            const submit = await onSubmit();
+            if (submit === 201) {
+                handleClicked();
+            }
         } else {
             onSubmit(); // TODO: sửa lại nè
             handleSubmit();

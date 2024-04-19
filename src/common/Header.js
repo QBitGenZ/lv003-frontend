@@ -3,13 +3,12 @@ import { Link, Outlet } from "react-router-dom";
 import SummaryCart from "./SummaryCart";
 import Navigation from "./Navigation";
 
-export default function Header() {
+export default function Header({ isShowSearch, setIsShowSearch }) {
     const [showSummaryCart, setShowSummaryCart] = useState(false);
     const [showProductPortfolio, setShowProductPortfolio] = useState(false);
     const [showBrandPortfolio, setShowBrandPortfolio] = useState(false);
 
     const [isLogin, setIsLogin] = useState(false);
-    
 
     const handleMosueEnterCart = () => {
         setShowSummaryCart(true);
@@ -41,14 +40,15 @@ export default function Header() {
         // Redirect or perform any other necessary actions after logout
         // For example, redirect to the homepage
         window.location.href = "/";
-        
     };
+
     useEffect(() => {
         const token = localStorage.getItem("token");
         if (token) {
             setIsLogin(true);
         }
     }, []);
+
     return (
         <>
             <div className='header-container'>
@@ -68,10 +68,16 @@ export default function Header() {
                         </div>
                     </Link>
 
-                    <div className='main-tools-container'>
-                        <Link to={"/search"}>
+                    <div
+                        className={
+                            (isShowSearch && "visibility-hiden") +
+                            " main-tools-container"
+                        }>
+                        <span
+                            className='search-icon'
+                            onClick={() => setIsShowSearch(true)}>
                             <i class='fa-solid fa-magnifying-glass tools-icon'></i>
-                        </Link>
+                        </span>
                         <Link
                             to={"/cart"}
                             onMouseEnter={handleMosueEnterCart}
@@ -84,7 +90,7 @@ export default function Header() {
                                     <i className='fa-solid fa-user tools-icon'></i>
                                 </Link>
                                 <Link to={"/logout"} onClick={handleLogout}>
-                                <i class="fa-solid fa-right-to-bracket"></i>
+                                    <i class='fa-solid fa-right-to-bracket'></i>
                                 </Link>
                             </>
                         ) : (
@@ -109,8 +115,10 @@ export default function Header() {
                         )}
                     </div>
 
+                    {/*
                     <a className='main-navigation'>Hot Deals</a>
                     <a className='main-navigation'>Bán chạy</a>
+                    */}
                     <div
                         className='header-nav-portfolio'
                         onMouseEnter={handleMosueEnterBrandPortfolio}
@@ -129,5 +137,4 @@ export default function Header() {
             <Outlet></Outlet>
         </>
     );
-    
 }

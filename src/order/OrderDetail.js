@@ -36,25 +36,7 @@ const OrderDetail = ({ order }) => {
                             Tiền sản phẩm
                             <span>
                                 <CurrencyFormat
-                                    value={parseInt(
-                                        localStorage.getItem("totalPrice")
-                                    )}
-                                    displayType={"text"}
-                                    thousandSeparator={true}
-                                    suffix={"VND"}
-                                    renderText={(value) => <div>{value}</div>}
-                                />
-                            </span>
-                        </div>
-                        <div className='tax'>
-                            Thuế
-                            <span>
-                                <CurrencyFormat
-                                    value={
-                                        parseInt(
-                                            localStorage.getItem("totalPrice")
-                                        ) * 0.1
-                                    }
+                                    value={order?.totalPrice}
                                     displayType={"text"}
                                     thousandSeparator={true}
                                     suffix={"VND"}
@@ -67,18 +49,6 @@ const OrderDetail = ({ order }) => {
                             <span>
                                 <CurrencyFormat
                                     value={25000}
-                                    displayType={"text"}
-                                    thousandSeparator={true}
-                                    suffix={"VND"}
-                                    renderText={(value) => <div>{value}</div>}
-                                />
-                            </span>
-                        </div>
-                        <div className='voucher'>
-                            voucher
-                            <span>
-                                <CurrencyFormat
-                                    value={0}
                                     displayType={"text"}
                                     thousandSeparator={true}
                                     suffix={"VND"}

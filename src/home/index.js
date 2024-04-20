@@ -5,8 +5,8 @@ import FeatureBrand from "./components/FeatureBrand";
 import Footer from "../common/Footer";
 import "./Home.css";
 import { useState } from "react";
-import Banner from "./components/Banner";
 import SearchBody from "../common/SearchBody";
+import Banner from "./components/Banner";
 
 const Home = () => {
     const [isShowSearch, setIsShowSearch] = useState(false);

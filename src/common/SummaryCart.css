@@ -60,7 +60,7 @@ div.SummaryCartItem {
 }
 
 .summary-cart-item-prod-price .origin-price {
-    text-decoration: line-through;
+    /* text-decoration: line-through; */
 }
 
 #SummaryCart.on-top {

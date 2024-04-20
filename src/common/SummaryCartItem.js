@@ -22,7 +22,7 @@ const SummaryCartItem = ({ product }) => {
                     SL: {product?.quantity}
                 </div>
                 <div className='summary-cart-item-prod-price'>
-                    <div className='actual-price'>
+                    {/* <div className='actual-price'>
                         <CurrencyFormat
                             value={product?.product?.price * 0.8}
                             displayType={"text"}
@@ -30,7 +30,7 @@ const SummaryCartItem = ({ product }) => {
                             suffix={"VND"}
                             renderText={(value) => <div>{value}</div>}
                         />
-                    </div>
+                    </div> */}
                     <div className='origin-price'>
                         <CurrencyFormat
                             value={product?.product?.price}

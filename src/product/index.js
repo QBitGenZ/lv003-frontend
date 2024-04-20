@@ -2,9 +2,12 @@ import "./Product.css";
 import Header from "../common/Header";
 import ProductBody from "./ProductBody";
 import { useEffect, useState } from "react";
+import SearchBody from "../common/SearchBody";
 import { useParams } from "react-router-dom";
 
 export default function () {
+    const [isShowSearch, setIsShowSearch] = useState(false);
+
     const [product, setProduct] = useState();
     const { id } = useParams();
 
@@ -24,8 +27,15 @@ export default function () {
 
     return (
         <>
-            <Header></Header>
-            <ProductBody product={product}></ProductBody>
+            <Header
+                isShowSearch={isShowSearch}
+                setIsShowSearch={setIsShowSearch}
+            />
+            {isShowSearch ? (
+                <SearchBody setIsShowSearch={setIsShowSearch} />
+            ) : (
+                <ProductBody product={product}></ProductBody>
+            )}
         </>
     );
 }

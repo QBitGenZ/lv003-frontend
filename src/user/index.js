@@ -1,10 +1,13 @@
 import { Navigate } from "react-router-dom";
 import Header from "../common/Header";
 import "./User.css";
+import { useState } from "react";
 import UserBody from "./UserBody";
+import SearchBody from "../common/SearchBody";
 
 const User = () => {
     const token = localStorage.getItem("token");
+    const [isShowSearch, setIsShowSearch] = useState(false);
 
     const isTokenExpired = () => {
         const expirationTime = parseInt(localStorage.getItem("expirationTime"));
@@ -22,8 +25,15 @@ const User = () => {
     if (token?.length > 0 && !isTokenExpired()) {
         return (
             <div id='User'>
-                <Header />
-                <UserBody />
+                <Header
+                    isShowSearch={isShowSearch}
+                    setIsShowSearch={setIsShowSearch}
+                />
+                {isShowSearch ? (
+                    <SearchBody setIsShowSearch={setIsShowSearch} />
+                ) : (
+                    <UserBody />
+                )}
             </div>
         );
     } else {

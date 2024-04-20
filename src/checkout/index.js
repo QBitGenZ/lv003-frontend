@@ -2,9 +2,12 @@ import Header from "../common/Header";
 import Footer from "../common/Footer";
 import CheckoutProgress from "./CheckoutProgress";
 import { useEffect, useState } from "react";
+import SearchBody from "../common/SearchBody";
 import CheckoutBody from "./CheckoutBody";
 
 const Checkout = ({ step }) => {
+    const [isShowSearch, setIsShowSearch] = useState(false);
+
     const stepList = ["delivery", "payment", "confirmation"];
 
     const [currentStep, setCurrentStep] = useState(step);
@@ -26,37 +29,64 @@ const Checkout = ({ step }) => {
     if (currentStep === "delivery") {
         return (
             <div id='Checkout'>
-                <Header />
-                <CheckoutProgress currentProgress={"delivery"} />
-                <CheckoutBody
-                    currentStep={"delivery"}
-                    setCurrentStep={handleChangeCurrentStep}
+                <Header
+                    isShowSearch={isShowSearch}
+                    setIsShowSearch={setIsShowSearch}
                 />
-                <Footer />
+                {isShowSearch ? (
+                    <SearchBody setIsShowSearch={setIsShowSearch} />
+                ) : (
+                    <>
+                        <CheckoutProgress currentProgress={"delivery"} />
+                        <CheckoutBody
+                            currentStep={"delivery"}
+                            setCurrentStep={handleChangeCurrentStep}
+                        />
+                        <Footer />
+                    </>
+                )}
             </div>
         );
     } else if (currentStep === "payment") {
         return (
             <div id='Checkout'>
-                <Header />
-                <CheckoutProgress currentProgress={"payment"} />
-                <CheckoutBody
-                    currentStep={"payment"}
-                    setCurrentStep={handleChangeCurrentStep}
+                <Header
+                    isShowSearch={isShowSearch}
+                    setIsShowSearch={setIsShowSearch}
                 />
-                <Footer />
+                {isShowSearch ? (
+                    <SearchBody setIsShowSearch={setIsShowSearch} />
+                ) : (
+                    <>
+                        <CheckoutProgress currentProgress={"payment"} />
+                        <CheckoutBody
+                            currentStep={"payment"}
+                            setCurrentStep={handleChangeCurrentStep}
+                        />
+                        <Footer />
+                    </>
+                )}
             </div>
         );
     } else {
         return (
             <div id='Checkout'>
-                <Header />
-                <CheckoutProgress currentProgress={"confirmation"} />
-                <CheckoutBody
-                    currentStep={"checkout"}
-                    setCurrentStep={handleChangeCurrentStep}
+                <Header
+                    isShowSearch={isShowSearch}
+                    setIsShowSearch={setIsShowSearch}
                 />
-                <Footer />
+                {isShowSearch ? (
+                    <SearchBody setIsShowSearch={setIsShowSearch} />
+                ) : (
+                    <>
+                        <CheckoutProgress currentProgress={"confirmation"} />
+                        <CheckoutBody
+                            currentStep={"checkout"}
+                            setCurrentStep={handleChangeCurrentStep}
+                        />
+                        <Footer />
+                    </>
+                )}
             </div>
         );
     }

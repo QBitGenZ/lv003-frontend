@@ -56,14 +56,15 @@ const RegisterBody = () => {
                 if (res.status === 201) {
                     alert("Tạo tài khoản thành công");
                     window.location.href = "/login";
-                } else if (res.status === 422) {
-                    alert("Tên đăng nhập tồn tại");
                 } else {
-                    alert("Tạo tài khoản thất bại");
-                    return Promise.reject();
+                    return res.json().then((data) => {
+                        return Promise.reject(data.error);
+                    });
                 }
             })
+
             .catch((error) => {
+                alert(error);
                 console.log(error);
             });
     };

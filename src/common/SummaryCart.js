@@ -5,10 +5,10 @@ import "./SummaryCart.css";
 const SummaryCart = ({ className }) => {
     const [products, setProducts] = useState([]);
 
-    useEffect(() => updateCart(window.location.pathname), []);
+    useEffect(() => updateCart(), []);
 
-    function updateCart(currentPath) {
-        if (currentPath === "/") {
+    function updateCart() {
+        if (className === "on-top") {
             fetch(`${process.env.REACT_APP_IP}/v1/carts`, {
                 method: "GET",
                 headers: {

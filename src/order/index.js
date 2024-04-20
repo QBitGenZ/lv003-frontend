@@ -4,9 +4,12 @@ import Header from "../common/Header";
 import Footer from "../common/Footer";
 import OrderBody from "./OrderBody";
 import { OrderStatus } from "../common/json/OrderStatus";
+import SearchBody from "../common/SearchBody";
 import "./Order.css";
 
 const Order = () => {
+    const [isShowSearch, setIsShowSearch] = useState(false);
+
     const [order, setOrder] = useState();
     const { id } = useParams();
 
@@ -38,9 +41,18 @@ const Order = () => {
 
     return (
         <div id='Order'>
-            <Header />
-            <OrderBody order={order} status={OrderStatus} />
-            <Footer />
+            <Header
+                isShowSearch={isShowSearch}
+                setIsShowSearch={setIsShowSearch}
+            />
+            {isShowSearch ? (
+                <SearchBody setIsShowSearch={setIsShowSearch} />
+            ) : (
+                <>
+                    <OrderBody order={order} status={OrderStatus} />
+                    <Footer />
+                </>
+            )}
         </div>
     );
 };

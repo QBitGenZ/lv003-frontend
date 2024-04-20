@@ -79,7 +79,7 @@
 
 .cart-detail-price .origin-price {
     font-size: 20px;
-    text-decoration: line-through;
+    /* text-decoration: line-through; */
     color: #333;
 }
 

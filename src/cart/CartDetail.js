@@ -106,7 +106,7 @@ const CartDetail = ({
             </div>
             <div className='right-side-detail'>
                 <div className='cart-detail-price'>
-                    <div className='sale-price'>
+                    {/* <div className='sale-price'>
                         Giá sale:
                         <CurrencyFormat
                             value={item?.product?.price * 0.8}
@@ -115,9 +115,9 @@ const CartDetail = ({
                             suffix={"VND"}
                             renderText={(value) => <div>{value}</div>}
                         />
-                    </div>
+                    </div> */}
                     <div className='origin-price'>
-                        Giá gốc:{" "}
+                        Giá tiền:{" "}
                         <CurrencyFormat
                             value={item?.product?.price}
                             displayType={"text"}

@@ -19,7 +19,7 @@ const CheckoutBody = ({ currentStep, setCurrentStep }) => {
         isDefaultAddress: false,
     });
     const [cartItems, setCartItems] = useState([]);
-    const [orders, setOrders] = useState(null);
+    const [orders, setOrders] = useState();
 
     useEffect(() => getCartItems(), []);
 
@@ -106,6 +106,7 @@ const CheckoutBody = ({ currentStep, setCurrentStep }) => {
             })
             .then((data) => {
                 setOrders(data?.data);
+                console.log(data);
                 localStorage.setItem("orderId", data?.data?._id);
             })
             .catch((error) => {
@@ -124,7 +125,7 @@ const CheckoutBody = ({ currentStep, setCurrentStep }) => {
                         deliveryOptions={deliveryOPtions}
                         setDeliveryOptions={setDeliveryOPtions}
                     />
-                    <OrderSummary order={orders} />
+                    {/* <OrderSummary order={orders} /> */}
                 </div>
                 <div className='checkout-haft-bot'>
                     {currentStep === "confirmation" ? (
@@ -148,7 +149,7 @@ const CheckoutBody = ({ currentStep, setCurrentStep }) => {
         return (
             <div id='CheckoutBody' className='in-payment'>
                 <div className='checkout-haft-top'>
-                    <OrderSummary order={orders} />
+                    {/* <OrderSummary order={orders} /> */}
                     <SummaryCart />
                 </div>
                 <div className='checkout-haft-bot'>
@@ -166,7 +167,7 @@ const CheckoutBody = ({ currentStep, setCurrentStep }) => {
             <div id='CheckoutBody'>
                 <div className='checkout-haft-top'>
                     <ConfirmationCheckout order={orders} />
-                    <OrderSummary order={orders} />
+                    {/* <OrderSummary order={orders} /> */}
                 </div>
             </div>
         );

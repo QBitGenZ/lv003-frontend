@@ -10,8 +10,8 @@ const ProductBody = ({ product }) => {
         <div className='ProductBody'>
             <ProductDetail product={product} />
             <ProductDescription product={product} />
-            <ProductReviews />
-            <ProductComments />
+            {/* <ProductReviews />
+            <ProductComments /> */}
             <ProductRecommend />
             <Footer />
         </div>

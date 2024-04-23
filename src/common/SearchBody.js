@@ -23,8 +23,6 @@ const SearchBody = ({ setIsShowSearch }) => {
         )
             .then((response) => response.json())
             .then((data) => {
-                // Handle data here
-                console.log(data);
                 setSearchResult(data?.data);
             })
             .catch((error) => {
@@ -47,7 +45,8 @@ const SearchBody = ({ setIsShowSearch }) => {
                 <input
                     type='text'
                     placeholder='Bạn cần gì...'
-                    onChange={(event) => handleSearch(event)}></input>
+                    onChange={(event) => handleSearch(event)}
+                    onSubmit={(e) => e.preventDefault()}></input>
             </form>
             {searchResult?.length > 0 ? (
                 <>

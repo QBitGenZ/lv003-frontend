@@ -37,12 +37,11 @@ const UserChangeInfor = ({ user, handleClickButton }) => {
     };
 
     const submitChangeInfor = () => {
-
-        const form = new FormData()
-        form.append('fullname', fullname)
-        form.append('email', email)
-        form.append('phone', phone)
-        form.append('birtday', revertDateFormat(birthday))
+        const form = new FormData();
+        form.append("fullname", fullname);
+        form.append("email", email);
+        form.append("phone", phone);
+        form.append("birtday", revertDateFormat(birthday));
 
         fetch(`${process.env.REACT_APP_IP}/v1`, {
             method: "PUT",
@@ -52,16 +51,18 @@ const UserChangeInfor = ({ user, handleClickButton }) => {
             },
             body: form,
         })
-            .then((response) => response.json())
-            .then((data) => {
-                alert("Thay đổi thông tin thành công");
+            .then((response) => {
+                if (response.status === 200) {
+                    alert("Thay đổi thông tin thành công");
+                    window.location.reload();
+                } else {
+                    alert("Thay đổi thông tin thất bại");
+                    return Promise.reject("Thay đổi thông tin thất bại");
+                }
             })
             .catch((error) => {
-                alert("Thay đổi thông tin thất bại");
-                console.log(error);
+                alert(error);
             });
-
-        window.location.reload();
     };
 
     return (

@@ -36,7 +36,7 @@ const OrderDetail = ({ order }) => {
                             Tiền sản phẩm
                             <span>
                                 <CurrencyFormat
-                                    value={order?.totalPrice}
+                                    value={order?.totalPrice - 25000}
                                     displayType={"text"}
                                     thousandSeparator={true}
                                     suffix={"VND"}
@@ -60,16 +60,7 @@ const OrderDetail = ({ order }) => {
                             Tổng đơn hàng
                             <span>
                                 <CurrencyFormat
-                                    value={
-                                        parseInt(
-                                            localStorage.getItem("totalPrice")
-                                        ) +
-                                        parseInt(
-                                            localStorage.getItem("totalPrice")
-                                        ) *
-                                            0.1 +
-                                        25000
-                                    }
+                                    value={order?.totalPrice}
                                     displayType={"text"}
                                     thousandSeparator={true}
                                     suffix={"VND"}

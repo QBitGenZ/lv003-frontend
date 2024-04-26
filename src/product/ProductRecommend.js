@@ -22,7 +22,6 @@ const ProductRecommend = () => {
             <div className='recommend-title'>Có thể bạn sẽ thích</div>
             <div className='recommend-detail'>
                 {products.map((item, index) => {
-                    console.log(index);
                     if (index < 5) {
                         return <BestSellerItem product={item} />;
                     }

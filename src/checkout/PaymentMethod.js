@@ -36,6 +36,7 @@ const PaymentMethod = ({
         if (paymentMethod === "cod") {
             const submit = await onSubmit();
             if (submit === 201) {
+                alert("Đặt hàng thành công");
                 handleClicked();
             }
         } else {

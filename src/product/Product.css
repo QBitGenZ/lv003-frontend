@@ -10,7 +10,6 @@ input::-webkit-inner-spin-button {
     justify-content: space-around;
     align-items: start;
     margin-top: 50px;
-    
 }
 
 #ProductDetail .product-detail-img {
@@ -35,7 +34,6 @@ input::-webkit-inner-spin-button {
     margin-top: 0;
     margin-bottom: 24px;
     font-weight: 600;
-    
 }
 
 .product-detail-content .product-content-code {
@@ -46,7 +44,7 @@ input::-webkit-inner-spin-button {
     margin-right: 8px;
     font-size: 17px;
 }
-.product-detail-content .product-content-vote{
+.product-detail-content .product-content-vote {
     display: flex;
     flex-direction: row;
 }
@@ -91,6 +89,12 @@ input::-webkit-inner-spin-button {
 .ProductDescription .expand-content * {
     font-size: 20px;
     font-weight: 300;
+}
+
+.ProductDescription .video {
+    display: block;
+    margin: 24px auto;
+    width: 70%;
 }
 
 .ProductReviews {
@@ -156,16 +160,16 @@ input::-webkit-inner-spin-button {
 .ProductComments .comment-customer {
     color: #696969;
 }
-.comment-stars{
+.comment-stars {
     display: flex;
     flex-direction: row;
 }
-.comment-stars p{
+.comment-stars p {
     font-size: 32px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-margin-left: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-left: 20px;
 }
 .ProductComments .show-detail-btn,
 .ProductComments .hide-detail-btn {

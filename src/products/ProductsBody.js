@@ -3,7 +3,6 @@ import BestSellerItem from "../home/components/BestSellerItem";
 import Pagination from "../common/Pagination";
 
 const ProductsBody = ({ selectedType }) => {
-    const [products, setProducts] = useState([]);
     const [row1, setRow1] = useState([]);
     const [row2, setRow2] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -21,7 +20,6 @@ const ProductsBody = ({ selectedType }) => {
         )
             .then((res) => res.json())
             .then((data) => {
-                setProducts(data?.data);
                 setRow1(data?.data.slice(0, 5));
                 setRow2(data?.data.slice(5, 10));
                 setTotalPage(data?.meta?.totalPage);

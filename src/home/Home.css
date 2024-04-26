@@ -234,6 +234,7 @@
 
 /* End Feature Brand section */
 .Footer {
+    position: relative;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -291,4 +292,38 @@
     color: #535353;
     font-size: 20px;
     font-size: 20px;
+}
+
+#chat-bot {
+    width: 7rem;
+    position: fixed;
+    right: 1rem;
+    bottom: 2rem;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+#chat-bot img {
+    width: 100%;
+}
+
+#chat-bot-iframe {
+    position: absolute;
+    bottom: 3em;
+    right: 6rem;
+    box-shadow: 2px 2px 20px 2px #5dadf7;
+    border-radius: 12px;
+    border: 0;
+}
+
+#chatbot-msg {
+    position: absolute;
+    bottom: 3em;
+    right: 6rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px 24px;
+    background-color: #fefefe;
+    width: 10rem;
+    box-shadow: 2px 2px 20px 2px #5dadf7;
 }

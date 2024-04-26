@@ -1,41 +1,116 @@
 import { Link } from "react-router-dom";
 import "./Navigation.css";
+import { useState, useEffect } from "react";
 
 const Navigation = ({ type }) => {
+    const [productPortfolio, setProductPortfolio] = useState([]);
+    const [brands, setBrands] = useState([]);
+
+    useEffect(() => {
+        getProductPortfolio();
+        getBrands();
+    }, []);
+
+    const getProductPortfolio = () => {
+        fetch(`${process.env.REACT_APP_IP}/v1/product-types?limit=20`, {
+            method: "GET",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+        })
+            .then((res) => {
+                return res.json();
+            })
+            .then((data) => {
+                setProductPortfolio(data?.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
+    const getBrands = () => {
+        fetch(`${process.env.REACT_APP_IP}/v1/brands?limit=20`, {
+            method: "GET",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+        })
+            .then((res) => {
+                return res.json();
+            })
+            .then((data) => {
+                setBrands(data?.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
     return type === "prod-portfolio" ? (
         <div id='Navigation'>
             <div className='prod-portfolio'>
                 <div className='portfolio-field portfolio-clean'>
-                    <div className='portfolio-title'>Làm sạch</div>
-                    <Link to={"/products"} className='portfolio-element'>
-                        Sữa rửa mặt
-                    </Link>
-                    <div className='portfolio-element'>Tẩy trang</div>
-                    <div className='portfolio-element'>Bông tẩy trang</div>
+                    {productPortfolio.map((item, index) => {
+                        if (index < 3)
+                            return (
+                                <Link
+                                    to={`/products/${item?.name}`}
+                                    className='portfolio-element'>
+                                    {item?.name}
+                                </Link>
+                            );
+                    })}
                 </div>
                 <div className='portfolio-field portfolio-moisturizing'>
-                    <div className='portfolio-title'>Dưỡng ẩm</div>
-                    <div className='portfolio-element'>Toner</div>
-                    <div className='portfolio-element'>Serum</div>
-                    <div className='portfolio-element'>Kem dưỡng</div>
+                    {productPortfolio.map((item, index) => {
+                        if (index >= 3 && index < 6)
+                            return (
+                                <Link
+                                    to={`/products/${item?.name}`}
+                                    className='portfolio-element'>
+                                    {item?.name}
+                                </Link>
+                            );
+                    })}
                 </div>
                 <div className='portfolio-field portfolio-treatment'>
-                    <div className='portfolio-title'>Điều trị</div>
-                    <div className='portfolio-element'>Làm trắng</div>
-                    <div className='portfolio-element'>Trị mụn</div>
-                    <div className='portfolio-element'>Trị nám</div>
+                    {productPortfolio.map((item, index) => {
+                        if (index >= 6 && index < 9)
+                            return (
+                                <Link
+                                    to={`/products/${item?.name}`}
+                                    className='portfolio-element'>
+                                    {item?.name}
+                                </Link>
+                            );
+                    })}
                 </div>
                 <div className='portfolio-field portfolio-protect'>
-                    <div className='portfolio-title'>Bảo vệ</div>
-                    <div className='portfolio-element'>Kem chống nắng</div>
-                    <div className='portfolio-element'>Sữa chống nắng</div>
-                    <div className='portfolio-element'>Sáp chống nắng</div>
+                    {productPortfolio.map((item, index) => {
+                        if (index >= 9 && index < 12)
+                            return (
+                                <Link
+                                    to={`/products/${item?.name}`}
+                                    className='portfolio-element'>
+                                    {item?.name}
+                                </Link>
+                            );
+                    })}
                 </div>
                 <div className='portfolio-field portfolio-makeup'>
-                    <div className='portfolio-title'>Make-up</div>
-                    <div className='portfolio-element'>Trang điểm mặt</div>
-                    <div className='portfolio-element'>Trang điểm mắt</div>
-                    <div className='portfolio-element'>Trang điểm môi</div>
+                    {productPortfolio.map((item, index) => {
+                        if (index >= 12 && index < 15)
+                            return (
+                                <Link
+                                    to={`/products/${item?.name}`}
+                                    className='portfolio-element'>
+                                    {item?.name}
+                                </Link>
+                            );
+                    })}
                 </div>
                 <div className='portfolio-field portfolio-img'>
                     <img
@@ -49,34 +124,82 @@ const Navigation = ({ type }) => {
         <div id='Navigation'>
             <div className='brand'>
                 <div className='portfolio-field'>
-                    <div className='portfolio-element'>AmorePacific</div>
-                    <div className='portfolio-element'>Biore</div>
-                    <div className='portfolio-element'>Clinique</div>
+                    {brands.map((item, index) => {
+                        if (index < 3) {
+                            return (
+                                <Link
+                                    to={`/products/${item?.name}`}
+                                    className='portfolio-element'>
+                                    {item?.name}
+                                </Link>
+                            );
+                        }
+                    })}
                 </div>
                 <div className='portfolio-field'>
-                    <div className='portfolio-element'>Kiehl’s</div>
-                    <div className='portfolio-element'>Laneige</div>
-                    <div className='portfolio-element'>L’Oréal</div>
+                    {brands.map((item, index) => {
+                        if (index >= 3 && index < 6) {
+                            return (
+                                <Link
+                                    to={`/products/${item?.name}`}
+                                    className='portfolio-element'>
+                                    {item?.name}
+                                </Link>
+                            );
+                        }
+                    })}
                 </div>
                 <div className='portfolio-field'>
-                    <div className='portfolio-element'>Murad</div>
-                    <div className='portfolio-element'>Nars</div>
-                    <div className='portfolio-element'>Nivea</div>
+                    {brands.map((item, index) => {
+                        if (index >= 6 && index < 9) {
+                            return (
+                                <Link
+                                    to={`/products/${item?.name}`}
+                                    className='portfolio-element'>
+                                    {item?.name}
+                                </Link>
+                            );
+                        }
+                    })}
                 </div>
                 <div className='portfolio-field'>
-                    <div className='portfolio-element'>Shiseido</div>
-                    <div className='portfolio-element'>SK-II</div>
-                    <div className='portfolio-element'>Channel</div>
+                    {brands.map((item, index) => {
+                        if (index >= 9 && index < 12) {
+                            return (
+                                <Link
+                                    to={`/products/${item?.name}`}
+                                    className='portfolio-element'>
+                                    {item?.name}
+                                </Link>
+                            );
+                        }
+                    })}
                 </div>
                 <div className='portfolio-field'>
-                    <div className='portfolio-element'>Dear, Klairs</div>
-                    <div className='portfolio-element'>Dr.Jart+</div>
-                    <div className='portfolio-element'>Innisfree</div>
+                    {brands.map((item, index) => {
+                        if (index >= 12 && index < 15) {
+                            return (
+                                <Link
+                                    to={`/products/${item?.name}`}
+                                    className='portfolio-element'>
+                                    {item?.name}
+                                </Link>
+                            );
+                        }
+                    })}
                 </div>
                 <div className='portfolio-field'>
-                    <div className='portfolio-element'>Laneige</div>
-                    <div className='portfolio-element'>Some By Mi</div>
-                    <div className='portfolio-element'>Sulwhasoo</div>
+                    {brands.map((item, index) => {
+                        if (index >= 15 && index < 18) {
+                            return (
+                                <Link
+                                    to={`/products/${item?.name}`}
+                                    className='portfolio-element'>
+                                    {item?.name}
+                                </Link>
+                            );
+                        }
+                    })}
                 </div>
                 <div className='portfolio-field portfolio-img'>
                     <img

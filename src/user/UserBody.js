@@ -4,6 +4,7 @@ import UserPurchaseHistory from "./UserPurchaseHistory";
 import { Orders } from "../common/json/Orders";
 import { useEffect, useState } from "react";
 import UserChangeInfor from "./UserChangeInfor";
+import CanceledOrders from "./CanceledOrders";
 
 const UserBody = () => {
     const [userBody, setUserBody] = useState("overview");
@@ -72,6 +73,10 @@ const UserBody = () => {
                         </div>
                         {order?.map((item) => (
                             <UserPurchaseHistory order={item} />
+                        ))}
+                        <div className='user-order-title'>Đơn hàng bị hủy</div>
+                        {order?.map((item) => (
+                            <CanceledOrders order={item} />
                         ))}
                     </div>
                     <div className='user-body-right'>

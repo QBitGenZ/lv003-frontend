@@ -115,17 +115,17 @@ export default function Header({ isShowSearch, setIsShowSearch }) {
                         )}
                     </div>
 
-                    {/*
-                    <a className='main-navigation'>Hot Deals</a>
-                    <a className='main-navigation'>Bán chạy</a>
-                    */}
-                    <div
+                    {/* <a className='main-navigation'>Hot Deals</a> */}
+                    <Link to={"/best-seller"} className='main-navigation'>
+                        Bán chạy
+                    </Link>
+                    {/* <div
                         className='header-nav-portfolio'
                         onMouseEnter={handleMosueEnterBrandPortfolio}
                         onMouseLeave={handleMosueLeaveBrandPortfolio}>
                         <a className='main-navigation'>Thương hiệu</a>
                         {showBrandPortfolio && <Navigation type={"brand"} />}
-                    </div>
+                    </div> */}
                     <Link to={"/about-us"} className='main-navigation'>
                         Giới thiệu
                     </Link>

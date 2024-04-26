@@ -1,71 +1,58 @@
 #Navigation {
-  position: absolute;
-  top: calc(100% + 10px);
-  right: calc(2% + 4px);
-  z-index: 100;
-  background-color: #fff;
-  width: 95%;
-  text-align: left;
+    position: absolute;
+    top: calc(100% + 10px);
+    right: calc(2% + 4px);
+    z-index: 100;
+    background-color: #fff;
+    width: 95%;
+    text-align: left;
 }
 
 #Navigation .prod-portfolio,
 #Navigation .brand {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: start;
-  border-radius: 10px;
-  box-shadow: 0px 4px 20px 0px rgba(101, 106, 247, 0.25);
-  background-color: #fff;
-  padding: 16px;
-}
-
-#Navigation .brand {
-  align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px 0px rgba(101, 106, 247, 0.25);
+    background-color: #fff;
+    padding: 16px;
 }
 
 #Navigation .prod-portfolio *,
 #Navigation .brand * {
-  display: inline-block;
-  margin: 24px 0;
-}
-
-#Navigation .brand * {
-  margin: 36px 0;
-  font-size: 28px;
+    display: inline-block;
+    margin: 36px 0;
+    font-size: 28px;
 }
 
 #Navigation .portfolio-field {
-  margin: 12px;
-}
-
-#Navigation .portfolio-field .portfolio-title {
-  font-size: 26px;
-  color: #000;
+    margin: 12px;
 }
 
 #Navigation .portfolio-img {
-  width: 20%;
-  margin: 0;
+    width: 20%;
+    margin: 0;
 }
 
 #Navigation .portfolio-img img {
-  width: 100%;
+    width: 100%;
 }
 
 #Navigation .portfolio-field > * {
-  display: block;
-  color: #333;
+    display: block;
+    color: #333;
 }
 
 #Navigation .portfolio-field .portfolio-element:hover {
-  cursor: pointer;
-  color: #111;
-  text-shadow: 4px 8px 20px rgba(72, 133, 251, 0.5);
+    cursor: pointer;
+    color: #111;
+    text-shadow: 4px 8px 20px rgba(72, 133, 251, 0.5);
 }
 #Navigation .portfolio-field .portfolio-element {
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }

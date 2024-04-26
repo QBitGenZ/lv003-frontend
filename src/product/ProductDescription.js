@@ -22,6 +22,18 @@ const ProductDescription = ({ product }) => {
                 )}
             </div>
             <div {...getCollapseProps()}>
+                {product?.videoUrl && (
+                    <video className='video' controls autoPlay loop>
+                        <source
+                            src={
+                                `${process.env.REACT_APP_IP}/` +
+                                product?.videoUrl
+                            }
+                            type='video/mp4'
+                        />
+                    </video>
+                )}
+
                 <div
                     className='expand-content'
                     dangerouslySetInnerHTML={{

@@ -58,13 +58,6 @@ const ProductDetail = ({ product }) => {
                 <img
                     src={`${process.env.REACT_APP_IP}/` + product?.images[0]}
                     alt='product'></img>
-
-                <video width='320' height='240' controls>
-                    <source
-                        src={`${process.env.REACT_APP_IP}/` + product?.videoUrl}
-                        type='video/mp4'
-                    />
-                </video>
             </div>
             <div className='product-detail-content'>
                 <div className='product-content-name'>{product?.name}</div>

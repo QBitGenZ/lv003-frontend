@@ -22,22 +22,21 @@ const ForgotPasswordBody = () => {
 
     const handleClickedSendCode = () => {
         setIsClickedSendCode(true);
-        setCount(30); 
+        setCount(30);
     };
-    
+
     useEffect(() => {
         let timer;
         if (isClickedSendCode && count > 0) {
             timer = setTimeout(() => {
                 setCount((prevCount) => prevCount - 1);
-            }, 1000); 
+            }, 1000);
         }
-    
+
         return () => {
-            clearTimeout(timer); 
+            clearTimeout(timer);
         };
-    }, [count, isClickedSendCode]); 
-    
+    }, [count, isClickedSendCode]);
 
     return (
         <div id='ForgotPasswordBody'>
@@ -64,27 +63,26 @@ const ForgotPasswordBody = () => {
                         </div>
                     </div>
                     {isShow ? (
-                        <div className="validation-field-form">
-                                <div className='validation-field'>
-                            {isEmailValidation ? (
-                                <input
-                                    type='email'
-                                    placeholder='Nhập email của bạn'></input>
-                            ) : (
-                                <input
-                                    type='phone'
-                                    placeholder='Nhập số điện thoại của bạn'></input>
-                            )}
-                            <span
-                                className='send-code'
-                                onClick={handleClickedSendCode}>
-                                {isClickedSendCode && count > 0
-                                    ? count + "s"
-                                    : "Gửi mã"}
-                            </span>
+                        <div className='validation-field-form'>
+                            <div className='validation-field'>
+                                {isEmailValidation ? (
+                                    <input
+                                        type='email'
+                                        placeholder='Nhập email của bạn'></input>
+                                ) : (
+                                    <input
+                                        type='phone'
+                                        placeholder='Nhập số điện thoại của bạn'></input>
+                                )}
+                                <span
+                                    className='send-code'
+                                    onClick={handleClickedSendCode}>
+                                    {isClickedSendCode && count > 0
+                                        ? count + "s"
+                                        : "Gửi mã"}
+                                </span>
+                            </div>
                         </div>
-                        </div>
-                        
                     ) : (
                         <></>
                     )}

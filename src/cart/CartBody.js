@@ -65,7 +65,10 @@ const CartBody = () => {
                 quantity: quantity,
             }),
         })
-            .then((res) => res.json)
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+            })
             .catch((error) => console.log(error));
     }
 
@@ -87,7 +90,7 @@ const CartBody = () => {
 
         const selectedItem = carts.filter((item) => item.selected);
 
-        if (selectedItem.length <= 0) {
+        if (selectedItem?.length <= 0) {
             return alert("Vui lòng chọn sản phẩm");
         }
         localStorage.setItem("cart", JSON.stringify(selectedItem));
@@ -98,7 +101,7 @@ const CartBody = () => {
         <div id='CartBody'>
             <div className='cart-title'>Giỏ hàng của bạn</div>
             <div className='body-container'>
-                {carts.length > 0 ? (
+                {carts?.length > 0 ? (
                     carts?.map((item) => {
                         return (
                             <CartDetail

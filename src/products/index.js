@@ -4,18 +4,21 @@ import ProductsBody from "./ProductsBody";
 import { useState, useEffect } from "react";
 import SearchBody from "../common/SearchBody";
 import "./Products.css";
+import { useParams } from "react-router-dom";
 
 const Products = () => {
     const [isShowSearch, setIsShowSearch] = useState(false);
     const [types, setTypes] = useState([]);
     const [selectedTypes, setSelectedTypes] = useState([]);
+    const { type } = useParams();
 
     useEffect(() => {
+        setSelectedTypes(type);
         getProductType();
     }, []);
 
     const getProductType = () => {
-        fetch(`${process.env.REACT_APP_IP}/v1/product-types/`, {
+        fetch(`${process.env.REACT_APP_IP}/v1/product-types?limit=1000`, {
             method: "GET",
             headers: {
                 Accept: "application/json",

@@ -96,7 +96,6 @@ const CheckoutBody = ({ currentStep, setCurrentStep }) => {
             .then((res) => {
                 statusCode = res.status;
                 if (statusCode === 201) {
-                    alert("Đặt hàng thành công");
                     return res.json();
                 } else {
                     return Promise.reject(

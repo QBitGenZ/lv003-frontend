@@ -67,9 +67,9 @@ const LoginBody = () => {
                             <input id='remember' type='checkbox'></input>
                             <label htmlFor='remember'>Ghi nhớ</label>
                         </div>
-                        <Link className='change-passwd' to={"/forgotpassword"}>
+                        {/* <Link className='change-passwd' to={"/forgotpassword"}>
                             Quên mật khẩu?
-                        </Link>
+                        </Link> */}
                     </div>
                     <button className='button login-btn' onClick={handleLogin}>
                         Đăng nhập

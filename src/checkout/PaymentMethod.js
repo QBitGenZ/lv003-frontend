@@ -40,7 +40,7 @@ const PaymentMethod = ({
                 handleClicked();
             }
         } else {
-            onSubmit(); // TODO: sửa lại nè
+            // onSubmit(); // TODO: sửa lại nè
             handleSubmit();
         }
     };

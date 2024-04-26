@@ -60,7 +60,10 @@ const ProductDetail = ({ product }) => {
                     alt='product'></img>
             </div>
             <div className='product-detail-content'>
-                <div className='product-content-name'>{product?.name}</div>
+                <div className='product-content-name'>
+                    <span className='product-sale'>-{product?.sale}%</span>{" "}
+                    {product?.name}
+                </div>
                 <div className='product-content-code'>
                     {product?.brand?.name}
                 </div>
@@ -79,7 +82,12 @@ const ProductDetail = ({ product }) => {
                     </div>
                     <p>4.8</p>
                 </div>
-                <div className='product-content-price'>
+                <div
+                    className={
+                        product?.sale
+                            ? "product-content-price saled"
+                            : "product-content-price"
+                    }>
                     <CurrencyFormat
                         value={product?.price}
                         displayType={"text"}
@@ -88,6 +96,20 @@ const ProductDetail = ({ product }) => {
                         renderText={(value) => <div>{value}</div>}
                     />
                 </div>
+                {product?.sale && (
+                    <div className='product-saled-price'>
+                        <CurrencyFormat
+                            value={
+                                product?.price -
+                                product?.price * (product?.sale / 100)
+                            }
+                            displayType={"text"}
+                            thousandSeparator={true}
+                            suffix={"VND"}
+                            renderText={(value) => <div>{value}</div>}
+                        />
+                    </div>
+                )}
                 <div className='product-content-quantity'>
                     <ChooseQuantity
                         quantity={quantity}

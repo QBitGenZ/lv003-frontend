@@ -14,6 +14,11 @@ const DeliveryAddress = ({ handleClickedEvent, address, setAddress }) => {
         navigate(-1); // Trở về trang trước đó
     };
 
+    const handleClickedContinue = () => {
+        localStorage.setItem("address", JSON.stringify(address));
+        handleClickedEvent();
+    };
+
     return (
         <div id='DeliveryAddress'>
             <div className='delivery-address-title'>Địa chỉ nhận hàng</div>
@@ -60,7 +65,7 @@ const DeliveryAddress = ({ handleClickedEvent, address, setAddress }) => {
                     value={address.detailAddress}
                     onChange={handleChange}></input>
 
-                <div className='default-address'>
+                {/* <div className='default-address'>
                     <input
                         name='isDefaultAddress'
                         id='choose-default-address'
@@ -71,7 +76,7 @@ const DeliveryAddress = ({ handleClickedEvent, address, setAddress }) => {
                     <label htmlFor='choose-default-address'>
                         Đặt làm địa chỉ mặc định
                     </label>
-                </div>
+                </div> */}
                 <div className='form-footer'>
                     <button
                         className='button order-btn'
@@ -92,7 +97,7 @@ const DeliveryAddress = ({ handleClickedEvent, address, setAddress }) => {
                                 alert("Vui lòng nhập đầy đủ thông tin địa chỉ");
                                 return;
                             }
-                            handleClickedEvent();
+                            handleClickedContinue();
                         }}>
                         Tiếp theo
                     </button>

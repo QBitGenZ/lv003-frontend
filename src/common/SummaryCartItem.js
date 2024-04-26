@@ -1,6 +1,11 @@
 import CurrencyFormat from "react-currency-format";
 
 const SummaryCartItem = ({ product }) => {
+    const saledPrice = product?.product?.sale
+        ? product?.product?.price -
+          (product?.product?.price * product?.product?.sale) / 100
+        : product?.product?.price;
+
     return (
         <div className='SummaryCartItem'>
             <div className='summary-cart-item-left'>
@@ -33,7 +38,7 @@ const SummaryCartItem = ({ product }) => {
                     </div> */}
                     <div className='origin-price'>
                         <CurrencyFormat
-                            value={product?.product?.price}
+                            value={saledPrice}
                             displayType={"text"}
                             thousandSeparator={true}
                             suffix={"VND"}

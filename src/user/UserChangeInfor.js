@@ -73,13 +73,13 @@ const UserChangeInfor = ({ user, handleClickButton }) => {
                     onClick={() => setIsInforPage(true)}>
                     Thông tin tài khoản
                 </div>
-                <div
+                {/* <div
                     className={`passwd ${
                         isInforPage ? "" : "user-body-active"
                     }`}
                     onClick={() => setIsInforPage(false)}>
                     Thay đổi mật khẩu
-                </div>
+                </div> */}
                 <div className='logout' onClick={logout}>
                     Đăng xuất
                 </div>

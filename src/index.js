@@ -41,7 +41,11 @@ root.render(
             <Route path='about-us' element={<AboutUs />}></Route>
             <Route path='support' element={<Support />}></Route>
             <Route path='privacy' element={<Privacy />}></Route>
-            <Route path='checkout/success' element={<SuccessVNP />}></Route>
+            <Route
+                path='checkout/success'
+                element={
+                    <SuccessVNP address={localStorage.getItem("address")} />
+                }></Route>
         </Routes>
     </BrowserRouter>
 );

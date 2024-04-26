@@ -29,6 +29,11 @@ const CartDetail = ({
         updateCart();
     }, [quantity]);
 
+    const saledPrice = item?.product?.sale
+        ? item?.product?.price -
+          (item?.product?.price * item?.product?.sale) / 100
+        : item?.product?.price;
+
     if (!isInCart) {
         return (
             <div id='CartDetail' className='not-in-cart'>
@@ -57,7 +62,7 @@ const CartDetail = ({
                     <div className='cart-detail-price'>
                         <div className='sale-price'>
                             <CurrencyFormat
-                                value={item?.product?.price * item?.quantity}
+                                value={saledPrice * item?.quantity}
                                 displayType={"text"}
                                 thousandSeparator={true}
                                 suffix={"VND"}
@@ -119,7 +124,7 @@ const CartDetail = ({
                     <div className='origin-price'>
                         Giá tiền:{" "}
                         <CurrencyFormat
-                            value={item?.product?.price}
+                            value={saledPrice * item?.quantity}
                             displayType={"text"}
                             thousandSeparator={true}
                             suffix={"VND"}

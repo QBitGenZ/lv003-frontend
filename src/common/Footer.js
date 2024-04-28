@@ -46,7 +46,7 @@ export default function Footer() {
             </div>
             <div id='chat-bot' onClick={() => handleClickChatbot()}>
                 <img
-                    src={process.env.PUBLIC_URL + "images/Cloud.png"}
+                    src={process.env.PUBLIC_URL + "/images/Cloud.png"}
                     alt='chatbot'></img>
                 {isShowChatbot ? (
                     <iframe

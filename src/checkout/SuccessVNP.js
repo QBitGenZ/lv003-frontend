@@ -22,70 +22,8 @@ const SuccessVNP = ({ address }) => {
     }/${dateObj.getFullYear()} ${dateObj.getHours()}:${dateObj.getMinutes()}:${dateObj.getSeconds()}`;
 
     useEffect(() => {
-        postData().then((statusCode) => {
-            if (statusCode === 201) {
-                getOrder();
-                localStorage.removeItem("address");
-                localStorage.removeItem("deliveryOptions");
-            }
-        });
+        getOrder();
     }, []);
-
-    const postData = async () => {
-        const {
-            recipientName,
-            phoneNumber,
-            provinceCity,
-            district,
-            ward,
-            detailAddress,
-        } = JSON.parse(address);
-
-        const items = JSON.parse(localStorage.getItem("cart"));
-
-        let statusCode;
-        await fetch(`${process.env.REACT_APP_IP}/v1/orders`, {
-            method: "POST",
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-            body: JSON.stringify({
-                paymentMethod: "online",
-                deliveryMethod: "GHTK",
-                address: `${recipientName}; ${phoneNumber}; ${detailAddress}, ${ward}, ${district}, ${provinceCity}`,
-                items: items.map((item) => {
-                    return {
-                        product: item.product._id,
-                        quantity: item.quantity,
-                    };
-                }),
-                totalPrice: Number.parseFloat(calculateTotalPrice(cartItems)),
-            }),
-        })
-            .then((res) => {
-                statusCode = res.status;
-                if (statusCode === 201) {
-                    return res.json();
-                } else {
-                    return Promise.reject(
-                        "Đặt hàng thất bại! Vui lòng thử lại!"
-                    );
-                }
-            })
-            .then((data) => {
-                setOrder(data?.data);
-                console.log(data);
-                localStorage.setItem("orderId", data?.data?._id);
-            })
-            .catch((error) => {
-                alert(error);
-                console.log("error: " + error);
-            });
-
-        return statusCode;
-    };
 
     const getOrder = () => {
         fetch(
@@ -107,19 +45,6 @@ const SuccessVNP = ({ address }) => {
                 setTotalPrice(data?.data?.totalPrice);
             })
             .catch((err) => console.log(err));
-    };
-
-    const calculateTotalPrice = (cartItems) => {
-        let price = 0;
-        cartItems?.forEach((element) => {
-            price += element?.price;
-        });
-
-        price += 25000;
-
-        console.log(typeof price);
-
-        return price;
     };
 
     let total = 0;
@@ -199,14 +124,32 @@ const SuccessVNP = ({ address }) => {
                                                 {item?.product?.name}
                                             </td>
                                             <td style={{ textAlign: "center" }}>
-                                                {item?.product?.price}
+                                                <CurrencyFormat
+                                                    value={item?.product?.price}
+                                                    displayType={"text"}
+                                                    thousandSeparator={true}
+                                                    suffix={"VND"}
+                                                    renderText={(value) => (
+                                                        <div>{value}</div>
+                                                    )}
+                                                />
                                             </td>
                                             <td style={{ textAlign: "center" }}>
                                                 {item?.quantity}
                                             </td>
                                             <td style={{ textAlign: "center" }}>
-                                                {item?.product?.price *
-                                                    item?.quantity}
+                                                <CurrencyFormat
+                                                    value={
+                                                        item?.product?.price *
+                                                        item?.quantity
+                                                    }
+                                                    displayType={"text"}
+                                                    thousandSeparator={true}
+                                                    suffix={"VND"}
+                                                    renderText={(value) => (
+                                                        <div>{value}</div>
+                                                    )}
+                                                />
                                             </td>
                                         </tr>
                                     );

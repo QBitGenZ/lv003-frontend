@@ -103,6 +103,10 @@ export default function Header({ isShowSearch, setIsShowSearch }) {
                 </div>
 
                 <div className='header-nav'>
+                    <Link to={"/about-us"} className='main-navigation'>
+                        Giới thiệu
+                    </Link>
+
                     <div
                         className='header-nav-portfolio'
                         onMouseEnter={handleMosueEnterProductPortfolio}
@@ -117,7 +121,7 @@ export default function Header({ isShowSearch, setIsShowSearch }) {
 
                     {/* <a className='main-navigation'>Hot Deals</a> */}
                     <Link to={"/best-seller"} className='main-navigation'>
-                        Bán chạy
+                        Sản phẩm Bán chạy
                     </Link>
                     {/* <div
                         className='header-nav-portfolio'
@@ -126,9 +130,6 @@ export default function Header({ isShowSearch, setIsShowSearch }) {
                         <a className='main-navigation'>Thương hiệu</a>
                         {showBrandPortfolio && <Navigation type={"brand"} />}
                     </div> */}
-                    <Link to={"/about-us"} className='main-navigation'>
-                        Giới thiệu
-                    </Link>
                     <Link to={"/support"} className='main-navigation'>
                         Hỗ trợ
                     </Link>

@@ -12,6 +12,8 @@ const Products = () => {
     const [selectedTypes, setSelectedTypes] = useState([]);
     const { type } = useParams();
 
+    const name = decodeURIComponent(type);
+
     useEffect(() => {
         setSelectedTypes(type);
         getProductType();
@@ -49,7 +51,7 @@ const Products = () => {
             ) : (
                 <>
                     <div className='products-title'>
-                        Danh mục sản phẩm
+                        {name !== "undefined" ? name : "Tất cả sản phẩm"}
                         <div
                             className='products-filter'
                             style={{ display: "inline-block", float: "right" }}>

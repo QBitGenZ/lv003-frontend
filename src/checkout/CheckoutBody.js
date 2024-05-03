@@ -72,7 +72,8 @@ const CheckoutBody = ({ currentStep, setCurrentStep }) => {
         }
 
         let statusCode;
-        console.log(calculateTotalPrice(cartItems));
+        let orderId;
+
         await fetch(`${process.env.REACT_APP_IP}/v1/orders`, {
             method: "POST",
             headers: {
@@ -105,7 +106,7 @@ const CheckoutBody = ({ currentStep, setCurrentStep }) => {
             })
             .then((data) => {
                 setOrders(data?.data);
-                console.log(data);
+                orderId = data?.data?._id;
                 localStorage.setItem("orderId", data?.data?._id);
             })
             .catch((error) => {
@@ -113,7 +114,7 @@ const CheckoutBody = ({ currentStep, setCurrentStep }) => {
                 console.log("error: " + error);
             });
 
-        return statusCode;
+        return { statusCode, orderId };
     };
 
     if (currentStep === "delivery") {
@@ -157,6 +158,7 @@ const CheckoutBody = ({ currentStep, setCurrentStep }) => {
                         handleClicked={setCurrentStep}
                         setPaymentMethod={setPaymentMethod}
                         onSubmit={postData}
+                        totalPrice={calculateTotalPrice(cartItems)}
                     />
                 </div>
             </div>

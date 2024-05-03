@@ -6,7 +6,6 @@ const ProductDetail = ({ product }) => {
     useEffect(() => window.scrollTo(0, 0), []);
 
     const [quantity, setQuantity] = useState(1);
-    const [brand, setBrand] = useState();
 
     useEffect(() => {
         fetch(`${process.env.REACT_APP_IP}/v1/brands`, {
@@ -37,7 +36,7 @@ const ProductDetail = ({ product }) => {
             }),
         })
             .then((res) => res.json())
-            .then((data) => {
+            .then(() => {
                 alert(`Thêm sản phẩm ${product?.name} thành công`);
             })
             .catch((error) => {
@@ -61,7 +60,9 @@ const ProductDetail = ({ product }) => {
             </div>
             <div className='product-detail-content'>
                 <div className='product-content-name'>
-                    <span className='product-sale'>-{product?.sale}%</span>{" "}
+                    {product?.sale && (
+                        <span className='product-sale'>-{product?.sale}%</span>
+                    )}{" "}
                     {product?.name}
                 </div>
                 <div className='product-content-code'>

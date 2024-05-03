@@ -6,12 +6,13 @@ const PaymentMethod = ({
     handleClicked,
     setPaymentMethod,
     onSubmit,
+    totalPrice,
 }) => {
     const handleChangeMethod = (event) => {
         setPaymentMethod(event.target.classList.item(0));
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = (orderId) => {
         fetch(`${process.env.REACT_APP_IP}/v1/payments/create_payment_url`, {
             method: "POST",
             headers: {
@@ -19,7 +20,8 @@ const PaymentMethod = ({
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                amount: localStorage.getItem("totalPrice"),
+                order: orderId,
+                amount: totalPrice,
                 language: "vn",
             }),
         })
@@ -33,15 +35,14 @@ const PaymentMethod = ({
     };
 
     const submit = async () => {
-        if (paymentMethod === "cod") {
-            const submit = await onSubmit();
-            if (submit === 201) {
+        const submit = await onSubmit(); // TODO: xóa cart
+        if (submit?.statusCode === 201) {
+            if (paymentMethod === "cod") {
                 alert("Đặt hàng thành công");
                 handleClicked();
+            } else {
+                handleSubmit(submit?.orderId);
             }
-        } else {
-            // onSubmit(); // TODO: sửa lại nè
-            handleSubmit();
         }
     };
 

@@ -123,13 +123,6 @@
     padding: 12px 36px;
 }
 
-#OrderDetail .order-detail-button-container .paid-btn,
-#OrderDetail .order-detail-button-container .review-btn {
-    opacity: 0.6;
-    cursor: pointer
-}
-
-#OrderDetail .order-detail-button-container .paid-btn:focus,
-#OrderDetail .order-detail-button-container .review-btn:focus {
-    opacity: 1;
+#OrderDetail .order-detail-button-container .paid-btn:hover {
+    cursor: pointer;
 }

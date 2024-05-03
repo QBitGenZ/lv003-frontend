@@ -18,7 +18,6 @@ const CartDetail = ({
 
     useEffect(() => {
         setIsSelected(item?.selected);
-        // updateSelectedStatus(item._id, selectAll)
     }, [item]);
 
     const handleRemoveButtonCliecked = () => {
@@ -111,16 +110,6 @@ const CartDetail = ({
             </div>
             <div className='right-side-detail'>
                 <div className='cart-detail-price'>
-                    {/* <div className='sale-price'>
-                        Giá sale:
-                        <CurrencyFormat
-                            value={item?.product?.price * 0.8}
-                            displayType={"text"}
-                            thousandSeparator={true}
-                            suffix={"VND"}
-                            renderText={(value) => <div>{value}</div>}
-                        />
-                    </div> */}
                     <div className='origin-price'>
                         Giá tiền:{" "}
                         <CurrencyFormat

@@ -8,3 +8,13 @@
     font-weight: 600;
     margin-bottom: 36px;
 }
+
+#PrivacyBody .privacy-body {
+    font-size: 22px;
+    line-height: 12px;
+    margin-bottom: 36px;
+}
+
+#PrivacyBody .privacy-body * {
+    margin: 16px 0;
+}

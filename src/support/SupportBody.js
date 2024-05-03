@@ -3,27 +3,53 @@ const SupportBody = () => {
         <div id='SupportBody'>
             <div className='support-title'>Hỗ trợ</div>
             <div className='support-body'>
-                Được thành lập với sứ mệnh làm đẹp từ bên trong ra ngoài, Clair
-                là một trang web bán mỹ phẩm độc đáo và đa dạng. Với cam kết
-                mang lại cho khách hàng những sản phẩm chất lượng và an toàn,
-                Clair không chỉ là điểm đến lý tưởng cho những ai đam mê làm đẹp
-                mà còn là nguồn cảm hứng và kiến thức cho cộng đồng yêu làm đẹp.
-                Trang web của Clair không chỉ là nơi để mua sắm, mà còn là một
-                cộng đồng mạng xã hội nơi mọi người có thể chia sẻ kinh nghiệm,
-                đề xuất sản phẩm và thảo luận về các xu hướng làm đẹp mới nhất.
-                Từ skincare đến makeup, từ dưỡng tóc đến chăm sóc cơ thể, Clair
-                cung cấp một loạt các sản phẩm từ các thương hiệu uy tín trên
-                thị trường. Mỗi sản phẩm trên Clair đều được chọn lọc cẩn thận,
-                đảm bảo tính hiệu quả và an toàn cho người sử dụng. Đội ngũ
-                chuyên gia làm đẹp của Clair luôn sẵn lòng tư vấn và hỗ trợ
-                khách hàng trong việc lựa chọn sản phẩm phù hợp nhất với nhu cầu
-                và làn da của mình. Ngoài ra, Clair còn thường xuyên cập nhật
-                các bài viết, hướng dẫn và video hướng dẫn để giúp người dùng có
-                thêm thông tin và kỹ năng về làm đẹp. Với một trải nghiệm mua
-                sắm trực tuyến thoải mái và tiện lợi, Clair cam kết mang lại sự
-                hài lòng tuyệt đối cho mỗi khách hàng. Hãy đến với Clair để khám
-                phá và trải nghiệm thế giới làm đẹp mới mẻ, đầy sắc màu và đam
-                mê!
+                <ol>
+                    <li>
+                        Sản phẩm không đúng theo đơn đặt hàng: nhầm lẫn hoặc
+                        thiếu sản phẩm.
+                    </li>
+                    <li>
+                        Đối với đơn hàng thiếu sản phẩm: CLAIRE sẽ vận chuyển
+                        sản phẩm còn thiếu đúng theo đơn đặt hàng và chịu hoàn
+                        toàn chi phí vận chuyển.
+                    </li>
+                    <li>
+                        Đối với sản phẩm nhầm lẫn:
+                        <ul>
+                            <li>
+                                Khách hàng có thể đển trực tiếp cửa hàng tại
+                                đường 3/2, phường Xuân Khánh, Ninh Kiều, Cần Thơ
+                                sau 15h để đổi sản phẩm. Quý khách vui lòng giữ
+                                lại hóa đơn để đối chiếu với cửa hàng.
+                            </li>
+                            <li>
+                                Trường hợp khách hàng ở xa, quý khách vui lòng
+                                gửi sản phẩm nhầm lẫn về lại CLAIRE, sau khi
+                                kiểm tra, CLAIRE sẽ gửi lại sản phẩm đúng cho
+                                khách hàng và chịu mọi chi phí vận chuyển.
+                            </li>
+                            <li>
+                                CLAIRE CHỈ CHẤP NHẬN đổi trả sản phẩm khi sản
+                                phẩm còn nguyên tem, mác, seal, chưa qua sử dụng
+                                và còn giữ hóa đơn mua hàng tại CLAIRE.
+                            </li>
+                        </ul>
+                        Sản phẩm bị hư hại, bể vỡ do quá trình vận chuyển:
+                        <ul>
+                            <li>
+                                Trường hợp phát hiện hàng bị bể vỡ, hư hại sau
+                                khi đã nhận hàng và thanh toán tiền, quý khách
+                                vui lòng chụp hình hiện trạng sản phẩm, hóa đơn
+                                và liên lạc với CLAIRE qua số điện thoại 0946
+                                364 659 để được hỗ trợ sớm nhất.
+                            </li>
+                            <li>
+                                CLAIRE chỉ xử lý trường hợp trên trong 2 ngày
+                                sau khi khách hàng đã nhận được sản phẩm.
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
             </div>
         </div>
     );

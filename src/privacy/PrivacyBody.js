@@ -3,27 +3,31 @@ const PrivacyBody = () => {
         <div id='PrivacyBody'>
             <div className='privacy-title'>Chính sách bảo mật</div>
             <div className='privacy-body'>
-                Được thành lập với sứ mệnh làm đẹp từ bên trong ra ngoài, Clair
-                là một trang web bán mỹ phẩm độc đáo và đa dạng. Với cam kết
-                mang lại cho khách hàng những sản phẩm chất lượng và an toàn,
-                Clair không chỉ là điểm đến lý tưởng cho những ai đam mê làm đẹp
-                mà còn là nguồn cảm hứng và kiến thức cho cộng đồng yêu làm đẹp.
-                Trang web của Clair không chỉ là nơi để mua sắm, mà còn là một
-                cộng đồng mạng xã hội nơi mọi người có thể chia sẻ kinh nghiệm,
-                đề xuất sản phẩm và thảo luận về các xu hướng làm đẹp mới nhất.
-                Từ skincare đến makeup, từ dưỡng tóc đến chăm sóc cơ thể, Clair
-                cung cấp một loạt các sản phẩm từ các thương hiệu uy tín trên
-                thị trường. Mỗi sản phẩm trên Clair đều được chọn lọc cẩn thận,
-                đảm bảo tính hiệu quả và an toàn cho người sử dụng. Đội ngũ
-                chuyên gia làm đẹp của Clair luôn sẵn lòng tư vấn và hỗ trợ
-                khách hàng trong việc lựa chọn sản phẩm phù hợp nhất với nhu cầu
-                và làn da của mình. Ngoài ra, Clair còn thường xuyên cập nhật
-                các bài viết, hướng dẫn và video hướng dẫn để giúp người dùng có
-                thêm thông tin và kỹ năng về làm đẹp. Với một trải nghiệm mua
-                sắm trực tuyến thoải mái và tiện lợi, Clair cam kết mang lại sự
-                hài lòng tuyệt đối cho mỗi khách hàng. Hãy đến với Clair để khám
-                phá và trải nghiệm thế giới làm đẹp mới mẻ, đầy sắc màu và đam
-                mê!
+                <p>
+                    Chính sách bảo mật này nhằm giúp Quý khách hiểu về cách
+                    website thu thập và sử dụng thông tin cá nhân của mình thông
+                    qua việc sử dụng trang web, bao gồm mọi thông tin có thể
+                    cung cấp thông qua trang web khi Quý khách đăng ký tài
+                    khoản, đăng ký nhận thông tin liên lạc từ chúng tôi, hoặc
+                    khi Quý khách mua sản phẩm, dịch vụ, yêu cầu thêm thông tin
+                    dịch vụ từ chúng tôi.
+                </p>
+                <p>
+                    Chúng tôi sử dụng thông tin cá nhân của Quý khách để liên
+                    lạc khi cần thiết liên quan đến việc Quý khách sử dụng
+                    website của chúng tôi, để trả lời các câu hỏi hoặc gửi tài
+                    liệu và thông tin Quý khách yêu cầu.
+                </p>
+                <p>
+                    Chúng tôi sử dụng thông tin cá nhân của Quý khách để liên
+                    lạc khi cần thiết liên quan đến việc Quý khách sử dụng
+                    website của chúng tôi, để trả lời các câu hỏi hoặc gửi tài
+                    liệu và thông tin Quý khách yêu cầu.
+                </p>
+                <p>
+                    Mọi thông tin giao dịch sẽ được bảo mật ngoại trừ trong
+                    trường hợp cơ quan pháp luật yêu cầu.
+                </p>
             </div>
         </div>
     );

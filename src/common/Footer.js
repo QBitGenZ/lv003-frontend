@@ -51,9 +51,9 @@ export default function Footer() {
                 {isShowChatbot ? (
                     <iframe
                         id='chat-bot-iframe'
+                        allow='microphone;'
                         width='350'
                         height='430'
-                        allow='microphone;'
                         src='https://console.dialogflow.com/api-client/demo/embedded/9ef6087d-810a-4a08-8369-c77001464eb2'></iframe>
                 ) : (
                     <div id='chatbot-msg'>Ask me anything...</div>

@@ -79,11 +79,6 @@ const OrderDetail = ({ order }) => {
                     </div>
                 </div>
             </div>
-
-            <div className='order-detail-button-container'>
-                <button className='paid-btn'>Đã nhận hàng</button>
-                <button className='review-btn'>Đánh giá</button>
-            </div>
         </div>
     );
 };

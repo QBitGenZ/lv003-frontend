@@ -1,29 +1,50 @@
 const AboutUsBody = () => {
     return (
         <div id='AboutUsBody'>
-            <div className='about-us-title'>Về chúng tôi</div>
+            <div className='about-us-title'>Giới thiệu</div>
             <div className='about-us-body'>
-                Được thành lập với sứ mệnh làm đẹp từ bên trong ra ngoài, Clair
-                là một trang web bán mỹ phẩm độc đáo và đa dạng. Với cam kết
-                mang lại cho khách hàng những sản phẩm chất lượng và an toàn,
-                Clair không chỉ là điểm đến lý tưởng cho những ai đam mê làm đẹp
-                mà còn là nguồn cảm hứng và kiến thức cho cộng đồng yêu làm đẹp.
-                Trang web của Clair không chỉ là nơi để mua sắm, mà còn là một
-                cộng đồng mạng xã hội nơi mọi người có thể chia sẻ kinh nghiệm,
-                đề xuất sản phẩm và thảo luận về các xu hướng làm đẹp mới nhất.
-                Từ skincare đến makeup, từ dưỡng tóc đến chăm sóc cơ thể, Clair
-                cung cấp một loạt các sản phẩm từ các thương hiệu uy tín trên
-                thị trường. Mỗi sản phẩm trên Clair đều được chọn lọc cẩn thận,
-                đảm bảo tính hiệu quả và an toàn cho người sử dụng. Đội ngũ
-                chuyên gia làm đẹp của Clair luôn sẵn lòng tư vấn và hỗ trợ
-                khách hàng trong việc lựa chọn sản phẩm phù hợp nhất với nhu cầu
-                và làn da của mình. Ngoài ra, Clair còn thường xuyên cập nhật
-                các bài viết, hướng dẫn và video hướng dẫn để giúp người dùng có
-                thêm thông tin và kỹ năng về làm đẹp. Với một trải nghiệm mua
-                sắm trực tuyến thoải mái và tiện lợi, Clair cam kết mang lại sự
-                hài lòng tuyệt đối cho mỗi khách hàng. Hãy đến với Clair để khám
-                phá và trải nghiệm thế giới làm đẹp mới mẻ, đầy sắc màu và đam
-                mê!
+                <p>
+                    Chào mừng bạn đến với Claire Cosmetics, nơi thăng hoa vẻ đẹp
+                    của bạn trở nên tự tin và rạng ngời hơn bao giờ hết! Claire
+                    Cosmetics tự hào là điểm đến hàng đầu cho những người yêu
+                    thích làm đẹp và muốn khám phá những sản phẩm mỹ phẩm chất
+                    lượng cao, đa dạng và đáng tin cậy.
+                </p>
+                <p>
+                    Tại Claire Cosmetics, chúng tôi cam kết mang đến cho bạn
+                    những sản phẩm mỹ phẩm chất lượng, an toàn và hiệu quả nhất.
+                    Với một bộ sưu tập đa dạng bao gồm kem dưỡng da, serum chống
+                    lão hóa, phấn nền, son môi và nhiều sản phẩm khác, chúng tôi
+                    tự tin rằng bạn sẽ tìm thấy những sản phẩm hoàn hảo cho nhu
+                    cầu làm đẹp của mình.
+                </p>
+                <p>
+                    Với giao diện trực quan và dễ sử dụng, việc tìm kiếm và mua
+                    sắm trên Claire Cosmetics trở nên đơn giản và thuận tiện hơn
+                    bao giờ hết. Bạn có thể dễ dàng duyệt qua các danh mục sản
+                    phẩm, tìm kiếm theo thương hiệu yêu thích hoặc loại sản phẩm
+                    mong muốn, và thậm chí xem đánh giá từ những khách hàng đã
+                    sử dụng sản phẩm trước đó.
+                </p>
+                <p>
+                    Không chỉ là nơi mua sắm, Claire Cosmetics còn là một nguồn
+                    thông tin hữu ích cho làn da của bạn. Tại đây, bạn sẽ tìm
+                    thấy các bài viết hướng dẫn chăm sóc da, các bí quyết trang
+                    điểm từ các chuyên gia hàng đầu, cũng như các tin tức mới
+                    nhất về xu hướng làm đẹp và mỹ phẩm.
+                </p>
+                <p>
+                    Chúng tôi luôn luôn mong muốn mang lại sự hài lòng tối đa
+                    cho khách hàng. Đội ngũ dịch vụ khách hàng của chúng tôi
+                    luôn sẵn lòng hỗ trợ bạn trong mọi vấn đề từ việc chọn lựa
+                    sản phẩm cho đến các thắc mắc về đơn hàng và vận chuyển.
+                </p>
+                <p>
+                    Hãy cùng chúng tôi khám phá vẻ đẹp mới mỗi ngày và biến ước
+                    mơ về làn da hoàn hảo thành hiện thực. Truy cập ngay Claire
+                    Cosmetics và khám phá thế giới mỹ phẩm đầy màu sắc và tiện
+                    ích ngay hôm nay!
+                </p>
             </div>
         </div>
     );

@@ -60,9 +60,9 @@ const ProductDetail = ({ product }) => {
             </div>
             <div className='product-detail-content'>
                 <div className='product-content-name'>
-                    {product?.sale && (
+                    {product?.sale !== 0 && product?.sale ? (
                         <span className='product-sale'>-{product?.sale}%</span>
-                    )}{" "}
+                    ) : null}{" "}
                     {product?.name}
                 </div>
                 <div className='product-content-code'>
@@ -97,7 +97,7 @@ const ProductDetail = ({ product }) => {
                         renderText={(value) => <div>{value}</div>}
                     />
                 </div>
-                {product?.sale && (
+                {product?.sale !== 0 && product?.sale ? (
                     <div className='product-saled-price'>
                         <CurrencyFormat
                             value={
@@ -110,7 +110,7 @@ const ProductDetail = ({ product }) => {
                             renderText={(value) => <div>{value}</div>}
                         />
                     </div>
-                )}
+                ) : null}
                 <div className='product-content-quantity'>
                     <ChooseQuantity
                         quantity={quantity}

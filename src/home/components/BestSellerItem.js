@@ -15,11 +15,11 @@ const BestSellerItem = ({ product }) => {
                     </div>
                     <div className='product-name'>{product?.brand?.name}</div>
                     <div className='product-description'>
-                        {product?.sale && (
+                        {product?.sale !== 0 && product?.sale ? (
                             <span className={product?.sale && "product-sale"}>
                                 -{product?.sale}%
                             </span>
-                        )}{" "}
+                        ) : null}{" "}
                         {product?.name}
                     </div>
                 </div>
@@ -41,7 +41,7 @@ const BestSellerItem = ({ product }) => {
                             renderText={(value) => <div>{value}</div>}
                         />
                     </div>
-                    {product?.sale && (
+                    {product?.sale !== 0 && product?.sale ? (
                         <div className='product-saled-price'>
                             <CurrencyFormat
                                 value={
@@ -54,7 +54,7 @@ const BestSellerItem = ({ product }) => {
                                 renderText={(value) => <div>{value}</div>}
                             />
                         </div>
-                    )}
+                    ) : null}
                 </div>
             </div>
         </Link>
